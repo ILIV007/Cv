@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ILIYA IRAVANI - Computer Engineer</title>
+    <title>ILIYA IRAVANI | Computer Engineer & Developer</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌀</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -14,37 +15,30 @@
             --accent: #8BB8E0;
             --bg: #0B1120;
             --bg-light: #111827;
-            --bg-card: #1a2332;
+            --bg-card: #151e2e;
             --bg-hover: #1e293b;
             --text: #e2e8f0;
             --text-muted: #94a3b8;
             --text-dim: #64748b;
             --border: #1e293b;
-            --glow: rgba(91, 141, 184, 0.15);
-            --star-glow: rgba(139, 184, 224, 0.3);
+            --glow: rgba(91, 141, 184, 0.12);
+            --star-glow: rgba(139, 184, 224, 0.25);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', 'Vazirmatn', sans-serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
         }
 
-        /* Cosmic background particles */
         .cosmic-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             pointer-events: none;
             z-index: 0;
             overflow: hidden;
@@ -52,73 +46,74 @@
 
         .star {
             position: absolute;
-            width: 2px;
-            height: 2px;
+            width: 2px; height: 2px;
             background: var(--accent);
             border-radius: 50%;
             opacity: 0.3;
-            animation: twinkle 3s infinite;
+            animation: twinkle 4s infinite ease-in-out;
         }
 
         @keyframes twinkle {
             0%, 100% { opacity: 0.2; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.5); }
+            50% { opacity: 0.9; transform: scale(1.8); }
         }
 
         .nebula {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.08;
+            filter: blur(100px);
+            opacity: 0.06;
         }
 
         .nebula-1 {
-            width: 600px;
-            height: 600px;
+            width: 700px; height: 700px;
             background: var(--primary);
-            top: -200px;
-            right: -100px;
+            top: -250px; right: -150px;
         }
 
         .nebula-2 {
-            width: 500px;
-            height: 500px;
+            width: 600px; height: 600px;
             background: var(--accent);
-            bottom: -150px;
-            left: -100px;
+            bottom: -200px; left: -150px;
         }
 
-        /* Language switcher */
+        .nebula-3 {
+            width: 400px; height: 400px;
+            background: var(--primary-light);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
         .lang-switch {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 24px; right: 24px;
             z-index: 1000;
             display: flex;
-            gap: 8px;
-            background: var(--bg-card);
+            gap: 6px;
+            background: rgba(21, 30, 46, 0.8);
             padding: 6px;
-            border-radius: 12px;
+            border-radius: 14px;
             border: 1px solid var(--border);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(16px);
         }
 
         .lang-btn {
-            padding: 8px 16px;
+            padding: 10px 20px;
             border: none;
             background: transparent;
             color: var(--text-muted);
             cursor: pointer;
-            border-radius: 8px;
+            border-radius: 10px;
             font-family: inherit;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             transition: all 0.3s;
         }
 
         .lang-btn.active {
             background: var(--primary);
             color: white;
+            box-shadow: 0 4px 15px rgba(91, 141, 184, 0.3);
         }
 
         .lang-btn:hover:not(.active) {
@@ -126,64 +121,64 @@
             background: var(--bg-hover);
         }
 
-        /* Main container */
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 28px;
             position: relative;
             z-index: 1;
         }
 
-        /* Hero section */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 100px 0 60px;
+            padding: 120px 0 80px;
             position: relative;
         }
 
-        .hero-content {
-            max-width: 800px;
-        }
+        .hero-content { max-width: 850px; }
 
         .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 8px 20px;
+            gap: 10px;
+            padding: 10px 24px;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 100px;
-            font-size: 14px;
+            font-size: 15px;
             color: var(--accent);
-            margin-bottom: 32px;
+            margin-bottom: 40px;
             backdrop-filter: blur(10px);
+            font-weight: 500;
         }
 
-        .hero-badge .cosmic-icon {
-            font-size: 18px;
-        }
+        .hero-badge .cosmic-icon { font-size: 20px; }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, var(--text) 0%, var(--primary-light) 50%, var(--accent) 100%);
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 28px;
+            background: linear-gradient(135deg, #fff 0%, var(--primary-light) 40%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: -1px;
         }
 
         .hero-subtitle {
-            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            font-size: clamp(1.15rem, 2.2vw, 1.45rem);
             color: var(--text-muted);
-            margin-bottom: 40px;
+            margin-bottom: 48px;
             font-weight: 400;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
         }
 
         .hero-cta {
@@ -194,96 +189,92 @@
         }
 
         .btn {
-            padding: 14px 32px;
-            border-radius: 12px;
+            padding: 16px 36px;
+            border-radius: 14px;
             font-family: inherit;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             border: none;
         }
 
         .btn-primary {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
-            box-shadow: 0 4px 20px rgba(91, 141, 184, 0.3);
+            box-shadow: 0 6px 25px rgba(91, 141, 184, 0.35);
         }
 
         .btn-primary:hover {
-            background: var(--primary-light);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(91, 141, 184, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(91, 141, 184, 0.5);
         }
 
         .btn-secondary {
             background: var(--bg-card);
             color: var(--text);
-            border: 1px solid var(--border);
+            border: 1.5px solid var(--border);
         }
 
         .btn-secondary:hover {
             background: var(--bg-hover);
             border-color: var(--primary);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px var(--glow);
         }
 
-        /* Section styling */
-        .section {
-            padding: 80px 0;
-        }
+        .section { padding: 100px 0; }
 
         .section-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 70px;
         }
 
         .section-label {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            font-weight: 600;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             color: var(--primary);
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
-        .section-label .cosmic-icon {
-            font-size: 16px;
-        }
+        .section-label .cosmic-icon { font-size: 18px; }
 
         .section h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 16px;
+            font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
         }
 
         .section-desc {
             color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 600px;
+            font-size: 1.15rem;
+            max-width: 650px;
             margin: 0 auto;
+            line-height: 1.8;
         }
 
-        /* Cards grid */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 28px;
         }
 
         .card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 32px;
-            transition: all 0.4s;
+            border-radius: 24px;
+            padding: 36px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
@@ -291,49 +282,61 @@
         .card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent);
             opacity: 0;
             transition: opacity 0.4s;
         }
 
         .card:hover {
-            border-color: var(--primary-dark);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 40px var(--glow);
+            border-color: rgba(91, 141, 184, 0.3);
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35), 0 0 60px var(--glow);
         }
 
-        .card:hover::before {
-            opacity: 1;
-        }
+        .card:hover::before { opacity: 1; }
 
         .card-icon {
-            width: 48px;
-            height: 48px;
+            width: 56px; height: 56px;
             background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
+            border: 1.5px solid var(--border);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            margin-bottom: 20px;
+            font-size: 28px;
+            margin-bottom: 24px;
+            transition: all 0.3s;
+        }
+
+        .card:hover .card-icon {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px var(--star-glow);
         }
 
         .card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 12px;
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 16px;
             color: var(--text);
+            line-height: 1.4;
+        }
+
+        .card-meta {
+            font-size: 14px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .card p, .card ul {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.7;
+            font-size: 1rem;
+            line-height: 1.9;
         }
 
         .card ul {
@@ -343,22 +346,38 @@
 
         .card ul li {
             position: relative;
-            padding-right: 20px;
-            margin-bottom: 8px;
+            padding-left: 28px;
+            margin-bottom: 12px;
         }
 
         .card ul li::before {
             content: '🌀';
             position: absolute;
-            right: 0;
+            left: 0;
             top: 2px;
-            font-size: 12px;
+            font-size: 14px;
         }
 
-        /* Timeline for experience */
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        .card-link:hover {
+            color: var(--accent);
+            gap: 14px;
+        }
+
         .timeline {
             position: relative;
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
         }
 
@@ -369,13 +388,13 @@
             transform: translateX(-50%);
             width: 2px;
             height: 100%;
-            background: linear-gradient(to bottom, var(--primary), var(--accent));
-            opacity: 0.3;
+            background: linear-gradient(to bottom, var(--primary), var(--accent), var(--primary));
+            opacity: 0.25;
         }
 
         .timeline-item {
             display: flex;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             position: relative;
         }
 
@@ -385,146 +404,160 @@
         }
 
         .timeline-item:nth-child(odd) .timeline-content {
-            padding-right: 40px;
+            padding-right: 50px;
             padding-left: 0;
         }
 
         .timeline-content {
             width: 50%;
-            padding-left: 40px;
+            padding-left: 50px;
         }
 
         .timeline-dot {
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            width: 16px;
-            height: 16px;
+            width: 18px; height: 18px;
             background: var(--bg);
             border: 3px solid var(--primary);
             border-radius: 50%;
-            top: 4px;
-            box-shadow: 0 0 20px var(--star-glow);
+            top: 6px;
+            box-shadow: 0 0 25px var(--star-glow);
         }
 
         .timeline-date {
             font-size: 14px;
             color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 8px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
         }
 
         .timeline-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 8px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.4;
         }
 
         .timeline-desc {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 1rem;
+            line-height: 1.8;
         }
 
-        /* Skills tags */
         .skills-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 14px;
             justify-content: center;
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
         }
 
         .skill-tag {
-            padding: 10px 20px;
+            padding: 12px 24px;
             background: var(--bg-card);
-            border: 1px solid var(--border);
+            border: 1.5px solid var(--border);
             border-radius: 100px;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 15px;
+            font-weight: 600;
             color: var(--text);
-            transition: all 0.3s;
+            transition: all 0.35s;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .skill-tag:hover {
             border-color: var(--primary);
             background: var(--bg-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px var(--glow);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px var(--glow);
         }
 
-        .skill-tag .cosmic-icon {
-            font-size: 16px;
-        }
+        .skill-tag .cosmic-icon { font-size: 18px; }
 
-        /* Contact section */
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 24px;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
         .contact-card {
             background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 24px;
+            border: 1.5px solid var(--border);
+            border-radius: 20px;
+            padding: 32px 24px;
             text-align: center;
-            transition: all 0.3s;
+            transition: all 0.4s;
             text-decoration: none;
             color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .contact-card:hover {
             border-color: var(--primary);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px var(--glow);
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px var(--glow);
         }
 
         .contact-icon {
-            font-size: 32px;
-            margin-bottom: 12px;
+            font-size: 36px;
+            margin-bottom: 16px;
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: scale(1.2);
         }
 
         .contact-label {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-muted);
-            margin-bottom: 4px;
+            margin-bottom: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .contact-value {
-            font-size: 16px;
-            font-weight: 600;
-            word-break: break-all;
+            font-size: 15px;
+            font-weight: 700;
+            word-break: break-word;
+            line-height: 1.5;
         }
 
-        /* Footer */
         .footer {
-            padding: 40px 0;
+            padding: 50px 0;
             text-align: center;
             border-top: 1px solid var(--border);
-            margin-top: 60px;
+            margin-top: 80px;
         }
 
         .footer-text {
             color: var(--text-dim);
-            font-size: 14px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
         .footer .cosmic-icon {
             color: var(--primary);
+            font-size: 18px;
         }
 
-        /* Scroll animations */
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-out;
+            transform: translateY(40px);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .fade-in.visible {
@@ -532,74 +565,88 @@
             transform: translateY(0);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .timeline::before {
-                left: 20px;
-            }
+        /* Languages compact section */
+        .languages-compact {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
 
-            .timeline-item,
-            .timeline-item:nth-child(odd) {
+        .lang-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bg-card);
+            border: 1.5px solid var(--border);
+            border-radius: 16px;
+            padding: 16px 28px;
+            transition: all 0.3s;
+        }
+
+        .lang-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 6px 20px var(--glow);
+        }
+
+        .lang-flag {
+            font-size: 28px;
+        }
+
+        .lang-info {
+            text-align: left;
+        }
+
+        .lang-name {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--text);
+        }
+
+        .lang-level {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before { left: 20px; }
+            .timeline-item, .timeline-item:nth-child(odd) {
                 flex-direction: column;
                 text-align: left;
             }
-
-            .timeline-content,
-            .timeline-item:nth-child(odd) .timeline-content {
+            .timeline-content, .timeline-item:nth-child(odd) .timeline-content {
                 width: 100%;
                 padding-left: 50px;
                 padding-right: 0;
             }
-
-            .timeline-dot {
-                left: 20px;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-            }
+            .timeline-dot { left: 20px; }
+            .hero-cta { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 320px; justify-content: center; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .lang-switch { top: 16px; right: 16px; }
+            .section { padding: 70px 0; }
+            .languages-compact { gap: 16px; }
         }
 
-        /* RTL styles for Persian */
         [dir="rtl"] .card ul li {
-            padding-right: 0;
-            padding-left: 20px;
+            padding-left: 0;
+            padding-right: 28px;
         }
-
         [dir="rtl"] .card ul li::before {
-            right: auto;
-            left: 0;
+            left: auto;
+            right: 0;
         }
-
         [dir="rtl"] .lang-switch {
             right: auto;
-            left: 20px;
+            left: 24px;
         }
-
-        [dir="rtl"] .timeline-item:nth-child(odd) {
-            text-align: left;
-        }
-
-        [dir="rtl"] .timeline-item:nth-child(even) {
-            text-align: right;
-        }
-
-        [dir="rtl"] .timeline-content {
-            padding-left: 0;
-            padding-right: 40px;
-        }
-
-        [dir="rtl"] .timeline-item:nth-child(odd) .timeline-content {
-            padding-left: 40px;
-            padding-right: 0;
-        }
+        [dir="rtl"] .timeline-item:nth-child(odd) { text-align: left; }
+        [dir="rtl"] .timeline-item:nth-child(even) { text-align: right; }
+        [dir="rtl"] .timeline-content { padding-left: 0; padding-right: 50px; }
+        [dir="rtl"] .timeline-item:nth-child(odd) .timeline-content { padding-left: 50px; padding-right: 0; }
+        [dir="rtl"] .lang-info { text-align: right; }
 
         @media (max-width: 768px) {
             [dir="rtl"] .timeline-content,
@@ -607,47 +654,51 @@
                 padding-left: 0;
                 padding-right: 50px;
             }
+            [dir="rtl"] .lang-switch { left: 16px; right: auto; }
         }
     </style>
 </head>
 <body>
-    <!-- Cosmic Background -->
     <div class="cosmic-bg" id="cosmicBg">
         <div class="nebula nebula-1"></div>
         <div class="nebula nebula-2"></div>
+        <div class="nebula nebula-3"></div>
     </div>
 
-    <!-- Language Switcher -->
     <div class="lang-switch">
         <button class="lang-btn active" data-lang="en" onclick="switchLang('en')">EN</button>
         <button class="lang-btn" data-lang="fa" onclick="switchLang('fa')">FA</button>
     </div>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badge">
                     <span class="cosmic-icon">🪐</span>
-                    <span data-en="Computer Engineer" data-fa="مهندس کامپیوتر">Computer Engineer</span>
+                    <span data-en="Computer Engineer & Developer" data-fa="مهندس و توسعه‌دهنده کامپیوتر">Computer Engineer & Developer</span>
                 </div>
                 <h1 data-en="ILIYA IRAVANI" data-fa="ایلیا ایروانی">ILIYA IRAVANI</h1>
-                <p class="hero-subtitle" data-en="Building the future with code, hardware, and cosmic curiosity." data-fa="آینده را با کد، سخت‌افزار و کنجکاوی کیهانی می‌سازم.">Building the future with code, hardware, and cosmic curiosity.</p>
+                <p class="hero-subtitle" data-en="I build software, repair hardware, and explore the intersection of AI and everyday life. From Telegram bots to SQL databases, from vibe-coded websites to automated crypto trackers — I turn ideas into working systems." data-fa="من نرم‌افزار می‌سازم، سخت‌افزار تعمیر می‌کنم و مرز بین هوش مصنوعی و زندگی روزمره رو کشف می‌کنم. از بات‌های تلگرام تا پایگاه‌های داده SQL، از سایت‌های وایب‌کد تا ردیاب‌های خودکار ارز دیجیتال — ایده‌ها رو به سیستم‌های کارآمد تبدیل می‌کنم.">I build software, repair hardware, and explore the intersection of AI and everyday life. From Telegram bots to SQL databases, from vibe-coded websites to automated crypto trackers — I turn ideas into working systems.</p>
                 <div class="hero-cta">
                     <a href="#contact" class="btn btn-primary">
                         <span class="cosmic-icon">🌀</span>
-                        <span data-en="Get In Touch" data-fa="تماس بگیرید">Get In Touch</span>
+                        <span data-en="Get In Touch" data-fa="باهام در تماس باش">Get In Touch</span>
                     </a>
                     <a href="https://github.com/ILIV007" target="_blank" class="btn btn-secondary">
                         <span>🌌</span>
                         <span>GitHub</span>
+                    </a>
+                    <a href="https://t.me/ILIVIR3" target="_blank" class="btn btn-secondary">
+                        <span>📡</span>
+                        <span data-en="My Channel" data-fa="کانال من">My Channel</span>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Education Section -->
+    <!-- Education -->
     <section class="section" id="education">
         <div class="container">
             <div class="section-header fade-in">
@@ -656,93 +707,221 @@
                     <span data-en="Education" data-fa="تحصیلات">Education</span>
                 </div>
                 <h2 data-en="Academic Journey" data-fa="مسیر تحصیلی">Academic Journey</h2>
-                <p class="section-desc" data-en="My educational background in computer engineering and technical certifications." data-fa="پیشینه تحصیلی من در مهندسی کامپیوتر و گواهینامه‌های فنی.">My educational background in computer engineering and technical certifications.</p>
+                <p class="section-desc" data-en="A solid foundation in computer engineering theory, combined with hands-on technical certifications that bridge the gap between academia and real-world problem solving." data-fa="پایه‌ای محکم در تئوری مهندسی کامپیوتر، همراه با گواهینامه‌های فنی عملی که فاصله بین دانشگاه و حل مسائل دنیای واقعی رو پر می‌کنه.">A solid foundation in computer engineering theory, combined with hands-on technical certifications that bridge the gap between academia and real-world problem solving.</p>
             </div>
             <div class="timeline">
                 <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="timeline-date">2022 - Present</div>
+                        <div class="timeline-date">2022 — Present</div>
                         <div class="timeline-title" data-en="B.Sc. in Computer Engineering" data-fa="کارشناسی مهندسی کامپیوتر">B.Sc. in Computer Engineering</div>
-                        <div class="timeline-desc" data-en="Islamic Azad University Mashhad, Iran • GPA: 17.40/20 • Among highest-ranking students" data-fa="دانشگاه آزاد اسلامی مشهد، ایران • معدل: ۱۷.۴۰/۲۰ • از دانشجویان برتر">Islamic Azad University Mashhad, Iran • GPA: 17.40/20 • Among highest-ranking students</div>
+                        <div class="timeline-desc" data-en="Islamic Azad University, Mashhad, Iran. Maintaining a strong GPA of 17.40 out of 20, placing me among the top-performing students in the program. The curriculum covers algorithms, data structures, database systems, computer architecture, and software engineering principles — all of which I actively apply in my personal and professional projects." data-fa="دانشگاه آزاد اسلامی، مشهد، ایران. معدل ۱۷.۴۰ از ۲۰ که من رو در ردیف دانشجویان برتر رشته قرار داده. برنامه درسی شامل الگوریتم‌ها، ساختمان داده، سیستم‌های پایگاه داده، معماری کامپیوتر و اصول مهندسی نرم‌افزار هست — همه این‌ها رو به‌صورت فعال در پروژه‌های شخصی و حرفه‌ای‌ام به کار می‌گیرم.">Islamic Azad University, Mashhad, Iran. Maintaining a strong GPA of 17.40 out of 20, placing me among the top-performing students in the program. The curriculum covers algorithms, data structures, database systems, computer architecture, and software engineering principles — all of which I actively apply in my personal and professional projects.</div>
                     </div>
                 </div>
                 <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="timeline-date">2023 - 2024</div>
-                        <div class="timeline-title" data-en="Technical Certificate - Laptop & PC Repair" data-fa="گواهینامه فنی - تعمیر لپ‌تاپ و کامپیوتر">Technical Certificate - Laptop & PC Repair</div>
-                        <div class="timeline-desc" data-en="Technical and Vocational Training Organization (Iran) • Status: Completed" data-fa="سازمان آموزش فنی و حرفه‌ای (ایران) • وضعیت: تکمیل شده">Technical and Vocational Training Organization (Iran) • Status: Completed</div>
+                        <div class="timeline-date">2023 — 2024</div>
+                        <div class="timeline-title" data-en="Technical Certificate — Laptop & PC Repair" data-fa="گواهینامه فنی — تعمیر لپ‌تاپ و کامپیوتر">Technical Certificate — Laptop & PC Repair</div>
+                        <div class="timeline-desc" data-en="Technical and Vocational Training Organization (Iran). A comprehensive, government-accredited program covering hardware diagnostics, component-level troubleshooting, motherboard repair, operating system installation, driver management, and data recovery. This certification validates my ability to handle both consumer and professional-grade hardware with precision." data-fa="سازمان آموزش فنی و حرفه‌ای (ایران). برنامه جامع و مورد تأیید دولت که شامل عیب‌یابی سخت‌افزار، رفع اشکال سطح قطعه، تعمیر مادربرد، نصب سیستم‌عامل، مدیریت درایور و بازیابی داده می‌شه. این گواهینامه توانایی من در کار با سخت‌افزار مصرفی و حرفه‌ای رو تأیید می‌کنه.">Technical and Vocational Training Organization (Iran). A comprehensive, government-accredited program covering hardware diagnostics, component-level troubleshooting, motherboard repair, operating system installation, driver management, and data recovery. This certification validates my ability to handle both consumer and professional-grade hardware with precision.</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section class="section" id="experience">
+    <!-- Work History -->
+    <section class="section" id="work-history">
         <div class="container">
             <div class="section-header fade-in">
                 <div class="section-label">
                     <span class="cosmic-icon">🌀</span>
-                    <span data-en="Experience" data-fa="تجربیات کاری">Experience</span>
+                    <span data-en="Work History" data-fa="سوابق شغلی">Work History</span>
                 </div>
-                <h2 data-en="Professional Experience" data-fa="تجربیات حرفه‌ای">Professional Experience</h2>
-                <p class="section-desc" data-en="Hands-on experience in software development and hardware repair." data-fa="تجربه عملی در توسعه نرم‌افزار و تعمیر سخت‌افزار.">Hands-on experience in software development and hardware repair.</p>
+                <h2 data-en="Where I've Worked" data-fa="جاهایی که کار کردم">Where I've Worked</h2>
+                <p class="section-desc" data-en="Hands-on work across hardware repair, software development, and automation — where every project teaches something new about building reliable systems." data-fa="کار عملی در زمینه تعمیر سخت‌افزار، توسعه نرم‌افزار و خودکارسازی — جایی که هر پروژه درس جدیدی درباره ساخت سیستم‌های قابل‌اعتماد به من یاد می‌ده.">Hands-on work across hardware repair, software development, and automation — where every project teaches something new about building reliable systems.</p>
             </div>
             <div class="cards-grid">
                 <div class="card fade-in">
                     <div class="card-icon">🪐</div>
-                    <h3 data-en="Laptop & PC Repair" data-fa="تعمیر لپ‌تاپ و کامپیوتر">Laptop & PC Repair</h3>
-                    <p data-en="2024 - 2025" data-fa="۱۴۰۳ - ۱۴۰۴">2024 - 2025</p>
+                    <h3 data-en="Hardware Repair Technician" data-fa="تکنسین تعمیرات سخت‌افزار">Hardware Repair Technician</h3>
+                    <div class="card-meta" data-en="2024 — 2025 | Mashhad, Iran" data-fa="۱۴۰۳ — ۱۴۰۴ | مشهد، ایران">2024 — 2025 | Mashhad, Iran</div>
+                    <p data-en="Spent a full year working directly with laptops and desktop computers — diagnosing failures, replacing components, and restoring systems to full functionality. This wasn't just about fixing broken machines; it was about understanding how hardware and software interact under real-world stress. I handled everything from simple RAM upgrades to complex motherboard-level diagnostics, always with a focus on clean workmanship and customer satisfaction." data-fa="یک سال کامل کار مستقیم با لپ‌تاپ و کامپیوترهای رومیزی — تشخیص خرابی، تعویض قطعات و بازگرداندن سیستم‌ها به حالت کاملاً عملیاتی. این فقط تعمیر دستگاه‌های خراب نبود؛ درک نحوه تعامل سخت‌افزار و نرم‌افزار تحت استرس دنیای واقعی بود. از ارتقای ساده RAM گرفته تا عیب‌یابی پیچیده سطح مادربرد، همیشه با تمرکز بر کیفیت کار و رضایت مشتری.">Spent a full year working directly with laptops and desktop computers — diagnosing failures, replacing components, and restoring systems to full functionality. This wasn't just about fixing broken machines; it was about understanding how hardware and software interact under real-world stress. I handled everything from simple RAM upgrades to complex motherboard-level diagnostics, always with a focus on clean workmanship and customer satisfaction.</p>
                     <ul>
-                        <li data-en="One year of professional repair experience" data-fa="یک سال تجربه تعمیر حرفه‌ای"></li>
-                        <li data-en="Assembling cases and laptop disassembly/reassembly" data-fa="مونتاژ کیس‌ها و باز و بسته کردن لپ‌تاپ‌ها"></li>
-                        <li data-en="Various software and hardware repairs with professional certificate" data-fa="تعمیرات نرم‌افزاری و سخت‌افزاری مختلف با گواهینامه حرفه‌ای"></li>
-                    </ul>
-                </div>
-                <div class="card fade-in">
-                    <div class="card-icon">🌌</div>
-                    <h3 data-en="Warehouse Management DB" data-fa="پروژه پایگاه داده مدیریت انبار">Warehouse Management DB</h3>
-                    <p data-en="2023 - 2024" data-fa="۱۴۰۲ - ۱۴۰۳">2023 - 2024</p>
-                    <ul>
-                        <li data-en="Full-featured SQL Server database design" data-fa="طراحی پایگاه داده کامل SQL Server"></li>
-                        <li data-en="LIFO inventory valuation method implementation" data-fa="پیاده‌سازی روش LIFO برای ارزش‌گذاری موجودی"></li>
-                        <li data-en="Stored Procedures, Views, and Triggers for automation" data-fa="Stored Procedures، Views و Triggers برای خودکارسازی"></li>
-                        <li data-en="Real-time inventory reporting system" data-fa="سیستم گزارش‌دهی لحظه‌ای موجودی"></li>
+                        <li data-en="One year of hands-on repair experience with consumer and business-grade hardware" data-fa="یک سال تجربه عملی تعمیر با سخت‌افزار مصرفی و تجاری"></li>
+                        <li data-en="Laptop disassembly, reassembly, and component replacement" data-fa="باز و بسته کردن لپ‌تاپ و تعویض قطعات"></li>
+                        <li data-en="Software troubleshooting: OS repair, driver conflicts, malware removal" data-fa="عیب‌یابی نرم‌افزاری: تعمیر سیستم‌عامل، تداخل درایورها، حذف بدافزار"></li>
+                        <li data-en="Professional certification-backed service quality" data-fa="کیفیت خدمات با پشتوانه گواهینامه حرفه‌ای"></li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- Projects -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">
+                    <span class="cosmic-icon">⭐</span>
+                    <span data-en="Projects" data-fa="پروژه‌ها">Projects</span>
+                </div>
+                <h2 data-en="Projects" data-fa="پروژه‌ها">Projects</h2>
+                <p class="section-desc" data-en="A collection of personal and academic projects that reflect my curiosity across software, automation, and AI. Each one started with a problem and ended with a working solution." data-fa="مجموعه‌ای از پروژه‌های شخصی و دانشگاهی که کنجکاوی من رو در نرم‌افزار، خودکارسازی و هوش مصنوعی نشون می‌ده. هر کدوم با یه مشکل شروع شدن و با یه راه‌حل کارآمد تموم شدن.">A collection of personal and academic projects that reflect my curiosity across software, automation, and AI. Each one started with a problem and ended with a working solution.</p>
+            </div>
+            <div class="cards-grid">
+                <!-- Project 1: C++ Cafe -->
+                <div class="card fade-in">
+                    <div class="card-icon">☕</div>
+                    <h3 data-en="Cafe Management System (C++)" data-fa="سیستم مدیریت کافه (C++)">Cafe Management System (C++)</h3>
+                    <div class="card-meta">C++ | Console Application</div>
+                    <p data-en="A fully functional cafe management application built in C++ with a clean console-based user interface. The system features a dynamic menu that can be updated in real-time, a lightweight inventory module that tracks ingredient stock levels, and an order processing pipeline that calculates totals, applies discounts, and generates receipts. I focused on writing clean, modular code with proper separation of concerns so the system could be extended easily." data-fa="یه اپلیکیشن مدیریت کافه کاملاً کارآمد با C++ و رابط کاربری تمیز مبتنی بر کنسول. سیستم دارای منوی پویا که می‌تونه به‌صورت لحظه‌ای به‌روز بشه، ماژول انبارداری سبک که سطح موجودی مواد اولیه رو ردیابی می‌کنه، و خط پردازش سفارش که مجموع رو حساب می‌کنه، تخفیف اعمال می‌کنه و رسید تولید می‌کنه. روی نوشتن کد تمیز و ماژولار با جداسازی صحیح وظایف تمرکز کردم تا سیستم به‌راحتی قابل توسعه باشه.">A fully functional cafe management application built in C++ with a clean console-based user interface. The system features a dynamic menu that can be updated in real-time, a lightweight inventory module that tracks ingredient stock levels, and an order processing pipeline that calculates totals, applies discounts, and generates receipts. I focused on writing clean, modular code with proper separation of concerns so the system could be extended easily.</p>
+                    <ul>
+                        <li data-en="Dynamic menu with add, edit, and delete operations" data-fa="منوی پویا با عملیات افزودن، ویرایش و حذف"></li>
+                        <li data-en="Inventory tracking with low-stock alerts" data-fa="ردیابی موجودی با هشدار کمبود موجودی"></li>
+                        <li data-en="Order processing with discount and receipt generation" data-fa="پردازش سفارش با تخفیف و تولید رسید"></li>
+                        <li data-en="Modular architecture for easy extension" data-fa="معماری ماژولار برای توسعه آسان"></li>
+                    </ul>
+                </div>
+
+                <!-- Project 2: AI Telegram Bot -->
+                <div class="card fade-in">
+                    <div class="card-icon">🤖</div>
+                    <h3 data-en="IV | AI — Multi-Model Telegram Bot" data-fa="IV | AI — بات چندمدلی تلگرام">IV | AI — Multi-Model Telegram Bot</h3>
+                    <div class="card-meta">JavaScript | Cloudflare Workers | Telegram API</div>
+                    <p data-en="IV | AI is a production-ready Telegram bot deployed on Cloudflare Workers, designed to act as a universal AI assistant inside any chat. Unlike single-model bots, this one connects to multiple large language models simultaneously — letting users choose the best engine for each task. It also features a Prompt Master system that helps users craft, refine, and save high-quality prompts for consistent, professional-grade outputs." data-fa="IV | AI یک بات تلگرام آماده تولید هست که روی Cloudflare Workers دیپلوی شده و به‌عنوان دستیار هوش مصنوعی جهانی داخل هر چتی طراحی شده. برخلاف بات‌های تک‌مدلی، این بات به چندین مدل زبانی بزرگ به‌صورت همزمان متصل می‌شه — به کاربر اجازه می‌ده بهترین موتور رو برای هر کار انتخاب کنه. همچنین سیستم Prompt Master داره که به کاربرها کمک می‌کنه پرامپت‌های باکیفیت بسازن، بهبود بدن و ذخیره کنن.">IV | AI is a production-ready Telegram bot deployed on Cloudflare Workers, designed to act as a universal AI assistant inside any chat. Unlike single-model bots, this one connects to multiple large language models simultaneously — letting users choose the best engine for each task. It also features a Prompt Master system that helps users craft, refine, and save high-quality prompts for consistent, professional-grade outputs.</p>
+                    <ul>
+                        <li data-en="Multi-model support: switch between AI engines on the fly" data-fa="پشتیبانی چندمدلی: جابجایی بین موتورهای هوش مصنوعی در لحظه"></li>
+                        <li data-en="Prompt Master: save, refine, and reuse advanced prompts" data-fa="Prompt Master: ذخیره، بهبود و استفاده مجدد از پرامپت‌های پیشرفته"></li>
+                        <li data-en="Serverless on Cloudflare Workers — zero downtime, global edge" data-fa="سرورلس روی Cloudflare Workers — بدون خاموشی، لبه جهانی"></li>
+                        <li data-en="Real-time conversation with streaming responses" data-fa="گفتگوی لحظه‌ای با پاسخ‌های استریمینگ"></li>
+                    </ul>
+                    <a href="https://t.me/IVAI_Llm_bot" target="_blank" class="card-link">
+                        <span>🚀</span>
+                        <span data-en="Try IV | AI on Telegram" data-fa="IV | AI رو روی تلگرام امتحان کن">Try IV | AI on Telegram</span>
+                        <span>→</span>
+                    </a>
+                </div>
+
+                <!-- Project 3: CV Website -->
+                <div class="card fade-in">
+                    <div class="card-icon">🌐</div>
+                    <h3 data-en="This CV Website — Vibe Coded" data-fa="همین سایت CV — با Vibe Coding">This CV Website — Vibe Coded</h3>
+                    <div class="card-meta">HTML | CSS | JavaScript | Vibe Coding</div>
+                    <p data-en="The very website you're looking at right now was built entirely through vibe coding — a conversational, iterative development process where ideas turn into code through natural dialogue rather than traditional rigid planning. I designed it with a cosmic space theme, a blue ash color palette inspired by nebulae, and full bilingual support (English default with Persian RTL). Every animation, every gradient, and every responsive breakpoint was shaped through continuous refinement until it felt right." data-fa="همین سایتی که الان داری نگاه می‌کنی کاملاً با vibe coding ساخته شده — فرآیند توسعه گفتگویی و تکراری که ایده‌ها از طریق گفتگوی طبیعی به کد تبدیل می‌شن به‌جای برنامه‌ریزی سفت‌وسخت سنتی. با تم کیهانی، پالت رنگی آبی خاکستری الهام گرفته از سحابی‌ها و پشتیبانی کامل دوزبانه (انگلیسی پیش‌فرض با فارسی RTL) طراحی‌ش کردم.">The very website you're looking at right now was built entirely through vibe coding — a conversational, iterative development process where ideas turn into code through natural dialogue rather than traditional rigid planning. I designed it with a cosmic space theme, a blue ash color palette inspired by nebulae, and full bilingual support (English default with Persian RTL). Every animation, every gradient, and every responsive breakpoint was shaped through continuous refinement until it felt right.</p>
+                    <ul>
+                        <li data-en="Cosmic theme with animated starfield and nebula effects" data-fa="تم کیهانی با افکت‌های میدان ستاره‌ای متحرک و سحابی"></li>
+                        <li data-en="Bilingual support: English (default) + Persian RTL" data-fa="پشتیبانی دوزبانه: انگلیسی (پیش‌فرض) + فارسی RTL"></li>
+                        <li data-en="Fully responsive across mobile, tablet, and desktop" data-fa="کاملاً ریسپانسیو در موبایل، تبلت و دسکتاپ"></li>
+                        <li data-en="Zero external dependencies — pure HTML/CSS/JS" data-fa="بدون وابستگی خارجی — خالص HTML/CSS/JS"></li>
+                    </ul>
+                </div>
+
+                <!-- Project 4: WordPress Sites -->
+                <div class="card fade-in">
+                    <div class="card-icon">📝</div>
+                    <h3 data-en="Custom WordPress Websites" data-fa="سایت‌های سفارشی وردپرس">Custom WordPress Websites</h3>
+                    <div class="card-meta">WordPress | Elementor | Custom Themes</div>
+                    <p data-en="I've built and deployed multiple production-ready websites on WordPress for various use cases — from personal portfolios to small business landing pages. Each site is optimized for performance, SEO, and mobile responsiveness. I handle the full pipeline: domain setup, hosting configuration, theme customization, plugin integration, and ongoing maintenance. Whether it's a sleek one-pager or a multi-section business site, I deliver clean, fast-loading websites that actually convert." data-fa="چندین وب‌سایت آماده تولید روی وردپرس برای کاربردهای مختلف ساختم و دیپلوی کردم — از پورتفولیوهای شخصی گرفته تا صفحات فرود کسب‌وکارهای کوچک. هر سایت برای عملکرد، SEO و ریسپانسیو موبایل بهینه شده. کل خط لوله رو مدیریت می‌کنم: راه‌اندازی دامنه، پیکربندی هاستینگ، سفارشی‌سازی تم، یکپارچه‌سازی پلاگین و نگهداری مداوم.">I've built and deployed multiple production-ready websites on WordPress for various use cases — from personal portfolios to small business landing pages. Each site is optimized for performance, SEO, and mobile responsiveness. I handle the full pipeline: domain setup, hosting configuration, theme customization, plugin integration, and ongoing maintenance. Whether it's a sleek one-pager or a multi-section business site, I deliver clean, fast-loading websites that actually convert.</p>
+                    <ul>
+                        <li data-en="Theme customization and child theme development" data-fa="سفارشی‌سازی تم و توسعه child theme"></li>
+                        <li data-en="Plugin integration: SEO, caching, security, forms" data-fa="یکپارچه‌سازی پلاگین: SEO، کشینگ، امنیت، فرم‌ها"></li>
+                        <li data-en="Performance optimization and Core Web Vitals" data-fa="بهینه‌سازی عملکرد و Core Web Vitals"></li>
+                        <li data-en="End-to-end deployment: domain, hosting, SSL, maintenance" data-fa="دیپلوی end-to-end: دامنه، هاستینگ، SSL، نگهداری"></li>
+                    </ul>
+                </div>
+
+                <!-- Project 5: Crypto Bot -->
+                <div class="card fade-in">
+                    <div class="card-icon">📈</div>
+                    <h3 data-en="Automated Crypto Price Tracker" data-fa="ردیاب خودکار قیمت ارز دیجیتال">Automated Crypto Price Tracker</h3>
+                    <div class="card-meta">N8N | Docker | CoinMarketCap API | Telegram</div>
+                    <p data-en="An automated workflow that fetches real-time cryptocurrency prices from the CoinMarketCap API and pushes formatted updates to a dedicated Telegram channel — all running inside a Docker container for portability and reliability. Built with N8N (the open-source workflow automation tool), this system runs on a schedule, handles API rate limits gracefully, formats data into readable alerts, and recovers from failures automatically." data-fa="یک گردش کار خودکار که قیمت‌های لحظه‌ای ارز دیجیتال رو از API CoinMarketCap می‌گیره و به‌صورت فرمت‌شده به یه کانال اختصاصی تلگرام ارسال می‌کنه — همه داخل یه کانتینر Docker برای قابلیت حمل و قابلیت اطمینان اجرا می‌شن. با N8N (ابزار خودکارسازی گردش کار متن‌باز) ساخته شده، این سیستم روی زمان‌بندی اجرا می‌شه و از خرابی‌ها به‌صورت خودکار بازیابی می‌کنه.">An automated workflow that fetches real-time cryptocurrency prices from the CoinMarketCap API and pushes formatted updates to a dedicated Telegram channel — all running inside a Docker container for portability and reliability. Built with N8N (the open-source workflow automation tool), this system runs on a schedule, handles API rate limits gracefully, formats data into readable alerts, and recovers from failures automatically.</p>
+                    <ul>
+                        <li data-en="Real-time price fetching via CoinMarketCap API" data-fa="دریافت قیمت لحظه‌ای از طریق API CoinMarketCap"></li>
+                        <li data-en="Automated Telegram alerts with formatted price data" data-fa="هشدارهای خودکار تلگرام با داده‌های قیمت فرمت‌شده"></li>
+                        <li data-en="Dockerized N8N workflow for easy deployment" data-fa="گردش کار N8N داکرایز شده برای دیپلوی آسان"></li>
+                        <li data-en="Error handling and automatic recovery" data-fa="مدیریت خطا و بازیابی خودکار"></li>
+                    </ul>
+                </div>
+
+                <!-- Project 6: Database -->
+                <div class="card fade-in">
+                    <div class="card-icon">🗄️</div>
+                    <h3 data-en="Warehouse Management Database" data-fa="پایگاه داده مدیریت انبار">Warehouse Management Database</h3>
+                    <div class="card-meta" data-en="2023 — 2024 | Academic Project" data-fa="۱۴۰۲ — ۱۴۰۳ | پروژه دانشگاهی">2023 — 2024 | Academic Project</div>
+                    <p data-en="Designed and implemented a complete SQL Server database for warehouse inventory management from scratch. The system handles multiple warehouses, item categories, suppliers, customers, inventory transactions, and invoices — all tied together with automated stock tracking. I chose the LIFO (Last-In-First-Out) valuation method for inventory accounting and built the entire automation layer using Stored Procedures, Views, and Triggers so the database practically manages itself." data-fa="طراحی و پیاده‌سازی یک پایگاه داده کامل SQL Server برای مدیریت موجودی انبار از صفر. سیستم چندین انبار، دسته‌بندی کالا، تأمین‌کنندگان، مشتریان، تراکنش‌های موجودی و فاکتورها رو مدیریت می‌کنه — همه با ردیابی خودکار موجودی به هم متصل شدن. روش LIFO رو برای حسابداری موجودی انتخاب کردم و کل لایه خودکارسازی رو با Stored Procedures، Views و Triggers ساختم تا پایگاه داده تقریباً خودش رو مدیریت کنه.">Designed and implemented a complete SQL Server database for warehouse inventory management from scratch. The system handles multiple warehouses, item categories, suppliers, customers, inventory transactions, and invoices — all tied together with automated stock tracking. I chose the LIFO (Last-In-First-Out) valuation method for inventory accounting and built the entire automation layer using Stored Procedures, Views, and Triggers so the database practically manages itself.</p>
+                    <ul>
+                        <li data-en="Full relational schema design with referential integrity" data-fa="طراحی کامل شمای رابطه‌ای با یکپارچگی ارجاعی"></li>
+                        <li data-en="LIFO inventory valuation for accurate cost tracking" data-fa="ارزش‌گذاری LIFO موجودی برای ردیابی دقیق هزینه"></li>
+                        <li data-en="Automated stock tracking via Stored Procedures and Triggers" data-fa="ردیابی خودکار موجودی از طریق Stored Procedures و Triggers"></li>
+                        <li data-en="Real-time reporting dashboards using SQL Views" data-fa="داشبوردهای گزارش‌دهی لحظه‌ای با استفاده از SQL Views"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
     <section class="section" id="skills">
         <div class="container">
             <div class="section-header fade-in">
                 <div class="section-label">
                     <span class="cosmic-icon">✨</span>
-                    <span data-en="Skills" data-fa="مهارت‌ها">Skills</span>
+                    <span data-en="Skills & Tools" data-fa="مهارت‌ها و ابزارها">Skills & Tools</span>
                 </div>
-                <h2 data-en="Technical Arsenal" data-fa="تسلاح فنی">Technical Arsenal</h2>
-                <p class="section-desc" data-en="Technologies and tools I work with across software and hardware domains." data-fa="فناوری‌ها و ابزارهایی که در حوزه‌های نرم‌افزار و سخت‌افزار با آن‌ها کار می‌کنم.">Technologies and tools I work with across software and hardware domains.</p>
+                <h2 data-en="Technical Toolkit" data-fa="جعبه‌ابزار فنی">Technical Toolkit</h2>
+                <p class="section-desc" data-en="The technologies I reach for when solving problems — from databases to automation, from hardware to AI integrations." data-fa="فناوری‌هایی که برای حل مسائل به سراغشون می‌رم — از پایگاه داده تا خودکارسازی، از سخت‌افزار تا یکپارچه‌سازی هوش مصنوعی.">The technologies I reach for when solving problems — from databases to automation, from hardware to AI integrations.</p>
             </div>
             <div class="skills-container fade-in">
                 <div class="skill-tag"><span class="cosmic-icon">🌀</span>SQL Server</div>
                 <div class="skill-tag"><span class="cosmic-icon">🪐</span>Python</div>
                 <div class="skill-tag"><span class="cosmic-icon">🌌</span>C++</div>
-                <div class="skill-tag"><span class="cosmic-icon">✨</span>HTML & CSS</div>
-                <div class="skill-tag"><span class="cosmic-icon">🌀</span>Google Colab</div>
-                <div class="skill-tag"><span class="cosmic-icon">🪐</span>WordPress</div>
-                <div class="skill-tag"><span class="cosmic-icon">🌌</span>VS Code</div>
-                <div class="skill-tag"><span class="cosmic-icon">✨</span>SSMS</div>
-                <div class="skill-tag"><span class="cosmic-icon">🌀</span>N8N</div>
-                <div class="skill-tag"><span class="cosmic-icon">🪐</span>Telegram Bot</div>
-                <div class="skill-tag"><span class="cosmic-icon">🌌</span>Fuzzy Logic</div>
-                <div class="skill-tag"><span class="cosmic-icon">✨</span>PC Assembly</div>
-                <div class="skill-tag"><span class="cosmic-icon">🌀</span>Hardware Diagnostics</div>
-                <div class="skill-tag"><span class="cosmic-icon">🪐</span>OS Installation</div>
-                <div class="skill-tag"><span class="cosmic-icon">🌌</span>Database Design</div>
+                <div class="skill-tag"><span class="cosmic-icon">✨</span>JavaScript</div>
+                <div class="skill-tag"><span class="cosmic-icon">🌀</span>HTML & CSS</div>
+                <div class="skill-tag"><span class="cosmic-icon">🪐</span>Cloudflare Workers</div>
+                <div class="skill-tag"><span class="cosmic-icon">🌌</span>Google Colab</div>
+                <div class="skill-tag"><span class="cosmic-icon">✨</span>WordPress</div>
+                <div class="skill-tag"><span class="cosmic-icon">🌀</span>VS Code</div>
+                <div class="skill-tag"><span class="cosmic-icon">🐱</span>Github</div>
+                <div class="skill-tag"><span class="cosmic-icon">🌌</span>N8N</div>
+                <div class="skill-tag"><span class="cosmic-icon">✨</span>Docker</div>
+                <div class="skill-tag"><span class="cosmic-icon">🌀</span>Telegram Bot</div>
+                <div class="skill-tag"><span class="cosmic-icon">🪐</span>Fuzzy Logic</div>
+                <div class="skill-tag"><span class="cosmic-icon">🌌</span>PC Assembly</div>
+                <div class="skill-tag"><span class="cosmic-icon">✨</span>Hardware Diagnostics</div>
+                <div class="skill-tag"><span class="cosmic-icon">🌀</span>OS Software</div>
+                <div class="skill-tag"><span class="cosmic-icon">🌌</span>REST APIs</div>
+                <div class="skill-tag"><span class="cosmic-icon">✨</span>Vibe Coding</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages (new compact section) -->
+    <section class="section" id="languages">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">
+                    <span class="cosmic-icon">🌍</span>
+                    <span data-en="Languages" data-fa="زبان‌ها">Languages</span>
+                </div>
+                <h2 data-en="Languages" data-fa="زبان‌ها">Languages</h2>
+            </div>
+            <div class="languages-compact fade-in">
+                <div class="lang-item">
+                    <span class="lang-flag">🇬🇧</span>
+                    <div class="lang-info">
+                        <div class="lang-name" data-en="English" data-fa="انگلیسی">English</div>
+                        <div class="lang-level" data-en="Fluent — professional reading, writing, and technical communication" data-fa="مسلط — خواندن، نوشتن و ارتباط فنی حرفه‌ای">Fluent — professional reading, writing, and technical communication</div>
+                    </div>
+                </div>
+                <div class="lang-item">
+                    <span class="lang-flag">🇮🇷</span>
+                    <div class="lang-info">
+                        <div class="lang-name" data-en="Persian" data-fa="فارسی">Persian</div>
+                        <div class="lang-level" data-en="Native" data-fa="زبان مادری">Native</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -753,40 +932,35 @@
             <div class="section-header fade-in">
                 <div class="section-label">
                     <span class="cosmic-icon">⭐</span>
-                    <span data-en="Accomplishments" data-fa="افتخارات">Accomplishments</span>
+                    <span data-en="Highlights" data-fa="افتخارات و دستاوردها">Highlights</span>
                 </div>
-                <h2 data-en="Highlights" data-fa="افتخارات">Highlights</h2>
+                <h2 data-en="Beyond the Code" data-fa="فراتر از کد">Beyond the Code</h2>
             </div>
             <div class="cards-grid">
                 <div class="card fade-in">
-                    <div class="card-icon">⭐</div>
+                    <div class="card-icon">🏆</div>
                     <h3 data-en="Academic Excellence" data-fa="تفوق تحصیلی">Academic Excellence</h3>
-                    <p data-en="Among the highest-ranking students in the Computer Engineering program with GPA 17.40/20." data-fa="از دانشجویان برتر رشته مهندسی کامپیوتر با معدل ۱۷.۴۰/۲۰.">Among the highest-ranking students in the Computer Engineering program with GPA 17.40/20.</p>
+                    <p data-en="Ranked among the highest-performing students in the Computer Engineering program at Islamic Azad University with a GPA of 17.40 out of 20. This reflects not just theoretical understanding, but the ability to apply complex concepts in practical projects ranging from database systems to AI-powered Telegram bots." data-fa="در ردیف دانشجویان برتر رشته مهندسی کامپیوتر دانشگاه آزاد اسلامی با معدل ۱۷.۴۰ از ۲۰ قرار دارم. این فقط درک تئوری نیست، بلکه توانایی به کارگیری مفاهیم پیچیده در پروژه‌های عملی از سیستم‌های پایگاه داده گرفته تا بات‌های تلگرام مبتنی بر هوش مصنوعی رو نشون می‌ده.">Ranked among the highest-performing students in the Computer Engineering program at Islamic Azad University with a GPA of 17.40 out of 20. This reflects not just theoretical understanding, but the ability to apply complex concepts in practical projects ranging from database systems to AI-powered Telegram bots.</p>
                 </div>
                 <div class="card fade-in">
-                    <div class="card-icon">🪐</div>
-                    <h3 data-en="Languages" data-fa="زبان‌ها">Languages</h3>
-                    <p data-en="English (Fluent) • Persian (Native)" data-fa="انگلیسی (مسلط) • فارسی (زبان مادری)">English (Fluent) • Persian (Native)</p>
-                </div>
-                <div class="card fade-in">
-                    <div class="card-icon">🌌</div>
-                    <h3 data-en="Hobbies & Interests" data-fa="علایق">Hobbies & Interests</h3>
-                    <p data-en="Crypto, IT, AI tools, Software research, Trade, Technology news" data-fa="ارزهای دیجیتال، فناوری اطلاعات، ابزارهای هوش مصنوعی، تحقیق نرم‌افزاری، معامله، اخبار فناوری">Crypto, IT, AI tools, Software research, Trade, Technology news</p>
+                    <div class="card-icon">🔭</div>
+                    <h3 data-en="Interests & Curiosities" data-fa="علایق و کنجکاوی‌ها">Interests & Curiosities</h3>
+                    <p data-en="Deep into the world of cryptocurrency and blockchain technology, always experimenting with new AI tools and workflows, actively researching emerging software paradigms, following global tech news, and exploring the mechanics of digital trading. I believe staying curious is the only way to stay relevant in tech." data-fa="عمیق در دنیای ارز دیجیتال و فناوری بلاک‌چین، همیشه در حال آزمایش ابزارها و گردش‌های کار هوش مصنوعی جدید، فعال در پژوهش پارادایم‌های نوظهور نرم‌افزار، دنبال کردن اخبار فناوری جهانی و کشف مکانیک‌های معاملات دیجیتال. معتقدم کنجکاو ماندن تنها راه بروز ماندن در دنیای تکنولوژیه.">Deep into the world of cryptocurrency and blockchain technology, always experimenting with new AI tools and workflows, actively researching emerging software paradigms, following global tech news, and exploring the mechanics of digital trading. I believe staying curious is the only way to stay relevant in tech.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section class="section" id="contact">
         <div class="container">
             <div class="section-header fade-in">
                 <div class="section-label">
                     <span class="cosmic-icon">🌀</span>
-                    <span data-en="Contact" data-fa="تماس">Contact</span>
+                    <span data-en="Contact" data-fa="راه‌های ارتباطی">Contact</span>
                 </div>
-                <h2 data-en="Let's Connect" data-fa="ارتباط برقرار کنیم">Let's Connect</h2>
-                <p class="section-desc" data-en="Reach out for collaborations, opportunities, or just to say hello." data-fa="برای همکاری، فرصت‌ها یا فقط سلام، با من تماس بگیرید.">Reach out for collaborations, opportunities, or just to say hello.</p>
+                <h2 data-en="Let's Build Something" data-fa="باهم چیزی بسازیم">Let's Build Something</h2>
+                <p class="section-desc" data-en="Whether you have a project in mind, a job opportunity, or just want to talk tech — I'm always open to meaningful conversations." data-fa="چه یه پروژه در ذهنت باشه، چه یه فرصت شغلی، چه فقط بخوای درباره تکنولوژی حرف بزنی — همیشه برای گفتگوهای معنادار بازم.">Whether you have a project in mind, a job opportunity, or just want to talk tech — I'm always open to meaningful conversations.</p>
             </div>
             <div class="contact-grid fade-in">
                 <a href="mailto:iliyairavani007@gmail.com" class="contact-card">
@@ -804,6 +978,16 @@
                     <div class="contact-label">GitHub</div>
                     <div class="contact-value">@ILIV007</div>
                 </a>
+                <a href="https://t.me/iliv007" target="_blank" class="contact-card">
+                    <div class="contact-icon">💬</div>
+                    <div class="contact-label" data-en="Telegram DM" data-fa="پیام تلگرام">Telegram DM</div>
+                    <div class="contact-value">@iliv007</div>
+                </a>
+                <a href="https://t.me/ILIVIR3" target="_blank" class="contact-card">
+                    <div class="contact-icon">📡</div>
+                    <div class="contact-label" data-en="My Channel" data-fa="کانال من">My Channel</div>
+                    <div class="contact-value">t.me/ILIVIR3</div>
+                </a>
                 <div class="contact-card">
                     <div class="contact-icon">🪐</div>
                     <div class="contact-label" data-en="Location" data-fa="موقعیت">Location</div>
@@ -818,44 +1002,39 @@
         <div class="container">
             <p class="footer-text">
                 <span class="cosmic-icon">🌀</span>
-                <span data-en="Crafted with cosmic curiosity by ILIYA IRAVANI" data-fa="ساخته شده با کنجکاوی کیهانی توسط ایلیا ایروانی">Crafted with cosmic curiosity by ILIYA IRAVANI</span>
+                <span data-en="Crafted with cosmic curiosity by ILIYA IRAVANI" data-fa="با کنجکاوی کیهانی ساخته شده توسط ایلیا ایروانی">Crafted with cosmic curiosity by ILIYA IRAVANI</span>
                 <span class="cosmic-icon">🪐</span>
             </p>
         </div>
     </footer>
 
     <script>
-        // Generate stars
         function createStars() {
             const bg = document.getElementById('cosmicBg');
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 60; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 star.style.left = Math.random() * 100 + '%';
                 star.style.top = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 3 + 's';
-                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                star.style.animationDelay = Math.random() * 4 + 's';
+                star.style.animationDuration = (Math.random() * 4 + 3) + 's';
+                const size = Math.random() * 2 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
                 bg.appendChild(star);
             }
         }
         createStars();
 
-        // Language switcher
         function switchLang(lang) {
             document.documentElement.lang = lang;
             document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
-
-            // Update buttons
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.lang === lang);
             });
-
-            // Update all text elements
             document.querySelectorAll('[data-en][data-fa]').forEach(el => {
                 el.textContent = el.getAttribute('data-' + lang);
             });
-
-            // Update font family for Persian
             if (lang === 'fa') {
                 document.body.style.fontFamily = "'Vazirmatn', 'Inter', sans-serif";
             } else {
@@ -863,30 +1042,21 @@
             }
         }
 
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
     </script>
