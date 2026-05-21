@@ -12,13 +12,13 @@ My cv https://iliv007-cv.pages.dev/
 - 🌍 Bilingual: English + Persian
 - 📍 Iran
 
-## 🚀 Projects (6 تا)
+## 🚀 Projects
 🤖 IV | AI — Multi-Model Telegram Bot
 ☕ Cafe Management System (C++)
 🌐 This CV Website
 📝 Custom WordPress Websites
 📈 Automated Crypto Price Tracker
-🗄️ Warehouse Management Database
+🗄️ Warehouse Management Database  
 &...
 
 ## 🛠️ Tech Stack
