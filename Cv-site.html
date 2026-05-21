@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ILIYA IRAVANI - Computer Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #5B8DB8;
+            --primary-light: #7BA3C8;
+            --primary-dark: #3D6A8F;
+            --accent: #8BB8E0;
+            --bg: #0B1120;
+            --bg-light: #111827;
+            --bg-card: #1a2332;
+            --bg-hover: #1e293b;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --border: #1e293b;
+            --glow: rgba(91, 141, 184, 0.15);
+            --star-glow: rgba(139, 184, 224, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Vazirmatn', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Cosmic background particles */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.5); }
+        }
+
+        .nebula {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.08;
+        }
+
+        .nebula-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--primary);
+            top: -200px;
+            right: -100px;
+        }
+
+        .nebula-2 {
+            width: 500px;
+            height: 500px;
+            background: var(--accent);
+            bottom: -150px;
+            left: -100px;
+        }
+
+        /* Language switcher */
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 8px;
+            background: var(--bg-card);
+            padding: 6px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .lang-btn:hover:not(.active) {
+            color: var(--text);
+            background: var(--bg-hover);
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 0 60px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 14px;
+            color: var(--accent);
+            margin-bottom: 32px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badge .cosmic-icon {
+            font-size: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--text) 0%, var(--primary-light) 50%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 20px rgba(91, 141, 184, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(91, 141, 184, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-hover);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Section styling */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .section-label .cosmic-icon {
+            font-size: 16px;
+        }
+
+        .section h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .card:hover {
+            border-color: var(--primary-dark);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 40px var(--glow);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .card p, .card ul {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card ul li {
+            position: relative;
+            padding-right: 20px;
+            margin-bottom: 8px;
+        }
+
+        .card ul li::before {
+            content: '🌀';
+            position: absolute;
+            right: 0;
+            top: 2px;
+            font-size: 12px;
+        }
+
+        /* Timeline for experience */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            opacity: 0.3;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            padding-right: 40px;
+            padding-left: 0;
+        }
+
+        .timeline-content {
+            width: 50%;
+            padding-left: 40px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: var(--bg);
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            top: 4px;
+            box-shadow: 0 0 20px var(--star-glow);
+        }
+
+        .timeline-date {
+            font-size: 14px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .timeline-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Skills tags */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .skill-tag {
+            padding: 10px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--primary);
+            background: var(--bg-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--glow);
+        }
+
+        .skill-tag .cosmic-icon {
+            font-size: 16px;
+        }
+
+        /* Contact section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .contact-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px var(--glow);
+        }
+
+        .contact-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .contact-label {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .contact-value {
+            font-size: 16px;
+            font-weight: 600;
+            word-break: break-all;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            margin-top: 60px;
+        }
+
+        .footer-text {
+            color: var(--text-dim);
+            font-size: 14px;
+        }
+
+        .footer .cosmic-icon {
+            color: var(--primary);
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(odd) {
+                flex-direction: column;
+                text-align: left;
+            }
+
+            .timeline-content,
+            .timeline-item:nth-child(odd) .timeline-content {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 0;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        /* RTL styles for Persian */
+        [dir="rtl"] .card ul li {
+            padding-right: 0;
+            padding-left: 20px;
+        }
+
+        [dir="rtl"] .card ul li::before {
+            right: auto;
+            left: 0;
+        }
+
+        [dir="rtl"] .lang-switch {
+            right: auto;
+            left: 20px;
+        }
+
+        [dir="rtl"] .timeline-item:nth-child(odd) {
+            text-align: left;
+        }
+
+        [dir="rtl"] .timeline-item:nth-child(even) {
+            text-align: right;
+        }
+
+        [dir="rtl"] .timeline-content {
+            padding-left: 0;
+            padding-right: 40px;
+        }
+
+        [dir="rtl"] .timeline-item:nth-child(odd) .timeline-content {
+            padding-left: 40px;
+            padding-right: 0;
+        }
+
+        @media (max-width: 768px) {
+            [dir="rtl"] .timeline-content,
+            [dir="rtl"] .timeline-item:nth-child(odd) .timeline-content {
+                padding-left: 0;
+                padding-right: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cosmic Background -->
+    <div class="cosmic-bg" id="cosmicBg">
+        <div class="nebula nebula-1"></div>
+        <div class="nebula nebula-2"></div>
+    </div>
+
+    <!-- Language Switcher -->
+    <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en" onclick="switchLang('en')">EN</button>
+        <button class="lang-btn" data-lang="fa" onclick="switchLang('fa')">FA</button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="cosmic-icon">🪐</span>
+                    <span data-en="Computer Engineer" data-fa="مهندس کامپیوتر">Computer Engineer</span>
+                </div>
+                <h1 data-en="ILIYA IRAVANI" data-fa="ایلیا ایروانی">ILIYA IRAVANI</h1>
+                <p class="hero-subtitle" data-en="Building the future with code, hardware, and cosmic curiosity." data-fa="آینده را با کد، سخت‌افزار و کنجکاوی کیهانی می‌سازم.">Building the future with code, hardware, and cosmic curiosity.</p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">
+                        <span class="cosmic-icon">🌀</span>
+                        <span data-en="Get In Touch" data-fa="تماس بگیرید">Get In Touch</span>
+                    </a>
+                    <a href="https://github.com/ILIV007" target="_blank" class="btn btn-secondary">
+                        <span>🌌</span>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section" id="education">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">
+                    <span class="cosmic-icon">🪐</span>
+                    <span data-en="Education" data-fa="تحصیلات">Education</span>
+                </div>
+                <h2 data-en="Academic Journey" data-fa="مسیر تحصیلی">Academic Journey</h2>
+                <p class="section-desc" data-en="My educational background in computer engineering and technical certifications." data-fa="پیشینه تحصیلی من در مهندسی کامپیوتر و گواهینامه‌های فنی.">My educational background in computer engineering and technical certifications.</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022 - Present</div>
+                        <div class="timeline-title" data-en="B.Sc. in Computer Engineering" data-fa="کارشناسی مهندسی کامپیوتر">B.Sc. in Computer Engineering</div>
+                        <div class="timeline-desc" data-en="Islamic Azad University Mashhad, Iran • GPA: 17.40/20 • Among highest-ranking students" data-fa="دانشگاه آزاد اسلامی مشهد، ایران • معدل: ۱۷.۴۰/۲۰ • از دانشجویان برتر">Islamic Azad University Mashhad, Iran • GPA: 17.40/20 • Among highest-ranking students</div>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023 - 2024</div>
+                        <div class="timeline-title" data-en="Technical Certificate - Laptop & PC Repair" data-fa="گواهینامه فنی - تعمیر لپ‌تاپ و کامپیوتر">Technical Certificate - Laptop & PC Repair</div>
+                        <div class="timeline-desc" data-en="Technical and Vocational Training Organization (Iran) • Status: Completed" data-fa="سازمان آموزش فنی و حرفه‌ای (ایران) • وضعیت: تکمیل شده">Technical and Vocational Training Organization (Iran) • Status: Completed</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">
+                    <span class="cosmic-icon">🌀</span>
+                    <span data-en="Experience" data-fa="تجربیات کاری">Experience</span>
+                </div>
+                <h2 data-en="Professional Experience" data-fa="تجربیات حرفه‌ای">Professional Experience</h2>
+                <p class="section-desc" data-en="Hands-on experience in software development and hardware repair." data-fa="تجربه عملی در توسعه نرم‌افزار و تعمیر سخت‌افزار.">Hands-on experience in software development and hardware repair.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in">
+                    <div class="card-icon">🪐</div>
+                    <h3 data-en="Laptop & PC Repair" data-fa="تعمیر لپ‌تاپ و کامپیوتر">Laptop & PC Repair</h3>
+                    <p data-en="2024 - 2025" data-fa="۱۴۰۳ - ۱۴۰۴">2024 - 2025</p>
+                    <ul>
+                        <li data-en="One year of professional repair experience" data-fa="یک سال تجربه تعمیر حرفه‌ای"></li>
+                        <li data-en="Assembling cases and laptop disassembly/reassembly" data-fa="مونتاژ کیس‌ها و باز و بسته کردن لپ‌تاپ‌ها"></li>
+                        <li data-en="Various software and hardware repairs with professional certificate" data-fa="تعمیرات نرم‌افزاری و سخت‌افزاری مختلف با گواهینامه حرفه‌ای"></li>
+                    </ul>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">🌌</div>
+                    <h3 data-en="Warehouse Management DB" data-fa="پروژه پایگاه داده مدیریت انبار">Warehouse Management DB</h3>
+                    <p data-en="2023 - 2024" data-fa="۱۴۰۲ - ۱۴۰۳">2023 - 2024</p>
+                    <ul>
+                        <li data-en="Full-featured SQL Server database design" data-fa="طراحی پایگاه داده کامل SQL Server"></li>
+                        <li data-en="LIFO inventory valuation method implementation" data-fa="پیاده‌سازی روش LIFO برای ارزش‌گذاری موجودی"></li>
+                        <li data-en="Stored Procedures, Views, and Triggers for automation" data-fa="Stored Procedures، Views و Triggers برای خودکارسازی"></li>
+                        <li data-en="Real-time inventory reporting system" data-fa="سیستم گزارش‌دهی لحظه‌ای موجودی"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">
+                    <span class="cosmic-icon">✨</span>
+                    <span data-en="Skills" data-fa="مهارت‌ها">Skills</span>
+                </div>
+                <h2 data-en="Technical Arsenal" data-fa="تسلاح فنی">Technical Arsenal</h2>
+                <p class="section-desc" data-en="Technologies and tools I work with across software and hardware domains." data-fa="فناوری‌ها و ابزارهایی که در حوزه‌های نرم‌افزار و سخت‌افزار با آن‌ها کار می‌کنم.">Technologies and tools I work with across software and hardware domains.</p>
+            </div>
+            <div class="skills-container fade-in">
+                <div class="skill-tag"><span class="cosmic-icon">🌀</span>SQL Server</div>
+                <div class="skill-tag"><span class="cosmic-icon">🪐</span>Python</div>
+                <div class="skill-tag"><span class="cosmic-icon">🌌</span>C++</div>
+                <div class="skill-tag"><span class="cosmic-icon">✨</span>HTML & CSS</div>
+                <div class="skill-tag"><span class="cosmic-icon">🌀</span>Google Colab</div>
+                <div class="skill-tag"><span class="cosmic-icon">🪐</span>WordPress</div>
+                <div class="skill-tag"><span class="cosmic-icon">🌌</span>VS Code</div>
+                <div class="skill-tag"><span class="cosmic-icon">✨</span>SSMS</div>
+                <div class="skill-tag"><span class="cosmic-icon">🌀</span>N8N</div>
+                <div class="skill-tag"><span class="cosmic-icon">🪐</span>Telegram Bot</div>
+                <div class="skill-tag"><span class="cosmic-icon">🌌</span>Fuzzy Logic</div>
+                <div class="skill-tag"><span class="cosmic-icon">✨</span>PC Assembly</div>
+                <div class="skill-tag"><span class="cosmic-icon">🌀</span>Hardware Diagnostics</div>
+                <div class="skill-tag"><span class="cosmic-icon">🪐</span>OS Installation</div>
+                <div class="skill-tag"><span class="cosmic-icon">🌌</span>Database Design</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accomplishments -->
+    <section class="section" id="accomplishments">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">
+                    <span class="cosmic-icon">⭐</span>
+                    <span data-en="Accomplishments" data-fa="افتخارات">Accomplishments</span>
+                </div>
+                <h2 data-en="Highlights" data-fa="افتخارات">Highlights</h2>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in">
+                    <div class="card-icon">⭐</div>
+                    <h3 data-en="Academic Excellence" data-fa="تفوق تحصیلی">Academic Excellence</h3>
+                    <p data-en="Among the highest-ranking students in the Computer Engineering program with GPA 17.40/20." data-fa="از دانشجویان برتر رشته مهندسی کامپیوتر با معدل ۱۷.۴۰/۲۰.">Among the highest-ranking students in the Computer Engineering program with GPA 17.40/20.</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">🪐</div>
+                    <h3 data-en="Languages" data-fa="زبان‌ها">Languages</h3>
+                    <p data-en="English (Fluent) • Persian (Native)" data-fa="انگلیسی (مسلط) • فارسی (زبان مادری)">English (Fluent) • Persian (Native)</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">🌌</div>
+                    <h3 data-en="Hobbies & Interests" data-fa="علایق">Hobbies & Interests</h3>
+                    <p data-en="Crypto, IT, AI tools, Software research, Trade, Technology news" data-fa="ارزهای دیجیتال، فناوری اطلاعات، ابزارهای هوش مصنوعی، تحقیق نرم‌افزاری، معامله، اخبار فناوری">Crypto, IT, AI tools, Software research, Trade, Technology news</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">
+                    <span class="cosmic-icon">🌀</span>
+                    <span data-en="Contact" data-fa="تماس">Contact</span>
+                </div>
+                <h2 data-en="Let's Connect" data-fa="ارتباط برقرار کنیم">Let's Connect</h2>
+                <p class="section-desc" data-en="Reach out for collaborations, opportunities, or just to say hello." data-fa="برای همکاری، فرصت‌ها یا فقط سلام، با من تماس بگیرید.">Reach out for collaborations, opportunities, or just to say hello.</p>
+            </div>
+            <div class="contact-grid fade-in">
+                <a href="mailto:iliyairavani007@gmail.com" class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-label" data-en="Email" data-fa="ایمیل">Email</div>
+                    <div class="contact-value">iliyairavani007@gmail.com</div>
+                </a>
+                <a href="tel:+989363785440" class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-label" data-en="Phone" data-fa="تلفن">Phone</div>
+                    <div class="contact-value">+98 936 378 5440</div>
+                </a>
+                <a href="https://github.com/ILIV007" target="_blank" class="contact-card">
+                    <div class="contact-icon">🌌</div>
+                    <div class="contact-label">GitHub</div>
+                    <div class="contact-value">@ILIV007</div>
+                </a>
+                <div class="contact-card">
+                    <div class="contact-icon">🪐</div>
+                    <div class="contact-label" data-en="Location" data-fa="موقعیت">Location</div>
+                    <div class="contact-value" data-en="Mashhad, Iran" data-fa="مشهد، ایران">Mashhad, Iran</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                <span class="cosmic-icon">🌀</span>
+                <span data-en="Crafted with cosmic curiosity by ILIYA IRAVANI" data-fa="ساخته شده با کنجکاوی کیهانی توسط ایلیا ایروانی">Crafted with cosmic curiosity by ILIYA IRAVANI</span>
+                <span class="cosmic-icon">🪐</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Generate stars
+        function createStars() {
+            const bg = document.getElementById('cosmicBg');
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                bg.appendChild(star);
+            }
+        }
+        createStars();
+
+        // Language switcher
+        function switchLang(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
+
+            // Update buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            // Update all text elements
+            document.querySelectorAll('[data-en][data-fa]').forEach(el => {
+                el.textContent = el.getAttribute('data-' + lang);
+            });
+
+            // Update font family for Persian
+            if (lang === 'fa') {
+                document.body.style.fontFamily = "'Vazirmatn', 'Inter', sans-serif";
+            } else {
+                document.body.style.fontFamily = "'Inter', 'Vazirmatn', sans-serif";
+            }
+        }
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
