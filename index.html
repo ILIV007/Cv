@@ -53,6 +53,10 @@
             --border-hover: rgba(91, 141, 184, 0.2);
             --glow: rgba(91, 141, 184, 0.1);
             --star-glow: rgba(139, 184, 224, 0.2);
+            --orbit-red: #ff2a6d;
+            --orbit-blue: #05d9e8;
+            --orbit-black: #c0c0c0;
+            --more-purple: #a78bfa;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -156,15 +160,43 @@
         }
         .orbit-ring::before {
             content: ''; position: absolute; width: 6px; height: 6px;
-            background: var(--accent); border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent);
+            border-radius: 50%;
         }
-        .hero-avatar .orbit-ring:nth-child(1) { width: 100px; height: 100px; animation-duration: 8s; }
-        .hero-avatar .orbit-ring:nth-child(1)::before { top: -3px; left: 50%; transform: translateX(-50%); }
-        .hero-avatar .orbit-ring:nth-child(2) { width: 80px; height: 80px; animation-duration: 12s; animation-direction: reverse; border-color: rgba(91, 141, 184, 0.2); }
-        .hero-avatar .orbit-ring:nth-child(2)::before { bottom: -3px; left: 50%; transform: translateX(-50%); background: var(--primary-light); }
-        .hero-avatar .orbit-ring:nth-child(3) { width: 64px; height: 64px; animation-duration: 6s; border-color: rgba(139, 184, 224, 0.15); }
-        .hero-avatar .orbit-ring:nth-child(3)::before { top: 50%; right: -3px; transform: translateY(-50%); background: var(--primary); }
+        
+        /* Solar System Orbits — Realistic speeds + Neon colors */
+        .hero-avatar .orbit-ring:nth-child(1) { 
+            width: 100px; height: 100px; 
+            animation-duration: 20s; 
+            border-color: rgba(255, 42, 109, 0.35); 
+            box-shadow: 0 0 20px rgba(255, 42, 109, 0.15), inset 0 0 10px rgba(255, 42, 109, 0.05);
+        }
+        .hero-avatar .orbit-ring:nth-child(1)::before { 
+            top: -3px; left: 50%; transform: translateX(-50%); 
+            background: var(--orbit-red); 
+            box-shadow: 0 0 10px var(--orbit-red), 0 0 20px var(--orbit-red);
+        }
+        .hero-avatar .orbit-ring:nth-child(2) { 
+            width: 80px; height: 80px; 
+            animation-duration: 14s; 
+            border-color: rgba(5, 217, 232, 0.35); 
+            box-shadow: 0 0 20px rgba(5, 217, 232, 0.15), inset 0 0 10px rgba(5, 217, 232, 0.05);
+        }
+        .hero-avatar .orbit-ring:nth-child(2)::before { 
+            bottom: -3px; left: 50%; transform: translateX(-50%); 
+            background: var(--orbit-blue); 
+            box-shadow: 0 0 10px var(--orbit-blue), 0 0 20px var(--orbit-blue);
+        }
+        .hero-avatar .orbit-ring:nth-child(3) { 
+            width: 64px; height: 64px; 
+            animation-duration: 8s; 
+            border-color: rgba(192, 192, 192, 0.4); 
+            box-shadow: 0 0 20px rgba(192, 192, 192, 0.15), inset 0 0 10px rgba(192, 192, 192, 0.05);
+        }
+        .hero-avatar .orbit-ring:nth-child(3)::before { 
+            top: 50%; right: -3px; transform: translateY(-50%); 
+            background: var(--orbit-black); 
+            box-shadow: 0 0 10px #ffffff, 0 0 20px rgba(255,255,255,0.6);
+        }
         @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
         .hero-status {
@@ -207,6 +239,37 @@
         .btn-ghost:hover { background: rgba(255,255,255,0.03); border-color: var(--border-hover); color: var(--text); transform: translateY(-2px); }
         .btn-channel { background: rgba(34, 158, 217, 0.1); color: #38bdf8; border: 1.5px solid rgba(34, 158, 217, 0.25); }
         .btn-channel:hover { background: rgba(34, 158, 217, 0.2); border-color: rgba(34, 158, 217, 0.4); transform: translateY(-2px); }
+
+        /* ===== NEON GITHUB BUTTON ===== */
+        .btn-github-neon {
+            background: rgba(91, 141, 184, 0.06);
+            color: var(--accent);
+            border: 1.5px solid rgba(91, 141, 184, 0.5);
+            box-shadow: 0 0 15px rgba(91, 141, 184, 0.2), inset 0 0 10px rgba(91, 141, 184, 0.05);
+            position: relative;
+            overflow: hidden;
+            animation: neonFlicker 4s infinite alternate;
+        }
+        .btn-github-neon::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(45deg, var(--primary), var(--accent), var(--primary));
+            border-radius: 14px;
+            opacity: 0.2;
+            z-index: -1;
+            filter: blur(6px);
+        }
+        .btn-github-neon:hover {
+            box-shadow: 0 0 30px rgba(91, 141, 184, 0.4), inset 0 0 20px rgba(91, 141, 184, 0.1);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            color: var(--text-bright);
+        }
+        @keyframes neonFlicker {
+            0%, 100% { box-shadow: 0 0 15px rgba(91, 141, 184, 0.2), inset 0 0 10px rgba(91, 141, 184, 0.05); }
+            50% { box-shadow: 0 0 25px rgba(91, 141, 184, 0.35), inset 0 0 15px rgba(91, 141, 184, 0.08); }
+        }
 
         /* ===== QUICK STATS ===== */
         .quick-stats { display: flex; justify-content: center; gap: 48px; margin-top: 60px; flex-wrap: wrap; }
@@ -304,7 +367,7 @@
         .project-compact .project-desc { font-size: 13px; margin-bottom: 12px; }
         .project-compact .project-stack { margin-bottom: 0; }
 
-        /* ===== TOOLKIT — HYBRID BENTO + PILL ===== */
+        /* ===== TOOLKIT ===== */
         .toolkit-header { text-align: center; margin-bottom: 56px; }
         .toolkit-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; max-width: 1080px; margin: 0 auto; }
         
@@ -320,10 +383,39 @@
         .tk-ai { grid-column: span 7; grid-row: span 2; }
         .tk-group { grid-column: span 5; }
         .tk-group-2 { grid-column: span 4; }
+        .tk-more { 
+            grid-column: span 6; 
+            justify-self: center; 
+            border-color: rgba(167, 139, 250, 0.25);
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.06), rgba(91, 141, 184, 0.04));
+        }
+        .tk-more .tk-icon { color: var(--more-purple); }
+        .tk-more .tk-title { 
+            background: linear-gradient(135deg, #c084fc, #a78bfa); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            background-clip: text; 
+        }
+        .tk-more .tk-tag {
+            background: rgba(167, 139, 250, 0.08);
+            border-color: rgba(192, 132, 252, 0.25);
+            color: #c084fc;
+        }
+        @media (hover: hover) {
+            .tk-more:hover { 
+                border-color: rgba(167, 139, 250, 0.5); 
+                box-shadow: 0 0 50px rgba(167, 139, 250, 0.15); 
+            }
+            .tk-more:hover .tk-tag {
+                border-color: rgba(192, 132, 252, 0.45);
+                color: #d8b4fe;
+                background: rgba(167, 139, 250, 0.14);
+            }
+        }
         
         @media (max-width: 768px) {
             .toolkit-grid { grid-template-columns: 1fr; }
-            .tk-ai, .tk-group, .tk-group-2 { grid-column: span 1; grid-row: span 1; }
+            .tk-ai, .tk-group, .tk-group-2, .tk-more { grid-column: span 1; grid-row: span 1; justify-self: stretch; }
         }
 
         .tk-icon { width: 28px; height: 28px; color: var(--accent); margin-bottom: 14px; flex-shrink: 0; }
@@ -419,7 +511,13 @@
         }
 
         /* ===== RTL FIXES ===== */
-        [dir="rtl"] .about-quote { border-left: none; border-right: 2px solid var(--primary); padding-left: 0; padding-right: 20px; }
+        [dir="rtl"] .about-quote { 
+            border-left: none; 
+            border-right: 2px solid var(--primary); 
+            padding-left: 0; 
+            padding-right: 20px; 
+            text-align: right; 
+        }
         [dir="rtl"] .lang-switch { right: auto; left: 24px; }
         [dir="rtl"] .lang-info { text-align: right; }
         [dir="rtl"] .work-header { flex-direction: row-reverse; }
@@ -475,8 +573,8 @@
                         <span>🚀</span>
                         <span data-en="View Projects" data-fa="مشاهده پروژه‌ها">View Projects</span>
                     </a>
-                    <a href="https://github.com/ILIV007" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
-                        <span>🌐</span>
+                    <a href="https://github.com/ILIV007" target="_blank" rel="noopener noreferrer" class="btn btn-github-neon">
+                        <span>🐙</span>
                         <span>GitHub</span>
                     </a>
                     <a href="https://t.me/ILIVIR3" target="_blank" rel="noopener noreferrer" class="btn btn-channel">
@@ -678,7 +776,7 @@
         </div>
     </section>
 
-    <!-- ===== SYSTEMS & TECHNOLOGIES — HYBRID BENTO + PILL ===== -->
+    <!-- ===== SYSTEMS & TECHNOLOGIES ===== -->
     <section class="section" id="toolkit">
         <div class="container">
             <div class="toolkit-header reveal">
@@ -722,18 +820,6 @@
                     </div>
                 </div>
                 
-                <!-- Data Group -->
-                <div class="tk-card tk-group">
-                    <div class="tk-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" /></svg></div>
-                    <div class="tk-title" data-en="Data & Infrastructure" data-fa="داده و زیرساخت">Data & Infrastructure</div>
-                    <div class="tk-tags">
-                        <span class="tk-tag">SQL Server</span>
-                        <span class="tk-tag">SSMS</span>
-                        <span class="tk-tag">T-SQL</span>
-                        <span class="tk-tag">Database Design</span>
-                    </div>
-                </div>
-                
                 <!-- Cloud Group -->
                 <div class="tk-card tk-group-2">
                     <div class="tk-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" /></svg></div>
@@ -741,9 +827,7 @@
                     <div class="tk-tags">
                         <span class="tk-tag">REST APIs</span>
                         <span class="tk-tag">Docker</span>
-                        <span class="tk-tag">Cloudflare Pages</ کد بالا به خاطر طول زیاد قطع شد. اینجا ادامه‌اش رو می‌فرستم:
-
-```html
+                        <span class="tk-tag">Cloudflare Pages</span>
                         <span class="tk-tag">Telegram API</span>
                     </div>
                 </div>
@@ -770,6 +854,21 @@
                         <span class="tk-tag">VS Code</span>
                         <span class="tk-tag">Google Colab</span>
                         <span class="tk-tag">WordPress</span>
+                    </div>
+                </div>
+
+                <!-- Also Worked With — MORE (Attractive) -->
+                <div class="tk-card tk-more">
+                    <div class="tk-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg></div>
+                    <div class="tk-title" data-en="Also Worked With" data-fa="آشنایی دارم با">Also Worked With</div>
+                    <div class="tk-narrative" data-en="Technologies I've explored and worked with at a familiar level." data-fa="فناوری‌هایی که در سطح آشنایی باهاشون کار کردم.">Technologies I've explored and worked with at a familiar level.</div>
+                    <div class="tk-tags">
+                        <span class="tk-tag">Database Design</span>
+                        <span class="tk-tag">SQL Server</span>
+                        <span class="tk-tag">SSMS</span>
+                        <span class="tk-tag">Arduino</span>
+                        <span class="tk-tag">AI IDE</span>
+                        <span class="tk-tag">Cisco Packet Tracer</span>
                     </div>
                 </div>
             </div>
@@ -802,7 +901,7 @@
                 <h2 data-en="Communication" data-fa="ارتباطات">Communication</h2>
             </div>
             <div class="languages-row reveal">
-                <div class="lang-card"><span class="lang-emoji">🇬🇧</span><div class="lang-info"><div class="lang-name" data-en="English" data-fa="انگلیسی">English</div><div class="lang-level" data-en="Professional Working Proficiency" data-fa="تسلط حرفه‌ای کاری">Professional Working Proficiency</div></div></div>
+                <div class="lang-card"><span class="lang-emoji">🇺🇸</span><div class="lang-info"><div class="lang-name" data-en="English" data-fa="انگلیسی">English</div><div class="lang-level" data-en="Professional Working Proficiency" data-fa="تسلط حرفه‌ای کاری">Professional Working Proficiency</div></div></div>
                 <div class="lang-card"><span class="lang-emoji">🇮🇷</span><div class="lang-info"><div class="lang-name" data-en="Persian" data-fa="فارسی">Persian</div><div class="lang-level" data-en="Native" data-fa="زبان مادری">Native</div></div></div>
                 <div class="lang-card lang-card-small"><span class="lang-emoji">🇸🇦</span><div class="lang-info"><div class="lang-name" data-en="Arabic" data-fa="عربی">Arabic</div><div class="lang-level" data-en="Familiar" data-fa="آشنا هستم">Familiar</div></div></div>
             </div>
@@ -834,7 +933,7 @@
             <div class="footer-links">
                 <a href="https://github.com/ILIV007" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
                 <a href="https://t.me/iliv007" target="_blank" rel="noopener noreferrer" class="footer-link">Telegram</a>
-                <a href="mailto:ILIV007@poroton.me" class="footer-link">Email</a>
+                <a href="mailto:iliv007@poroton.me" class="footer-link">Email</a>
             </div>
         </div>
     </footer>
