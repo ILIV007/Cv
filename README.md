@@ -1,9 +1,34 @@
-# 🌀 ILIV007 Portfolio — v2.0.9
+# 🌀 ILIV007 Portfolio — v2.0.10
 
 > **AI Automation Engineer | Computer Engineering Student**
 > A cosmic-themed, bilingual portfolio showcasing AI systems, automation workflows, and experimental software.
 
 🔗 **Live Demo**: [https://iliv007-cv.pages.dev](https://iliv007-cv.pages.dev)
+
+---
+
+## ✨ What's New in v2.0.10
+
+The timeline ("Evolution") is now **minimal and elegant**.
+
+- 🟢 **Small neon planets** — planets shrunk to 16px glowing dots with soft neon halos (no more huge orbs)
+- 🎨 **Cohesive palette** — each milestone has a distinct but harmonious neon color: blue, cyan, green, gold, violet (no garish colors)
+- 🃏 **Cards snug beside planets** — cards sit right next to the dots, minimal and clean
+- 🚫 **No text inside planets** — the year moved to the card as a mono label
+- ✨ **Future milestone pulses** — the 2026 Roadmap dot gently pulses to signal it's a destination
+- 🔄 **Cache-busting bumped to `?v=2010`**
+
+---
+
+## ✨ What's New in v2.1.0
+
+A **cache-busting** release — fixes the root cause of "the site looks old".
+
+- 🔄 **Cache-busting query strings** — every CSS/JS link now carries `?v=209`, so browsers fetch fresh files on every version bump instead of serving the year-old cached copy.
+- 🧹 **Removed conflicting Cache-Control headers** — the old `_headers` file stacked two `Cache-Control` rules (`max-age=3600` AND `max-age=31536000, immutable`), which caused Cloudflare to serve stale CSS for up to a year. Now only security headers remain; caching is left to default.
+- 🏷️ **VERSION.txt → v2.1.0**
+
+> ✅ After deploying this, visit `https://iliv007-cv.pages.dev/VERSION.txt`. If it shows `v2.1.0`, the new code is live. The cache-busting on CSS/JS will force your browser to load the new styles immediately — no hard-refresh needed.
 
 ---
 
@@ -135,7 +160,7 @@ See [CHANGELOG](#-changelog) below for the full list.
 
 ---
 
-## 🗂️ Project Structure (v2.0.9)
+## 🗂️ Project Structure (v2.0.10)
 
 ```
 Cv-website/
@@ -246,6 +271,25 @@ Switching updates: all text content, text direction (`ltr`/`rtl`), font stack, a
 ---
 
 ## 📋 Changelog
+
+### v2.0.10 — Minimal Neon Roadmap
+**Timeline redesigned for elegance**
+- Planets reduced from 80px → 16px — now small neon dots, not huge orbs
+- Removed all text from inside the planets; the year is now a mono label on the card (`timeline-date`)
+- Cards sit snug beside the dots with just 4px margin
+- Neon palette tuned to be cohesive with the dark blue site: 2022 blue, 2023 cyan, 2024 green, 2025 gold, 2026 violet
+- Each planet has a soft multi-layer glow (8px + 18px + 30px) instead of harsh shadows
+- Subtle outer halo ring (30% opacity) for depth
+- 2026 Roadmap dot gently pulses (2.5s animation) to mark it as the destination
+- Cards have minimal padding (14px 18px) and clean typography
+- Cache-busting bumped from `?v=209` → `?v=2010`
+
+### v2.1.0 — Cache-Busting Fix
+**Root cause found and fixed**
+- The old `_headers` file had two `Cache-Control` rules that stacked: `max-age=3600` (from `/*`) AND `max-age=31536000, immutable` (from `/css/*`). Cloudflare Pages merged them, causing CSS/JS to be cached for **a full year** as immutable. Browsers never re-requested the files, so even after deploying v2.0.9, users kept seeing the old v2.0.4 styles from their browser cache.
+- Fix 1: removed the `Cache-Control` rules from `_headers` entirely — now only security headers are set, and Cloudflare uses sensible defaults.
+- Fix 2: added `?v=209` query strings to all CSS/JS/manifest links in `index.html`. This is the standard cache-busting technique — a different URL forces the browser to fetch the new file regardless of any cached version.
+- Verified live: the site at `iliv007-cv.pages.dev` was already serving v2.0.9 correctly (confirmed via curl + Agent Browser), but users' browsers were showing stale cached CSS.
 
 ### v2.0.9 — Definitive Favicon Fix
 - Replaced the manifest icon `src` with an **inline data URI** (the 🌀 emoji as a base SVG embedded directly in `manifest.json`). This eliminates any file-path resolution issues — there is no file reference at all, so the 404 is impossible.
