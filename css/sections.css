@@ -306,32 +306,32 @@
 /* The planet node — glowing orb with orbital ring */
 .timeline-node {
     position: relative;
-    width: 64px;
-    height: 64px;
+    width: 88px;
+    height: 88px;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 .timeline-orb {
-    width: 56px;
-    height: 56px;
+    width: 76px;
+    height: 76px;
     border-radius: 50%;
-    background: radial-gradient(circle at 32% 30%, #fff 0%, var(--primary-light) 25%, var(--primary) 55%, var(--primary-dark) 100%);
+    background: radial-gradient(circle at 30% 28%, #fff 0%, var(--primary-light) 22%, var(--primary) 52%, var(--primary-dark) 100%);
     box-shadow:
-        0 0 18px rgba(110, 164, 212, 0.6),
-        0 0 40px rgba(110, 164, 212, 0.3),
-        inset -6px -6px 14px rgba(0, 0, 0, 0.35),
-        inset 4px 4px 10px rgba(255, 255, 255, 0.15);
+        0 0 24px rgba(110, 164, 212, 0.7),
+        0 0 56px rgba(110, 164, 212, 0.35),
+        inset -8px -8px 18px rgba(0, 0, 0, 0.4),
+        inset 5px 5px 12px rgba(255, 255, 255, 0.18);
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-mono);
-    font-size: 0.82rem;
+    font-size: 1rem;
     font-weight: 800;
     color: #fff;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
     letter-spacing: 0.5px;
     transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-out);
     position: relative;
@@ -481,14 +481,14 @@
     }
     .timeline-node {
         flex-shrink: 0;
-        width: 60px;
-        height: 60px;
+        width: 72px;
+        height: 72px;
         margin-bottom: 0;
     }
     .timeline-orb {
-        width: 50px;
-        height: 50px;
-        font-size: 0.75rem;
+        width: 62px;
+        height: 62px;
+        font-size: 0.85rem;
     }
     .timeline-card {
         text-align: start;
@@ -680,11 +680,11 @@
 .project-compact .project-stack { margin-bottom: 12px; }
 .project-compact .project-link { padding: 6px 12px; font-size: 12px; }
 
-/* ===== TOOLKIT — simple, bulletproof auto-fit grid ===== */
+/* ===== TOOLKIT — bento grid (robust, no fragile spans) ===== */
 .toolkit-header { text-align: center; margin-bottom: 56px; }
 .toolkit-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 18px;
     max-width: 1080px;
     margin: 0 auto;
@@ -697,12 +697,18 @@
     transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 .tk-card:hover {
     border-color: var(--border-hover);
     transform: translateY(-3px);
     box-shadow: var(--shadow-md);
 }
+/* AI card — spans 2 columns (wide hero card) */
+.tk-ai { grid-column: span 2; }
+/* Also worked with — full width */
+.tk-wide { grid-column: span 3; }
 
 .tk-more {
     border-color: rgba(167, 139, 250, 0.22);

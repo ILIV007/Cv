@@ -1,9 +1,19 @@
-# 🌀 ILIV007 Portfolio — v2.0.5
+# 🌀 ILIV007 Portfolio — v2.0.6
 
 > **AI Automation Engineer | Computer Engineering Student**
 > A cosmic-themed, bilingual portfolio showcasing AI systems, automation workflows, and experimental software.
 
 🔗 **Live Demo**: [https://iliv007-cv.pages.dev](https://iliv007-cv.pages.dev)
+
+---
+
+## ✨ What's New in v2.0.6
+
+A **quality** release. The toolkit bento layout is back, the timeline planets are bigger, and all Persian copy is rewritten to sound natural.
+
+- 📦 **Toolkit bento layout** — AI card spans 2 columns (wide hero), 3 equal cards below, full-width footer card. Clean hierarchy, zero gaps.
+- 🪐 **Bigger timeline planets** — orbs bumped from 56px to 76px with stronger glow, more dramatic cosmic feel
+- ✍️ **Persian completely rewritten** — every `data-fa` string rewritten in natural, idiomatic Persian (not translated). Fixed the "ابهماشی" typo, clunky phrasings, and mismatched tone
 
 ---
 
@@ -95,7 +105,7 @@ See [CHANGELOG](#-changelog) below for the full list.
 
 ---
 
-## 🗂️ Project Structure (v2.0.5)
+## 🗂️ Project Structure (v2.0.6)
 
 ```
 Cv-website/
@@ -206,6 +216,22 @@ Switching updates: all text content, text direction (`ltr`/`rtl`), font stack, a
 ---
 
 ## 📋 Changelog
+
+### v2.0.6 — Quality & Natural Persian
+**Toolkit — bento layout restored**
+- Replaced the flat auto-fit grid with a proper 3-column bento: AI Systems spans 2 cols (wide hero), Engineering/Cloud/Hardware/Workflow as single cards, Also Worked With spans 3 (full width)
+- Added tablet breakpoint (2-column at 769–980px, AI and Also-Worked-With span 2)
+- Mobile collapses to single column
+
+**Timeline — bigger planets**
+- Orb size increased from 56px → 76px (88px node), stronger glow halos
+- Mobile orbs: 50px → 62px (72px node)
+
+**Persian — complete rewrite**
+- Rewrote all 34 `data-fa` strings in natural, idiomatic Persian
+- Fixed the "ابهماشی" typo (was meant to be "ابزارهایی")
+- Replaced clunky translation-style phrasings with natural speech (e.g. "متفاوت ساخته‌شده" → "ساختن در ذاتمه", "فناوری‌هایی که در سطح آشنایی کاوش کرده‌ام" → "فناوری‌هایی که باهاشون آشناام")
+- Consistent tone: professional but personal, mixing formal headings with natural spoken-style descriptions
 
 ### v2.0.5 — Cosmic Journey Timeline
 **Timeline redesigned as a cosmic journey**
