@@ -97,19 +97,26 @@
     .github-card,
     .lang-card,
     .contact-item,
-    .timeline,
-    .timeline-body {
+    .timeline-card {
         background: #fff !important;
         border: 1px solid #ccc !important;
         box-shadow: none !important;
         color: #000 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
     }
-    .timeline-item { border-bottom: 1px solid #ccc !important; }
-    .timeline-date {
-        background: #f5f5f5 !important;
-        border-inline-end: 1px solid #ccc !important;
-        color: #333 !important;
+    .timeline::before, .timeline::after,
+    .timeline-ring { display: none !important; }
+    .timeline-orb {
+        background: #999 !important;
+        box-shadow: none !important;
+        color: #000 !important;
+        text-shadow: none !important;
     }
+    .timeline-item.visible .timeline-orb { transform: none !important; }
+    .timeline-future .timeline-orb { background: #777 !important; }
+    .timeline-future .timeline-title { color: #333 !important; }
+    .timeline-badge { color: #333 !important; border-color: #999 !important; background: #eee !important; }
 
     .stat-number, .stat-label,
     .project-title, .edu-title, .work-title,

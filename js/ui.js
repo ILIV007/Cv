@@ -32,6 +32,7 @@ function initReveal() {
     if (!('IntersectionObserver' in window)) {
         // Graceful fallback: show everything
         reveals.forEach((el) => el.classList.add('visible'));
+        document.querySelectorAll('.timeline-item').forEach((el) => el.classList.add('visible'));
         return;
     }
 
@@ -45,6 +46,19 @@ function initReveal() {
     }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
 
     reveals.forEach((el) => observer.observe(el));
+
+    // Timeline planets — light up individually as they scroll into view
+    const planets = document.querySelectorAll('.timeline-item');
+    const planetObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // keep observing so they dim when scrolled away? No — once lit, stay lit.
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.35, rootMargin: '0px 0px -40px 0px' });
+    planets.forEach((el) => planetObserver.observe(el));
 }
 
 /* ----- Scroll progress bar ----- */

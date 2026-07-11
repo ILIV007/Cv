@@ -1,9 +1,21 @@
-# 🌀 ILIV007 Portfolio — v2.0.4
+# 🌀 ILIV007 Portfolio — v2.0.5
 
 > **AI Automation Engineer | Computer Engineering Student**
 > A cosmic-themed, bilingual portfolio showcasing AI systems, automation workflows, and experimental software.
 
 🔗 **Live Demo**: [https://iliv007-cv.pages.dev](https://iliv007-cv.pages.dev)
+
+---
+
+## ✨ What's New in v2.0.5
+
+The timeline ("Evolution") section is reborn as a **cosmic journey**.
+
+- 🪐 **Glowing planet orbs** — each milestone is a luminous sphere with the year on its surface, complete with a rotating orbital ring
+- ☄️ **Traveling comet** — a glowing comet falls down the connecting energy line on a loop
+- ✨ **Scroll-activated** — each planet brightens and pulses when it scrolls into view
+- 🟣 **Roadmap planet** — the 2026 milestone is a violet planet with a dashed orbital ring and a "Roadmap" badge
+- 📱 **Mobile** — orbs slide to the side with cards next to them in a horizontal row
 
 ---
 
@@ -83,7 +95,7 @@ See [CHANGELOG](#-changelog) below for the full list.
 
 ---
 
-## 🗂️ Project Structure (v2.0.4)
+## 🗂️ Project Structure (v2.0.5)
 
 ```
 Cv-website/
@@ -194,6 +206,17 @@ Switching updates: all text content, text direction (`ltr`/`rtl`), font stack, a
 ---
 
 ## 📋 Changelog
+
+### v2.0.5 — Cosmic Journey Timeline
+**Timeline redesigned as a cosmic journey**
+- Each milestone is now a **glowing planet orb** with a radial-gradient surface, inner shadow for depth, and the year (e.g. `'22`) on its surface
+- Each orb has a **rotating orbital ring** with a small moon dot that circles the planet (14s rotation)
+- The connecting line is a **gradient energy beam** (blue → violet) with a **comet** that travels down it on a 7s loop
+- **Scroll-activated**: each planet scales up and brightens (via a second IntersectionObserver) when scrolled into view
+- The 2026 roadmap milestone is a **violet planet** with a dashed orbital ring and a `Roadmap` badge
+- Cards are **glassmorphic** with a gradient top accent line
+- Mobile (≤600px): orbs slide to the start edge, cards sit beside them in a horizontal row — works in both LTR and RTL
+- Print stylesheet updated to hide the orbs/rings/comet and show clean cards
 
 ### v2.0.4 — Stability & Simplicity
 **Toolkit — bulletproof grid**

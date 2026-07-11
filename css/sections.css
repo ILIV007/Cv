@@ -246,70 +246,258 @@
     display: inline-block;
 }
 
-/* ===== TIMELINE — clean row layout (unbreakable in LTR & RTL) ===== */
+/* ===== TIMELINE — Cosmic Journey (planets + orbital rings + comet) ===== */
 .timeline {
-    max-width: 760px;
+    max-width: 640px;
     margin: 0 auto;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    background: var(--bg-card);
+    position: relative;
+    padding: 8px 0;
 }
+
+/* The vertical energy line — centered, with a traveling comet */
+.timeline::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 50%;
+    top: 24px;
+    bottom: 24px;
+    width: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(to bottom,
+        transparent 0%,
+        var(--primary) 8%,
+        var(--accent) 50%,
+        var(--violet) 92%,
+        transparent 100%);
+    opacity: 0.35;
+    border-radius: 2px;
+}
+/* Comet traveling down the line */
+.timeline::after {
+    content: '';
+    position: absolute;
+    inset-inline-start: 50%;
+    top: 24px;
+    width: 8px;
+    height: 8px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 10px var(--accent), 0 0 22px var(--primary), 0 0 36px rgba(110, 164, 212, 0.4);
+    animation: cometFall 7s linear infinite;
+    pointer-events: none;
+}
+@keyframes cometFall {
+    0% { top: 18px; opacity: 0; }
+    8% { opacity: 1; }
+    92% { opacity: 1; }
+    100% { top: calc(100% - 18px); opacity: 0; }
+}
+
 .timeline-item {
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 0;
-    border-bottom: 1px solid var(--border);
-    transition: background var(--transition);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 36px;
 }
-.timeline-item:last-child { border-bottom: none; }
-.timeline-item:hover { background: var(--bg-card-hover); }
-.timeline-date {
-    font-family: var(--font-mono);
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--primary);
-    padding: 22px 20px;
-    border-inline-end: 1px solid var(--border);
-    background: rgba(110, 164, 212, 0.03);
+.timeline-item:last-child { margin-bottom: 0; }
+
+/* The planet node — glowing orb with orbital ring */
+.timeline-node {
+    position: relative;
+    width: 64px;
+    height: 64px;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    letter-spacing: 0.5px;
+    z-index: 2;
+    margin-bottom: 18px;
 }
-.timeline-body {
-    padding: 22px 28px;
+.timeline-orb {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 30%, #fff 0%, var(--primary-light) 25%, var(--primary) 55%, var(--primary-dark) 100%);
+    box-shadow:
+        0 0 18px rgba(110, 164, 212, 0.6),
+        0 0 40px rgba(110, 164, 212, 0.3),
+        inset -6px -6px 14px rgba(0, 0, 0, 0.35),
+        inset 4px 4px 10px rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.5px;
+    transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-out);
+    position: relative;
+    z-index: 2;
+}
+/* Orbital ring — rotates around the orb */
+.timeline-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(110, 164, 212, 0.35);
+    transform: rotate(0deg);
+    animation: ringSpin 14s linear infinite;
+    pointer-events: none;
+}
+.timeline-ring::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent), 0 0 14px var(--primary);
+}
+@keyframes ringSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* When the item scrolls into view, the orb pulses brighter */
+.timeline-item.visible .timeline-orb {
+    transform: scale(1.08);
+    box-shadow:
+        0 0 26px rgba(110, 164, 212, 0.8),
+        0 0 56px rgba(110, 164, 212, 0.4),
+        inset -6px -6px 14px rgba(0, 0, 0, 0.35),
+        inset 4px 4px 10px rgba(255, 255, 255, 0.2);
+}
+
+/* The card — glassmorphic, centered, with gradient top accent */
+.timeline-card {
+    background: var(--bg-glass);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 18px 22px;
+    width: 100%;
+    max-width: 460px;
+    text-align: center;
+    transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+.timeline-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    inset-inline-start: 20%;
+    inset-inline-end: 20%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    opacity: 0.5;
+}
+.timeline-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
 }
 .timeline-title {
-    font-size: 1.02rem;
+    font-size: 1.08rem;
     font-weight: 700;
     color: var(--text-bright);
-    margin-bottom: 4px;
+    margin-bottom: 6px;
     line-height: 1.4;
 }
 .timeline-desc {
-    font-size: 14px;
+    font-size: 13.5px;
     color: var(--text-muted);
     line-height: 1.65;
 }
-.timeline-future .timeline-date { color: var(--violet); }
-.timeline-future .timeline-date {
-    background: rgba(167, 139, 250, 0.05);
+
+/* Roadmap (future) — violet planet with dashed ring */
+.timeline-future .timeline-orb {
+    background: radial-gradient(circle at 32% 30%, #fff 0%, var(--violet-light) 25%, var(--violet) 55%, #7c3aed 100%);
+    box-shadow:
+        0 0 18px rgba(167, 139, 250, 0.6),
+        0 0 40px rgba(167, 139, 250, 0.3),
+        inset -6px -6px 14px rgba(0, 0, 0, 0.35),
+        inset 4px 4px 10px rgba(255, 255, 255, 0.15);
+}
+.timeline-future .timeline-ring {
+    border-style: dashed;
+    border-color: rgba(167, 139, 250, 0.45);
+}
+.timeline-future .timeline-ring::before {
+    background: var(--violet-light);
+    box-shadow: 0 0 8px var(--violet-light), 0 0 14px var(--violet);
+}
+.timeline-future.visible .timeline-orb {
+    box-shadow:
+        0 0 26px rgba(167, 139, 250, 0.8),
+        0 0 56px rgba(167, 139, 250, 0.4),
+        inset -6px -6px 14px rgba(0, 0, 0, 0.35),
+        inset 4px 4px 10px rgba(255, 255, 255, 0.2);
+}
+.timeline-future .timeline-card {
+    border-color: rgba(167, 139, 250, 0.22);
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.05), var(--bg-glass));
+}
+.timeline-future .timeline-card::before {
+    background: linear-gradient(90deg, transparent, var(--violet), transparent);
 }
 .timeline-future .timeline-title { color: var(--violet-light); }
 
-@media (max-width: 560px) {
+/* Roadmap badge */
+.timeline-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--violet-light);
+    background: rgba(167, 139, 250, 0.1);
+    border: 1px solid rgba(167, 139, 250, 0.25);
+    border-radius: var(--radius-full);
+    padding: 3px 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+/* On mobile, keep the line on the start edge (left in LTR, right in RTL) */
+@media (max-width: 600px) {
+    .timeline { max-width: 100%; padding-inline-start: 0; }
+    .timeline::before,
+    .timeline::after {
+        inset-inline-start: 30px;
+        transform: translateX(0);
+    }
     .timeline-item {
-        grid-template-columns: 1fr;
+        align-items: flex-start;
+        flex-direction: row;
+        gap: 20px;
     }
-    .timeline-date {
-        border-inline-end: none;
-        border-bottom: 1px solid var(--border);
-        padding: 14px 20px;
-        font-size: 0.85rem;
+    .timeline-node {
+        flex-shrink: 0;
+        width: 60px;
+        height: 60px;
+        margin-bottom: 0;
     }
-    .timeline-body { padding: 16px 20px; }
+    .timeline-orb {
+        width: 50px;
+        height: 50px;
+        font-size: 0.75rem;
+    }
+    .timeline-card {
+        text-align: start;
+        flex: 1;
+    }
+    .timeline-card::before {
+        inset-inline-start: 0;
+        inset-inline-end: 0;
+    }
 }
 
 /* ===== EDUCATION ===== */
