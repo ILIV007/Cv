@@ -1,9 +1,18 @@
-# 🌀 ILIV007 Portfolio — v2.0.6
+# 🌀 ILIV007 Portfolio — v2.0.7
 
 > **AI Automation Engineer | Computer Engineering Student**
 > A cosmic-themed, bilingual portfolio showcasing AI systems, automation workflows, and experimental software.
 
 🔗 **Live Demo**: [https://iliv007-cv.pages.dev](https://iliv007-cv.pages.dev)
+
+---
+
+## ✨ What's New in v2.0.7
+
+A **bugfix** release for the PWA manifest.
+
+- 🐛 **Fixed manifest icon 404** — the manifest referenced `assets/favicon.svg` (relative), which resolved to the broken `/assets/assets/favicon.svg`. Now uses the root-absolute `/assets/favicon.svg`.
+- 🌀 **favicon.svg updated** — now renders the 🌀 emoji to match the browser tab icon.
 
 ---
 
@@ -105,7 +114,7 @@ See [CHANGELOG](#-changelog) below for the full list.
 
 ---
 
-## 🗂️ Project Structure (v2.0.6)
+## 🗂️ Project Structure (v2.0.7)
 
 ```
 Cv-website/
@@ -216,6 +225,10 @@ Switching updates: all text content, text direction (`ltr`/`rtl`), font stack, a
 ---
 
 ## 📋 Changelog
+
+### v2.0.7 — Manifest Icon Fix
+- Fixed the PWA manifest icon path: `assets/favicon.svg` → `/assets/favicon.svg` (root-absolute). The relative path was resolving to `/assets/assets/favicon.svg` (404) because the manifest itself lives in `/assets/`.
+- Updated `assets/favicon.svg` to render the 🌀 emoji, matching the browser tab icon.
 
 ### v2.0.6 — Quality & Natural Persian
 **Toolkit — bento layout restored**
