@@ -246,52 +246,54 @@
     display: inline-block;
 }
 
-/* ===== TIMELINE ===== */
-.timeline { position: relative; max-width: 800px; margin: 0 auto; }
+/* ===== TIMELINE (single-sided — robust in LTR & RTL) ===== */
+.timeline {
+    position: relative;
+    max-width: 720px;
+    margin: 0 auto;
+    /* logical padding keeps the line on the start edge in both directions */
+    padding-inline-start: 0;
+}
 .timeline::before {
     content: '';
     position: absolute;
-    left: 50%; top: 0; bottom: 0;
+    inset-inline-start: 19px;
+    top: 6px;
+    bottom: 6px;
     width: 2px;
     background: linear-gradient(to bottom, transparent, var(--primary), var(--accent), transparent);
-    transform: translateX(-50%);
-    opacity: 0.3;
+    opacity: 0.35;
 }
 .timeline-item {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 40px;
     position: relative;
-    margin-bottom: 40px;
-    width: 50%;
+    margin-bottom: 28px;
+    padding-inline-start: 56px;
+    width: 100%;
 }
-.timeline-item:nth-child(even) {
-    justify-content: flex-start;
-    padding-right: 0;
-    padding-left: 40px;
-    left: 50%;
-}
+.timeline-item:last-child { margin-bottom: 0; }
 .timeline-dot {
-    width: 14px; height: 14px;
+    width: 14px;
+    height: 14px;
     background: var(--primary);
     border-radius: 50%;
     position: absolute;
-    right: -7px; top: 4px;
+    inset-inline-start: 13px;
+    top: 6px;
     box-shadow: 0 0 15px var(--primary);
     border: 3px solid var(--bg);
+    z-index: 2;
 }
-.timeline-item:nth-child(even) .timeline-dot { right: auto; left: -7px; }
 .timeline-content {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 20px 24px;
-    max-width: 320px;
-    transition: border-color var(--transition), transform var(--transition);
+    padding: 18px 24px;
+    transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
 }
 .timeline-content:hover {
     border-color: var(--border-hover);
     transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
 }
 .timeline-date {
     font-size: 12px;
@@ -300,20 +302,28 @@
     text-transform: uppercase;
     letter-spacing: 1.5px;
     margin-bottom: 6px;
+    font-family: var(--font-mono);
 }
 .timeline-title {
-    font-size: 1rem;
+    font-size: 1.02rem;
     font-weight: 700;
     color: var(--text-bright);
     margin-bottom: 4px;
 }
 .timeline-desc {
-    font-size: 13px;
+    font-size: 13.5px;
     color: var(--text-muted);
-    line-height: 1.6;
+    line-height: 1.65;
 }
 .timeline-future .timeline-date { color: var(--violet); }
-.timeline-future .timeline-dot { background: var(--violet); box-shadow: 0 0 15px var(--violet); }
+.timeline-future .timeline-dot {
+    background: var(--violet);
+    box-shadow: 0 0 15px var(--violet);
+}
+.timeline-future .timeline-content {
+    border-color: rgba(167, 139, 250, 0.22);
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.04), var(--bg-card));
+}
 
 /* ===== EDUCATION ===== */
 .edu-grid {

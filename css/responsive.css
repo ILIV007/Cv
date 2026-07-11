@@ -24,24 +24,6 @@
     .quick-stats { gap: 24px; }
 }
 
-/* ===== TIMELINE MOBILE ===== */
-@media (max-width: 768px) {
-    .timeline::before { left: 20px; }
-    .timeline-item,
-    .timeline-item:nth-child(even) {
-        width: 100%;
-        left: 0;
-        padding-left: 50px;
-        padding-right: 0;
-        justify-content: flex-start;
-    }
-    .timeline-item .timeline-dot,
-    .timeline-item:nth-child(even) .timeline-dot {
-        left: 13px;
-        right: auto;
-    }
-}
-
 /* ===== RTL FIXES ===== */
 [dir="rtl"] .about-quote {
     border-left: none;
@@ -54,17 +36,10 @@
 [dir="rtl"] .lang-info { text-align: right; }
 [dir="rtl"] .work-header { flex-direction: row-reverse; }
 [dir="rtl"] .hero h1 { letter-spacing: 0; font-weight: 800; }
-[dir="rtl"] .timeline-item { padding-right: 40px; padding-left: 0; }
-[dir="rtl"] .timeline-item:nth-child(even) { padding-left: 40px; padding-right: 0; }
 [dir="rtl"] .back-to-top { right: auto; left: 24px; }
 
 @media (max-width: 768px) {
     [dir="rtl"] .lang-switch { left: 16px; right: auto; }
-    [dir="rtl"] .timeline-item,
-    [dir="rtl"] .timeline-item:nth-child(even) {
-        padding-left: 50px;
-        padding-right: 0;
-    }
 }
 
 /* ===== NO-JS FALLBACK (BUG-02 fix) ===== */

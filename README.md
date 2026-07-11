@@ -1,9 +1,22 @@
-# 🌀 ILIV007 Portfolio — v2.0.1
+# 🌀 ILIV007 Portfolio — v2.0.2
 
 > **AI Automation Engineer | Computer Engineering Student**
 > A cosmic-themed, bilingual portfolio showcasing AI systems, automation workflows, and experimental software.
 
 🔗 **Live Demo**: [https://iliv007-cv.pages.dev](https://iliv007-cv.pages.dev)
+
+---
+
+## ✨ What's New in v2.0.2
+
+A **content & UX polish** release focused on fixing the Persian timeline, professional copywriting, and a stunning 3D galaxy 404 page.
+
+- 🌌 **3D galaxy 404 page** — a real-time Canvas spiral galaxy with 6,000+ stars, 4 spiral arms, colored nebulae, a glowing core, and mouse-driven 3D tilt
+- 🐛 **Fixed Persian timeline** — rebuilt as a robust single-column layout using logical properties (no more RTL overflow)
+- 🔀 **Timeline moved below Projects** — better narrative flow
+- ✍️ **Professional copy rewrite** — all EN/FA text rewritten with correct spelling and a confident, direct tone
+- ⚙️ **Toolkit deduplicated** — removed repeated/incorrect tech entries; each card now has distinct, accurate content
+- 🌀 **Emoji favicon restored** — the 🌀 emoji is back as the tab icon
 
 ---
 
@@ -47,7 +60,7 @@ See [CHANGELOG](#-changelog) below for the full list.
 
 ---
 
-## 🗂️ Project Structure (v2.0.1)
+## 🗂️ Project Structure (v2.0.2)
 
 ```
 Cv-website/
@@ -158,6 +171,27 @@ Switching updates: all text content, text direction (`ltr`/`rtl`), font stack, a
 ---
 
 ## 📋 Changelog
+
+### v2.0.2 — Polish & 3D Galaxy
+**Critical fixes**
+- Fixed Persian (RTL) timeline overflow — rebuilt as single-column with `inset-inline-start` logical properties so it mirrors correctly in both LTR and RTL
+- Moved the Evolution/Timeline section to below Projects for better narrative flow
+
+**Content & copywriting**
+- Complete professional rewrite of all English and Persian text (consistent formal Persian, correct spelling, direct tone inspired by modern AI product sites)
+- Deduplicated the Systems & Technologies section — removed repeated entries (e.g. Telegram API appeared twice); each card now has distinct, accurate content
+- Added short narrative lines under each toolkit card
+- Relabeled the 2026 timeline entry as "Roadmap"
+
+**404 page — 3D galaxy**
+- Replaced the simple 404 with a real-time Canvas spiral galaxy: 6,000+ stars in 4 spiral arms, colored nebula clouds, a bright glowing core, differential rotation, and mouse-driven 3D tilt
+- Additive blending + motion-blur trails for a luminous, cinematic look
+- Respects `prefers-reduced-motion`
+- CSP relaxed for `/404.html` to allow the self-contained inline script
+
+**UI**
+- Restored the 🌀 emoji favicon (replaces the SVG monogram)
+- Footer version bumped to v2.0.2
 
 ### v2.0.1 — Rebuild
 **Critical fixes**

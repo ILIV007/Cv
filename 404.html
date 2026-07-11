@@ -3,89 +3,447 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 — Lost in space | ILIV007</title>
+    <title>404 — Lost in the Galaxy | ILIV007</title>
     <meta name="robots" content="noindex">
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#05060d">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌀</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
+            --bg: #05060d;
             --primary: #6BA4D4;
             --primary-light: #8FC0E8;
             --accent: #9EC8E8;
-            --bg: #0B1120;
+            --violet: #a78bfa;
             --text: #e8edf5;
             --text-muted: #aab4c5;
             --text-dim: #8b97ab;
-            --border: rgba(148, 163, 184, 0.1);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
         body {
             font-family: 'Inter', sans-serif;
             background: var(--bg);
             color: var(--text);
-            min-height: 100vh;
+            position: relative;
+        }
+
+        /* The 3D galaxy canvas */
+        #galaxy {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            display: block;
+        }
+
+        /* Dark vignette overlay for depth + readability */
+        .vignette {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background: radial-gradient(ellipse at center,
+                transparent 0%,
+                transparent 45%,
+                rgba(5, 6, 13, 0.55) 80%,
+                rgba(5, 6, 13, 0.92) 100%);
+        }
+
+        /* Content layer */
+        .content {
+            position: fixed;
+            inset: 0;
+            z-index: 2;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 24px;
-            overflow: hidden;
+            pointer-events: none;
         }
-        .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
-        .star {
-            position: absolute; width: 2px; height: 2px;
-            background: var(--accent); border-radius: 50%;
-            animation: twinkle 3s infinite ease-in-out;
-        }
-        @keyframes twinkle { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.9; } }
-        .content { position: relative; z-index: 1; max-width: 560px; }
+        .content > * { pointer-events: auto; }
+
         .code {
             font-family: 'JetBrains Mono', monospace;
-            font-size: clamp(6rem, 18vw, 10rem);
+            font-size: clamp(7rem, 20vw, 12rem);
             font-weight: 900;
-            line-height: 1;
-            background: linear-gradient(135deg, #fff, var(--primary-light), var(--accent));
+            line-height: 0.9;
+            background: linear-gradient(135deg, #ffffff 0%, var(--primary-light) 45%, var(--violet) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 16px;
+            margin-bottom: 8px;
+            text-shadow: 0 0 80px rgba(110, 164, 212, 0.3);
+            letter-spacing: -4px;
+            animation: float 6s ease-in-out infinite;
         }
-        h1 { font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: 12px; }
-        p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 32px; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .title {
+            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 14px;
+            letter-spacing: -0.5px;
+        }
+        .subtitle {
+            color: var(--text-muted);
+            font-size: clamp(1rem, 2.2vw, 1.15rem);
+            line-height: 1.7;
+            margin-bottom: 36px;
+            max-width: 480px;
+        }
+
         .btn {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 14px 28px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
             background: linear-gradient(135deg, var(--primary), #4A7AA8);
-            color: #fff; text-decoration: none; border-radius: 12px;
-            font-weight: 600; font-size: 15px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 0.3px;
             transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 8px 30px rgba(110, 164, 212, 0.3);
         }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(110, 164, 212, 0.45); }
-        @media (prefers-reduced-motion: reduce) { .star { animation: none; } }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(110, 164, 212, 0.5);
+        }
+        .btn:active { transform: translateY(-1px) scale(0.98); }
+
+        .hint {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: var(--text-dim);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        *:focus-visible {
+            outline: 2px solid var(--primary-light);
+            outline-offset: 4px;
+            border-radius: 6px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .code { animation: none; }
+        }
     </style>
 </head>
 <body>
-    <div class="stars" id="stars" aria-hidden="true"></div>
+    <canvas id="galaxy" aria-hidden="true"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+
     <div class="content">
         <div class="code">404</div>
-        <h1>Lost in space</h1>
-        <p>The page you're looking for drifted off into the cosmos. Let's get you back home.</p>
+        <h1 class="title">Lost in the galaxy</h1>
+        <p class="subtitle">The page you're looking for drifted beyond the event horizon. Let's bring you back to known space.</p>
         <a href="/" class="btn"><span aria-hidden="true">🌀</span> Back to Earth</a>
     </div>
+
+    <div class="hint">move your cursor · drift through the stars</div>
+
     <script>
-        (function () {
-            var s = document.getElementById('stars');
-            for (var i = 0; i < 40; i++) {
-                var star = document.createElement('span');
-                star.className = 'star';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 3 + 's';
-                s.appendChild(star);
+    (function () {
+        'use strict';
+
+        const canvas = document.getElementById('galaxy');
+        const ctx = canvas.getContext('2d');
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        let W = 0, H = 0, cx = 0, cy = 0, dpr = 1;
+        let mouseX = 0, mouseY = 0, targetTiltX = 0, targetTiltY = 0;
+        let tiltX = 0.5, tiltY = 0;        // current view tilt (radians)
+        let rot = 0;                        // galaxy rotation angle
+        let particles = [];
+        let nebulae = [];
+        let bgStars = [];
+
+        // ---- Particle generation: spiral galaxy ----
+        function buildGalaxy() {
+            particles = [];
+            const ARMS = 4;                 // spiral arms
+            const COUNT = 6000;             // total stars in the galaxy
+            const RADIUS = 480;             // galaxy radius
+            const TWIST = 3.4;              // how many full turns the arms make
+
+            for (let i = 0; i < COUNT; i++) {
+                // distance from center — biased toward the core
+                const t = Math.pow(Math.random(), 0.5);
+                const r = t * RADIUS;
+
+                // pick an arm and follow its spiral
+                const arm = Math.floor(Math.random() * ARMS);
+                const armOffset = (arm / ARMS) * Math.PI * 2;
+                const spiral = (r / RADIUS) * TWIST * Math.PI * 2;
+                const angle = armOffset + spiral;
+
+                // scatter perpendicular to the arm — tight near core, looser outside
+                const spread = (0.025 + 0.13 * t) * RADIUS;
+                const offR = (Math.random() - 0.5) * spread * 2;
+                const finalR = Math.max(0, r + offR);
+
+                // tangential scatter — tight so arms stay defined
+                const tang = (Math.random() - 0.5) * 0.22;
+
+                // height (galaxy disk thickness) — thinner than radius
+                const heightSpread = 14 + 55 * t;
+                const y = (Math.random() - 0.5) * heightSpread * 2;
+
+                // color: hot white/gold near core → blue → violet outward
+                let color;
+                const cr = Math.random();
+                if (t < 0.15) {
+                    color = cr < 0.55 ? [255, 250, 235] : [255, 240, 210]; // bright core
+                } else if (t < 0.45) {
+                    color = cr < 0.45 ? [210, 230, 255] : [170, 200, 255]; // inner arms blue
+                } else {
+                    color = cr < 0.35 ? [150, 180, 245] : [185, 165, 245]; // outer arms violet
+                }
+
+                // size: brighter near core
+                const size = t < 0.18 ? (Math.random() * 1.8 + 1.0) : (Math.random() * 1.2 + 0.45);
+
+                particles.push({
+                    r: finalR,
+                    a: angle + tang,
+                    y: y,
+                    size: size,
+                    color: color,
+                    speed: 0.0008 + (1 / (finalR + 40)) * 0.06, // differential rotation
+                    tw: Math.random() * Math.PI * 2,
+                    tws: 0.01 + Math.random() * 0.04
+                });
             }
-        })();
+
+            // dust nebulae — large soft colored clouds along the arms
+            nebulae = [];
+            const NEB_COUNT = 14;
+            for (let i = 0; i < NEB_COUNT; i++) {
+                const nt = 0.2 + Math.random() * 0.75;
+                const nr = nt * RADIUS;
+                const nArm = Math.floor(Math.random() * ARMS);
+                const nAngle = (nArm / ARMS) * Math.PI * 2 + (nr / RADIUS) * TWIST * Math.PI * 2;
+                const hue = Math.random() < 0.5 ? [120, 80, 200] : [60, 120, 220]; // violet or blue
+                nebulae.push({
+                    r: nr,
+                    a: nAngle,
+                    size: 60 + Math.random() * 120,
+                    color: hue,
+                    tw: Math.random() * Math.PI * 2,
+                    tws: 0.003 + Math.random() * 0.008
+                });
+            }
+
+            // background field stars (static, twinkling)
+            bgStars = [];
+            const bgCount = Math.floor((W * H) / 6000);
+            for (let i = 0; i < bgCount; i++) {
+                bgStars.push({
+                    x: Math.random() * W,
+                    y: Math.random() * H,
+                    size: Math.random() * 1.2 + 0.2,
+                    base: Math.random() * 0.5 + 0.15,
+                    tw: Math.random() * Math.PI * 2,
+                    tws: 0.005 + Math.random() * 0.02
+                });
+            }
+        }
+
+        function resize() {
+            dpr = Math.min(window.devicePixelRatio || 1, 2);
+            W = window.innerWidth;
+            H = window.innerHeight;
+            canvas.width = W * dpr;
+            canvas.height = H * dpr;
+            canvas.style.width = W + 'px';
+            canvas.style.height = H + 'px';
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            cx = W / 2;
+            cy = H / 2;
+            buildGalaxy();
+        }
+
+        // ---- Render loop ----
+        const FOCAL = 620;
+        const Z_OFFSET = 500;
+
+        function frame() {
+            // smooth tilt toward cursor
+            targetTiltY = (mouseX - cx) / cx * 0.35;
+            targetTiltX = (mouseY - cy) / cy * 0.35;
+            tiltY += (targetTiltY - tiltY) * 0.04;
+            tiltX += (targetTiltX - tiltX) * 0.04;
+
+            if (!reducedMotion) {
+                rot += 0.0016;
+            }
+
+            // fade trail (motion blur effect) — gentle so the galaxy stays luminous
+            ctx.fillStyle = 'rgba(5, 6, 13, 0.18)';
+            ctx.fillRect(0, 0, W, H);
+
+            // ---- background stars ----
+            for (let i = 0; i < bgStars.length; i++) {
+                const s = bgStars[i];
+                s.tw += s.tws;
+                const a = s.base + Math.sin(s.tw) * 0.3;
+                ctx.globalAlpha = Math.max(0, a);
+                ctx.fillStyle = '#cfe0ff';
+                ctx.fillRect(s.x, s.y, s.size, s.size);
+            }
+            ctx.globalAlpha = 1;
+
+            // ---- galaxy particles (3D projection) ----
+            // We precompute rotation matrix terms
+            const cosY = Math.cos(tiltY), sinY = Math.sin(tiltY);
+            const cosX = Math.cos(tiltX - 0.5), sinX = Math.sin(tiltX - 0.5); // bias to view top-down
+
+            // scale galaxy to viewport — tuned so particles are clearly visible
+            const scale = Math.min(W, H) / 620;
+
+            // draw particles back-to-front by sorting a subset — for perf we skip full sort
+            // and rely on additive blending which is order-independent.
+            ctx.globalCompositeOperation = 'lighter';
+
+            // ---- dust nebulae (soft colored clouds) ----
+            for (let i = 0; i < nebulae.length; i++) {
+                const n = nebulae[i];
+                n.tw += n.tws;
+                const a = n.a + rot;
+                let x = Math.cos(a) * n.r;
+                let z = Math.sin(a) * n.r;
+                let y = 0;
+                let y1 = y * cosX - z * sinX;
+                let z1 = y * sinX + z * cosX;
+                let x2 = x * cosY + z1 * sinY;
+                let z2 = -x * sinY + z1 * cosY;
+                const persp = FOCAL / (FOCAL + z2 + Z_OFFSET);
+                if (persp <= 0) continue;
+                const sx = cx + x2 * persp * scale;
+                const sy = cy + y1 * persp * scale;
+                const radius = Math.max(2, n.size * persp * scale);
+                const pulse = 0.5 + Math.sin(n.tw) * 0.2;
+                const [nr, ng, nb] = n.color;
+                const grad = ctx.createRadialGradient(sx, sy, 0, sx, sy, radius);
+                grad.addColorStop(0, 'rgba(' + nr + ',' + ng + ',' + nb + ',' + (0.22 * pulse * persp) + ')');
+                grad.addColorStop(0.5, 'rgba(' + nr + ',' + ng + ',' + nb + ',' + (0.08 * pulse * persp) + ')');
+                grad.addColorStop(1, 'rgba(' + nr + ',' + ng + ',' + nb + ',0)');
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.arc(sx, sy, radius, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            for (let i = 0; i < particles.length; i++) {
+                const p = particles[i];
+
+                // rotate around Y (galaxy spin)
+                const a = p.a + rot * (1 + p.speed * 8);
+                // base position in galaxy plane (x-z), y is height
+                let x = Math.cos(a) * p.r;
+                let z = Math.sin(a) * p.r;
+                let y = p.y;
+
+                // tilt the galaxy disk (rotate around X then Y for camera)
+                // rotate around X axis (tilt disk toward camera)
+                let y1 = y * cosX - z * sinX;
+                let z1 = y * sinX + z * cosX;
+                // rotate around Y axis (pan)
+                let x2 = x * cosY + z1 * sinY;
+                let z2 = -x * sinY + z1 * cosY;
+
+                // perspective projection
+                const persp = FOCAL / (FOCAL + z2 + Z_OFFSET);
+                if (persp <= 0) continue;
+                const sx = cx + x2 * persp * scale;
+                const sy = cy + y1 * persp * scale;
+
+                // skip offscreen
+                if (sx < -20 || sx > W + 20 || sy < -20 || sy > H + 20) continue;
+
+                // twinkle
+                p.tw += p.tws;
+                const twinkle = 0.7 + Math.sin(p.tw) * 0.3;
+                const depth = Math.min(1, persp);
+
+                const [cr, cg, cb] = p.color;
+                const alpha = Math.min(1, depth * twinkle * 1.1);
+                const size = Math.max(0.6, p.size * persp * scale);
+
+                // every star gets a soft glow halo for a luminous look
+                ctx.fillStyle = 'rgba(' + cr + ',' + cg + ',' + cb + ',' + (alpha * 0.22) + ')';
+                ctx.beginPath();
+                ctx.arc(sx, sy, size * 2.6, 0, Math.PI * 2);
+                ctx.fill();
+
+                // bright core of the star
+                ctx.fillStyle = 'rgba(' + cr + ',' + cg + ',' + cb + ',' + alpha + ')';
+                ctx.beginPath();
+                ctx.arc(sx, sy, size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // ---- bright core glow ----
+            const coreR = 180 * scale;
+            const coreGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, coreR);
+            coreGrad.addColorStop(0, 'rgba(255, 248, 225, 0.85)');
+            coreGrad.addColorStop(0.12, 'rgba(255, 235, 195, 0.55)');
+            coreGrad.addColorStop(0.35, 'rgba(200, 215, 255, 0.22)');
+            coreGrad.addColorStop(0.7, 'rgba(140, 170, 240, 0.08)');
+            coreGrad.addColorStop(1, 'rgba(110, 164, 212, 0)');
+            ctx.fillStyle = coreGrad;
+            ctx.beginPath();
+            ctx.arc(cx, cy, coreR, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.globalCompositeOperation = 'source-over';
+
+            requestAnimationFrame(frame);
+        }
+
+        // ---- events ----
+        window.addEventListener('resize', resize);
+        window.addEventListener('mousemove', function (e) {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        window.addEventListener('touchmove', function (e) {
+            if (e.touches[0]) {
+                mouseX = e.touches[0].clientX;
+                mouseY = e.touches[0].clientY;
+            }
+        }, { passive: true });
+        // init mouse to center so tilt starts neutral
+        mouseX = window.innerWidth / 2;
+        mouseY = window.innerHeight / 2;
+
+        resize();
+        frame();
+    })();
     </script>
 </body>
 </html>
