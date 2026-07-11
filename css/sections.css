@@ -246,158 +246,149 @@
     display: inline-block;
 }
 
-/* ===== TIMELINE — Cosmic Journey (planets + orbital rings + comet) ===== */
+/* ===== TIMELINE — Cosmic Roadmap (zigzag journey with colored planets) ===== */
 .timeline {
-    max-width: 640px;
-    margin: 0 auto;
     position: relative;
-    padding: 8px 0;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 20px 0;
 }
 
-/* The vertical energy line — centered, with a traveling comet */
+/* The road — thick gradient path down the center */
 .timeline::before {
     content: '';
     position: absolute;
-    inset-inline-start: 50%;
-    top: 24px;
-    bottom: 24px;
-    width: 2px;
+    left: 50%;
+    top: 40px;
+    bottom: 40px;
+    width: 4px;
     transform: translateX(-50%);
     background: linear-gradient(to bottom,
         transparent 0%,
-        var(--primary) 8%,
+        var(--primary) 6%,
         var(--accent) 50%,
-        var(--violet) 92%,
+        var(--violet) 94%,
         transparent 100%);
-    opacity: 0.35;
-    border-radius: 2px;
+    border-radius: 4px;
+    box-shadow: 0 0 12px rgba(110, 164, 212, 0.3);
 }
-/* Comet traveling down the line */
+/* Dashed road markings down the center */
 .timeline::after {
     content: '';
     position: absolute;
-    inset-inline-start: 50%;
-    top: 24px;
-    width: 8px;
-    height: 8px;
+    left: 50%;
+    top: 40px;
+    bottom: 40px;
+    width: 2px;
     transform: translateX(-50%);
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 0 10px var(--accent), 0 0 22px var(--primary), 0 0 36px rgba(110, 164, 212, 0.4);
-    animation: cometFall 7s linear infinite;
+    background-image: repeating-linear-gradient(to bottom,
+        rgba(255, 255, 255, 0.35) 0,
+        rgba(255, 255, 255, 0.35) 6px,
+        transparent 6px,
+        transparent 16px);
     pointer-events: none;
-}
-@keyframes cometFall {
-    0% { top: 18px; opacity: 0; }
-    8% { opacity: 1; }
-    92% { opacity: 1; }
-    100% { top: calc(100% - 18px); opacity: 0; }
 }
 
 .timeline-item {
-    position: relative;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 110px 1fr;
     align-items: center;
-    margin-bottom: 36px;
+    margin-bottom: 44px;
+    position: relative;
 }
 .timeline-item:last-child { margin-bottom: 0; }
 
-/* The planet node — glowing orb with orbital ring */
+/* Planet sits in the center column (the road) */
 .timeline-node {
+    grid-column: 2;
     position: relative;
-    width: 88px;
-    height: 88px;
+    width: 110px;
+    height: 110px;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 2;
-    margin-bottom: 20px;
+    z-index: 3;
+    justify-self: center;
 }
 .timeline-orb {
-    width: 76px;
-    height: 76px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    background: radial-gradient(circle at 30% 28%, #fff 0%, var(--primary-light) 22%, var(--primary) 52%, var(--primary-dark) 100%);
+    background: radial-gradient(circle at 30% 28%, #fff 0%, var(--planet-light, var(--primary-light)) 22%, var(--planet, var(--primary)) 55%, var(--planet-dark, var(--primary-dark)) 100%);
     box-shadow:
-        0 0 24px rgba(110, 164, 212, 0.7),
-        0 0 56px rgba(110, 164, 212, 0.35),
-        inset -8px -8px 18px rgba(0, 0, 0, 0.4),
-        inset 5px 5px 12px rgba(255, 255, 255, 0.18);
+        0 0 28px var(--planet-glow, rgba(110, 164, 212, 0.7)),
+        0 0 60px var(--planet-glow, rgba(110, 164, 212, 0.35)),
+        inset -9px -9px 20px rgba(0, 0, 0, 0.42),
+        inset 5px 5px 14px rgba(255, 255, 255, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-mono);
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 800;
     color: #fff;
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
     letter-spacing: 0.5px;
-    transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-out);
+    transition: transform 0.45s var(--ease-spring), box-shadow 0.45s var(--ease-out);
     position: relative;
     z-index: 2;
 }
-/* Orbital ring — rotates around the orb */
+/* Orbital ring with a moon dot */
 .timeline-ring {
     position: absolute;
-    inset: 0;
+    inset: 8px;
     border-radius: 50%;
-    border: 1px solid rgba(110, 164, 212, 0.35);
-    transform: rotate(0deg);
-    animation: ringSpin 14s linear infinite;
+    border: 1px solid var(--planet-ring, rgba(110, 164, 212, 0.4));
+    animation: ringSpin 16s linear infinite;
     pointer-events: none;
 }
 .timeline-ring::before {
     content: '';
     position: absolute;
     top: -3px;
-    inset-inline-start: 50%;
+    left: 50%;
     transform: translateX(-50%);
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 8px var(--accent), 0 0 14px var(--primary);
+    background: var(--planet-light, var(--accent));
+    box-shadow: 0 0 8px var(--planet-light, var(--accent)), 0 0 16px var(--planet, var(--primary));
 }
 @keyframes ringSpin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
 
-/* When the item scrolls into view, the orb pulses brighter */
+/* Pulsing glow when the planet scrolls into view */
 .timeline-item.visible .timeline-orb {
-    transform: scale(1.08);
+    transform: scale(1.1);
     box-shadow:
-        0 0 26px rgba(110, 164, 212, 0.8),
-        0 0 56px rgba(110, 164, 212, 0.4),
-        inset -6px -6px 14px rgba(0, 0, 0, 0.35),
-        inset 4px 4px 10px rgba(255, 255, 255, 0.2);
+        0 0 36px var(--planet-glow, rgba(110, 164, 212, 0.85)),
+        0 0 72px var(--planet-glow, rgba(110, 164, 212, 0.4)),
+        inset -9px -9px 20px rgba(0, 0, 0, 0.42),
+        inset 5px 5px 14px rgba(255, 255, 255, 0.25);
 }
 
-/* The card — glassmorphic, centered, with gradient top accent */
+/* Cards alternate sides: odd items = col 1, even items = col 3.
+   Grid columns flow with `direction`, so this mirrors automatically in RTL. */
 .timeline-card {
     background: var(--bg-glass);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 18px 22px;
-    width: 100%;
-    max-width: 460px;
-    text-align: center;
+    padding: 20px 24px;
     transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
     position: relative;
     overflow: hidden;
 }
-.timeline-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    inset-inline-start: 20%;
-    inset-inline-end: 20%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--primary), transparent);
-    opacity: 0.5;
+.timeline-item:nth-child(odd) .timeline-card {
+    grid-column: 1;
+    text-align: end;
+}
+.timeline-item:nth-child(even) .timeline-card {
+    grid-column: 3;
+    text-align: start;
 }
 .timeline-card:hover {
     border-color: var(--border-hover);
@@ -405,98 +396,110 @@
     box-shadow: var(--shadow-sm);
 }
 .timeline-title {
-    font-size: 1.08rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: var(--text-bright);
     margin-bottom: 6px;
     line-height: 1.4;
 }
 .timeline-desc {
-    font-size: 13.5px;
+    font-size: 14px;
     color: var(--text-muted);
     line-height: 1.65;
 }
 
-/* Roadmap (future) — violet planet with dashed ring */
+/* Roadmap (future) — special destination star */
 .timeline-future .timeline-orb {
-    background: radial-gradient(circle at 32% 30%, #fff 0%, var(--violet-light) 25%, var(--violet) 55%, #7c3aed 100%);
+    background: radial-gradient(circle at 30% 28%, #fff 0%, #fde68a 20%, var(--violet) 55%, #6d28d9 100%);
     box-shadow:
-        0 0 18px rgba(167, 139, 250, 0.6),
-        0 0 40px rgba(167, 139, 250, 0.3),
-        inset -6px -6px 14px rgba(0, 0, 0, 0.35),
-        inset 4px 4px 10px rgba(255, 255, 255, 0.15);
+        0 0 32px rgba(167, 139, 250, 0.8),
+        0 0 68px rgba(167, 139, 250, 0.4),
+        inset -9px -9px 20px rgba(0, 0, 0, 0.42),
+        inset 5px 5px 14px rgba(255, 255, 255, 0.25);
 }
 .timeline-future .timeline-ring {
     border-style: dashed;
-    border-color: rgba(167, 139, 250, 0.45);
+    border-color: rgba(167, 139, 250, 0.5);
 }
 .timeline-future .timeline-ring::before {
     background: var(--violet-light);
-    box-shadow: 0 0 8px var(--violet-light), 0 0 14px var(--violet);
+    box-shadow: 0 0 8px var(--violet-light), 0 0 16px var(--violet);
 }
 .timeline-future.visible .timeline-orb {
+    transform: scale(1.12);
     box-shadow:
-        0 0 26px rgba(167, 139, 250, 0.8),
-        0 0 56px rgba(167, 139, 250, 0.4),
-        inset -6px -6px 14px rgba(0, 0, 0, 0.35),
-        inset 4px 4px 10px rgba(255, 255, 255, 0.2);
+        0 0 40px rgba(167, 139, 250, 0.9),
+        0 0 80px rgba(167, 139, 250, 0.45),
+        inset -9px -9px 20px rgba(0, 0, 0, 0.42),
+        inset 5px 5px 14px rgba(255, 255, 255, 0.25);
 }
 .timeline-future .timeline-card {
-    border-color: rgba(167, 139, 250, 0.22);
-    background: linear-gradient(135deg, rgba(167, 139, 250, 0.05), var(--bg-glass));
-}
-.timeline-future .timeline-card::before {
-    background: linear-gradient(90deg, transparent, var(--violet), transparent);
+    border-color: rgba(167, 139, 250, 0.25);
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.06), var(--bg-glass));
 }
 .timeline-future .timeline-title { color: var(--violet-light); }
 
-/* Roadmap badge */
 .timeline-badge {
     display: inline-block;
     font-family: var(--font-mono);
     font-size: 10px;
     font-weight: 700;
     color: var(--violet-light);
-    background: rgba(167, 139, 250, 0.1);
-    border: 1px solid rgba(167, 139, 250, 0.25);
+    background: rgba(167, 139, 250, 0.12);
+    border: 1px solid rgba(167, 139, 250, 0.3);
     border-radius: var(--radius-full);
-    padding: 3px 10px;
-    letter-spacing: 1px;
+    padding: 3px 12px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     margin-bottom: 8px;
 }
 
-/* On mobile, keep the line on the start edge (left in LTR, right in RTL) */
-@media (max-width: 600px) {
-    .timeline { max-width: 100%; padding-inline-start: 0; }
+/* Per-phase planet colors (progression through the journey) */
+.timeline-item:nth-child(1) {
+    --planet: #6BA4D4; --planet-light: #8FC0E8; --planet-dark: #4A7AA8;
+    --planet-glow: rgba(110, 164, 212, 0.7); --planet-ring: rgba(110, 164, 212, 0.4);
+}
+.timeline-item:nth-child(2) {
+    --planet: #05d9e8; --planet-light: #67e8f9; --planet-dark: #0891b2;
+    --planet-glow: rgba(5, 217, 232, 0.6); --planet-ring: rgba(5, 217, 232, 0.4);
+}
+.timeline-item:nth-child(3) {
+    --planet: #4ade80; --planet-light: #86efac; --planet-dark: #16a34a;
+    --planet-glow: rgba(74, 222, 128, 0.55); --planet-ring: rgba(74, 222, 128, 0.4);
+}
+.timeline-item:nth-child(4) {
+    --planet: #fbbf24; --planet-light: #fcd34d; --planet-dark: #d97706;
+    --planet-glow: rgba(251, 191, 36, 0.6); --planet-ring: rgba(251, 191, 36, 0.4);
+}
+
+/* Mobile — single column with road on the start edge */
+@media (max-width: 720px) {
     .timeline::before,
     .timeline::after {
-        inset-inline-start: 30px;
+        left: 40px;
         transform: translateX(0);
     }
     .timeline-item {
+        grid-template-columns: 80px 1fr;
+        gap: 18px;
         align-items: flex-start;
-        flex-direction: row;
-        gap: 20px;
     }
     .timeline-node {
-        flex-shrink: 0;
-        width: 72px;
-        height: 72px;
-        margin-bottom: 0;
+        grid-column: 1;
+        width: 80px;
+        height: 80px;
+        justify-self: start;
     }
     .timeline-orb {
-        width: 62px;
-        height: 62px;
-        font-size: 0.85rem;
+        width: 64px;
+        height: 64px;
+        font-size: 0.9rem;
     }
-    .timeline-card {
+    .timeline-ring { inset: 6px; }
+    .timeline-item:nth-child(odd) .timeline-card,
+    .timeline-item:nth-child(even) .timeline-card {
+        grid-column: 2;
         text-align: start;
-        flex: 1;
-    }
-    .timeline-card::before {
-        inset-inline-start: 0;
-        inset-inline-end: 0;
     }
 }
 
@@ -680,12 +683,12 @@
 .project-compact .project-stack { margin-bottom: 12px; }
 .project-compact .project-link { padding: 6px 12px; font-size: 12px; }
 
-/* ===== TOOLKIT — bento grid (robust, no fragile spans) ===== */
+/* ===== TOOLKIT — original 12-column bento grid ===== */
 .toolkit-header { text-align: center; margin-bottom: 56px; }
 .toolkit-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
     max-width: 1080px;
     margin: 0 auto;
 }
@@ -693,26 +696,40 @@
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 26px;
-    transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    padding: 28px;
+    transition: all 0.35s var(--ease-out);
     position: relative;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
 }
+.tk-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    opacity: 0;
+    transition: opacity var(--transition);
+}
+.tk-card:hover::before { opacity: 0.5; }
 .tk-card:hover {
-    border-color: var(--border-hover);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 0 40px rgba(110, 164, 212, 0.2);
+    border-color: rgba(110, 164, 212, 0.5);
+    z-index: 2;
 }
-/* AI card — spans 2 columns (wide hero card) */
-.tk-ai { grid-column: span 2; }
-/* Also worked with — full width */
-.tk-wide { grid-column: span 3; }
+
+/* Spans that fill the 12-col grid:
+   Row 1: AI(7) + Engineering(5)
+   Row 2: AI cont.(7) + Cloud(5)
+   Row 3: Hardware(6) + Workflow(6)
+   Row 4: Also Worked With (12) full width */
+.tk-ai { grid-column: span 7; grid-row: span 2; }
+.tk-span-5 { grid-column: span 5; }
+.tk-span-6 { grid-column: span 6; }
+.tk-span-12 { grid-column: span 12; }
 
 .tk-more {
-    border-color: rgba(167, 139, 250, 0.22);
-    background: linear-gradient(135deg, rgba(167, 139, 250, 0.05), rgba(110, 164, 212, 0.03));
+    border-color: rgba(167, 139, 250, 0.25);
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.06), rgba(110, 164, 212, 0.04));
 }
 .tk-more .tk-icon { color: var(--violet); }
 .tk-more .tk-title {
@@ -727,13 +744,19 @@
     color: var(--violet-light);
 }
 .tk-more:hover {
-    border-color: rgba(167, 139, 250, 0.45);
+    border-color: rgba(167, 139, 250, 0.5);
+    box-shadow: 0 0 50px rgba(167, 139, 250, 0.15);
+}
+.tk-more:hover .tk-tag {
+    border-color: rgba(196, 181, 253, 0.45);
+    color: var(--violet-light);
+    background: rgba(167, 139, 250, 0.14);
 }
 
 .tk-icon { width: 28px; height: 28px; color: var(--accent); margin-bottom: 14px; flex-shrink: 0; }
 .tk-icon svg { width: 100%; height: 100%; stroke-width: 1.5; }
-.tk-title { font-size: 1.1rem; font-weight: 700; color: var(--text-bright); margin-bottom: 8px; letter-spacing: -0.3px; }
-.tk-narrative { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 18px; }
+.tk-title { font-size: 1.15rem; font-weight: 700; color: var(--text-bright); margin-bottom: 10px; letter-spacing: -0.3px; }
+.tk-narrative { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; }
 .tk-stack-label {
     font-size: 11px;
     font-weight: 700;
@@ -745,8 +768,10 @@
 }
 .tk-tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .tk-card:hover .tk-tag {
-    border-color: rgba(110, 164, 212, 0.35);
+    border-color: rgba(110, 164, 212, 0.4);
     color: var(--primary);
+    background: rgba(110, 164, 212, 0.12);
+    box-shadow: inset 0 0 16px rgba(158, 200, 232, 0.1), 0 0 20px rgba(110, 164, 212, 0.15);
 }
 
 /* ===== GITHUB ===== */

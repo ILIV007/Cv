@@ -1,9 +1,19 @@
-# 🌀 ILIV007 Portfolio — v2.0.7
+# 🌀 ILIV007 Portfolio — v2.0.8
 
 > **AI Automation Engineer | Computer Engineering Student**
 > A cosmic-themed, bilingual portfolio showcasing AI systems, automation workflows, and experimental software.
 
 🔗 **Live Demo**: [https://iliv007-cv.pages.dev](https://iliv007-cv.pages.dev)
+
+---
+
+## ✨ What's New in v2.0.8
+
+A **redesign & cleanup** release.
+
+- 🗺️ **Timeline is now a true roadmap** — zigzag layout with cards alternating left/right around a central glowing road. Each milestone is a uniquely colored planet (blue → cyan → green → gold → violet). Mirrors automatically in RTL via CSS grid.
+- 📦 **Toolkit restored to original** — 12-column bento grid with AI Systems as the large hero card (7 cols × 2 rows), Engineering/Cloud stacked beside it, Hardware/Workflow below, and Also Worked With full-width at the bottom.
+- 🧹 **Full code audit** — verified all file paths, class references, and cross-file consistency. Codebase is clean and ready for new content.
 
 ---
 
@@ -114,7 +124,7 @@ See [CHANGELOG](#-changelog) below for the full list.
 
 ---
 
-## 🗂️ Project Structure (v2.0.7)
+## 🗂️ Project Structure (v2.0.8)
 
 ```
 Cv-website/
@@ -225,6 +235,33 @@ Switching updates: all text content, text direction (`ltr`/`rtl`), font stack, a
 ---
 
 ## 📋 Changelog
+
+### v2.0.8 — Roadmap Timeline & Toolkit Restore
+**Timeline — true roadmap design**
+- Replaced the single-column layout with a **zigzag**: cards alternate left/right around a central vertical road
+- Uses a 3-column CSS grid (`1fr 110px 1fr`) — grid columns flow with `direction`, so the zigzag mirrors automatically in RTL with zero extra code
+- The road has a thick gradient path (blue → violet) with dashed white center markings
+- Each of the 5 milestones has a **uniquely colored planet**: 2022 blue, 2023 cyan, 2024 green, 2025 gold, 2026 violet (destination)
+- Planets pulse and scale up when scrolled into view
+- 2026 "Roadmap" milestone is a special violet destination star with a dashed orbital ring
+- Mobile (≤720px): collapses to single-column with road on the left
+
+**Toolkit — restored to v2.0.1 layout**
+- Reverted to the original 12-column bento grid
+- AI Systems: `span 7` × `span 2 rows` (large hero card)
+- Engineering Core & Cloud: `span 5` each (stacked beside AI)
+- Hardware & Workflow: `span 6` each (row below)
+- Also Worked With: `span 12` (full width, bottom)
+- Restored `tk-span-5`, `tk-span-6`, `tk-span-12` classes in HTML and CSS
+- Mobile collapses all to single column
+
+**Code audit**
+- Verified all file paths in `index.html` resolve correctly
+- Confirmed no orphaned class references (`tk-wide`, `tk-group-2`, `timeline-body`, `timeline-date` all removed)
+- All 12 referenced files exist (6 CSS, 3 JS, 3 assets)
+- Zero console errors in both LTR and RTL
+- Print stylesheet updated for the new timeline structure
+- Codebase is clean and ready for adding new content (projects, skills, timeline entries)
 
 ### v2.0.7 — Manifest Icon Fix
 - Fixed the PWA manifest icon path: `assets/favicon.svg` → `/assets/favicon.svg` (root-absolute). The relative path was resolving to `/assets/assets/favicon.svg` (404) because the manifest itself lives in `/assets/`.
