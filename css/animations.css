@@ -1,0 +1,62 @@
+/* ============================================================
+   Animations — Keyframes + motion utility classes
+   ============================================================ */
+
+@keyframes starAppear { to { opacity: 0.4; } }
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.6); }
+}
+
+@keyframes nebulaFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -20px) scale(1.05); }
+    66% { transform: translate(-20px, 15px) scale(0.95); }
+}
+
+@keyframes orbitSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+@keyframes neonFlicker {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(110, 164, 212, 0.2),
+                    inset 0 0 10px rgba(110, 164, 212, 0.05);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(110, 164, 212, 0.35),
+                    inset 0 0 15px rgba(110, 164, 212, 0.08);
+    }
+}
+
+/* Floating orbit tags */
+@keyframes float-1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes float-2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes float-3 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes float-4 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+.orbit-1 { animation: float-1 6s ease-in-out infinite; }
+.orbit-2 { animation: float-2 7s ease-in-out infinite 1s; }
+.orbit-3 { animation: float-3 5s ease-in-out infinite 2s; }
+.orbit-4 { animation: float-4 8s ease-in-out infinite 0.5s; }
+
+/* Fade-in on load for hero (subtle entrance) */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.hero-avatar { animation: fadeUp 0.8s var(--ease-out) both; }
+.hero-status { animation: fadeUp 0.8s var(--ease-out) 0.1s both; }
+.hero-channel { animation: fadeUp 0.8s var(--ease-out) 0.2s both; }
+.hero h1 { animation: fadeUp 0.8s var(--ease-out) 0.3s both; }
+.hero-tagline { animation: fadeUp 0.8s var(--ease-out) 0.4s both; }
+.hero-desc { animation: fadeUp 0.8s var(--ease-out) 0.5s both; }
+.hero-cta { animation: fadeUp 0.8s var(--ease-out) 0.6s both; }
+.quick-stats { animation: fadeUp 0.8s var(--ease-out) 0.7s both; }

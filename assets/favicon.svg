@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8FC0E8"/>
+      <stop offset="100%" stop-color="#4A7AA8"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6BA4D4" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#6BA4D4" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="100" height="100" rx="22" fill="#0B1120"/>
+  <circle cx="50" cy="50" r="40" fill="url(#glow)"/>
+  <circle cx="50" cy="50" r="34" fill="none" stroke="#6BA4D4" stroke-opacity="0.3" stroke-width="1"/>
+  <circle cx="50" cy="50" r="26" fill="none" stroke="#a78bfa" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="50" y="62" font-family="'JetBrains Mono', monospace" font-size="30" font-weight="900" fill="url(#g)" text-anchor="middle">IV</text>
+</svg>

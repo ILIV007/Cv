@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="100%" stop-color="#0f1729"/>
+    </linearGradient>
+    <linearGradient id="text" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#8FC0E8"/>
+      <stop offset="100%" stop-color="#9EC8E8"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6BA4D4"/>
+      <stop offset="100%" stop-color="#4A7AA8"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="20%" cy="20%" r="40%">
+      <stop offset="0%" stop-color="#6BA4D4" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#6BA4D4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="85%" cy="80%" r="40%">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+
+  <!-- grid -->
+  <g stroke="#6BA4D4" stroke-opacity="0.05" stroke-width="1">
+    <line x1="0" y1="105" x2="1200" y2="105"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+
+  <!-- stars -->
+  <g fill="#9EC8E8">
+    <circle cx="120" cy="90" r="1.5" opacity="0.6"/>
+    <circle cx="980" cy="140" r="2" opacity="0.5"/>
+    <circle cx="1100" cy="300" r="1.5" opacity="0.7"/>
+    <circle cx="80" cy="380" r="1.5" opacity="0.5"/>
+    <circle cx="350" cy="80" r="1" opacity="0.6"/>
+    <circle cx="750" cy="60" r="1.5" opacity="0.5"/>
+    <circle cx="1050" cy="520" r="1.5" opacity="0.6"/>
+    <circle cx="250" cy="560" r="1" opacity="0.5"/>
+    <circle cx="640" cy="540" r="1.5" opacity="0.6"/>
+    <circle cx="450" cy="500" r="1" opacity="0.5"/>
+  </g>
+
+  <!-- orbit ring -->
+  <circle cx="600" cy="200" r="70" fill="none" stroke="#ff2a6d" stroke-opacity="0.35" stroke-width="1.5"/>
+  <circle cx="600" cy="200" r="55" fill="none" stroke="#05d9e8" stroke-opacity="0.35" stroke-width="1.5"/>
+  <circle cx="600" cy="200" r="40" fill="none" stroke="#d4d4d8" stroke-opacity="0.4" stroke-width="1.5"/>
+  <circle cx="600" cy="200" r="34" fill="url(#accent)"/>
+  <text x="600" y="212" font-family="'JetBrains Mono', monospace" font-size="22" font-weight="900" fill="#0B1120" text-anchor="middle">IV</text>
+
+  <!-- name -->
+  <text x="600" y="370" font-family="Inter, sans-serif" font-size="84" font-weight="900" fill="url(#text)" text-anchor="middle" letter-spacing="-2">ILIV007</text>
+
+  <!-- tagline -->
+  <text x="600" y="425" font-family="Inter, sans-serif" font-size="30" font-weight="500" fill="#aab4c5" text-anchor="middle">AI Automation Engineer &amp; Computer Engineering Student</text>
+
+  <!-- divider -->
+  <line x1="450" y1="470" x2="750" y2="470" stroke="#6BA4D4" stroke-opacity="0.3" stroke-width="1"/>
+
+  <!-- badges -->
+  <text x="600" y="515" font-family="'JetBrains Mono', monospace" font-size="20" font-weight="600" fill="#9EC8E8" text-anchor="middle" letter-spacing="3">CLOUDFLARE  ·  AI  ·  AUTOMATION  ·  TELEGRAM</text>
+
+  <!-- url -->
+  <text x="600" y="575" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="400" fill="#8b97ab" text-anchor="middle">iliv007-cv.pages.dev</text>
+</svg>

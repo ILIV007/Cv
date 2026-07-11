@@ -1,20 +1,28 @@
-# 🌀 ILIV007 Portfolio
+# 🌀 ILIV007 Portfolio — v2.0.1
 
-> **AI Automation Engineer | Computer Engineering Student**  
+> **AI Automation Engineer | Computer Engineering Student**
 > A cosmic-themed, bilingual portfolio showcasing AI systems, automation workflows, and experimental software.
 
 🔗 **Live Demo**: [https://iliv007-cv.pages.dev](https://iliv007-cv.pages.dev)
 
 ---
 
-## ✨ Features
+## ✨ What's New in v2.0.1
 
-- 🌌 **Cosmic Animated Background**: Stars, nebulae, and grid overlay with subtle animations
-- 🌐 **Bilingual Support**: Instant English ↔ Persian (FA) language switching with RTL layout
-- 📱 **Fully Responsive**: Optimized for mobile, tablet, and desktop
-- 🎨 **Modern UI**: Glassmorphism cards, gradient accents, hover effects, and scroll animations
-- ⚡ **Performance Focused**: Pure HTML/CSS/JS, no heavy frameworks, fast load times
-- ♿ **Accessible**: Semantic HTML, focus states, and keyboard navigation support
+This is a **complete rebuild** with a clean, modular structure. Highlights:
+
+- 🗂️ **Modular structure** — split the single 991-line HTML into focused CSS/JS files
+- 🐛 **Critical bug fixes** — no-JS fallback, language persistence, broken toolkit grid
+- ♿ **Accessibility overhaul** — `prefers-reduced-motion`, skip link, focus management, ARIA labels, better contrast
+- ⚡ **Performance** — preconnect hints, immutable cache headers, optimized IntersectionObserver
+- 🔍 **SEO** — JSON-LD `Person` schema, canonical URL, `robots.txt`, `sitemap.xml`
+- 🛡️ **Security** — full `_headers` config (CSP, HSTS, X-Frame-Options, etc.)
+- 🎨 **Polished UI** — scroll progress bar, back-to-top button, refined colors & motion
+- 🖨️ **Print stylesheet** — CV is now print-friendly
+- 📱 **PWA manifest** + custom 404 page
+- 🌍 **OG image** (SVG) + favicon
+
+See [CHANGELOG](#-changelog) below for the full list.
 
 ---
 
@@ -32,25 +40,44 @@
 
 ## 🛠️ Tech Stack
 
-### Core Languages
+**Core:** Python · JavaScript · C++ · SQL · HTML/CSS
+**AI & Automation:** OpenRouter · Cloudflare Workers · N8N · Telegram API · Prompt Engineering · Hugging Face
+**Data & Infra:** SQL Server · SSMS · T-SQL · REST APIs · Docker · Cloudflare Pages
+**Tools:** Git · GitHub · VS Code · Google Colab · WordPress
+
+---
+
+## 🗂️ Project Structure (v2.0.1)
+
 ```
-Python • JavaScript • C++ • SQL • HTML/CSS
+Cv-website/
+├── index.html              # Main HTML (semantic, ~480 lines)
+├── 404.html                # Custom "Lost in space" 404 page
+├── css/
+│   ├── variables.css       # Design tokens (colors, spacing, motion)
+│   ├── base.css            # Reset, typography, body, a11y utilities
+│   ├── components.css      # Buttons, cards, tags, switches, widgets
+│   ├── sections.css        # Hero, about, timeline, projects, toolkit…
+│   ├── animations.css      # Keyframes + motion utility classes
+│   └── responsive.css      # Breakpoints, RTL, print, reduced-motion
+├── js/
+│   ├── i18n.js             # Bilingual switching + localStorage persistence
+│   ├── ui.js               # Stars, scroll reveal, progress bar, back-to-top
+│   └── main.js             # Entry point — wires everything on DOM ready
+├── assets/
+│   ├── favicon.svg         # SVG favicon with "IV" monogram
+│   ├── og-cover.svg        # Open Graph / Twitter card image (1200×630)
+│   └── manifest.json       # PWA web app manifest
+├── _headers                # Cloudflare security + cache headers
+├── _redirects              # 404 → custom page
+├── robots.txt              # Crawler rules
+├── sitemap.xml             # Sitemap
+├── .gitignore
+├── README.md               # This file
+└── LICENSE                 # MIT
 ```
 
-### AI & Automation
-```
-OpenRouter • Cloudflare Workers • N8N • Telegram API • Prompt Engineering • Hugging Face
-```
-
-### Data & Infrastructure
-```
-SQL Server • SSMS • T-SQL • REST APIs • Docker • Cloudflare Pages
-```
-
-### Tools & Workflow
-```
-Git • GitHub • VS Code • Google Colab • WordPress
-```
+> 💡 Still dependency-free — no build step required. Just static files.
 
 ---
 
@@ -62,8 +89,18 @@ git clone https://github.com/ILIV007/iliv007-cv.git
 cd iliv007-cv
 ```
 
-### 2. Open Locally
-Simply open `index.html` in your browser — no build step required!
+### 2. Run Locally
+Open `index.html` directly in your browser, **or** serve it for a more accurate environment:
+```bash
+# Python
+python -m http.server 8000
+
+# Node (npx)
+npx serve .
+
+# Bun
+bunx serve .
+```
 
 ### 3. Deploy to Cloudflare Pages (Recommended)
 ```bash
@@ -77,39 +114,98 @@ wrangler login
 wrangler pages deploy .
 ```
 
+> The `_headers` and `_redirects` files are picked up automatically by Cloudflare Pages.
+
 ### 4. Customization
-- Edit content in `data-*` attributes for bilingual text
-- Update links, projects, and contact info in the HTML
-- Modify CSS variables in `:root` for theming
-
----
-
-## 🗂️ Project Structure
-
-```
-iliv007-cv/
-├── index.html          # Main HTML file with all sections
-├── images/
-│   └── og-cover.webp   # Open Graph preview image
-├── README.md           # This file
-└── .gitignore          # Git ignore rules
-```
-
-> 💡 The entire site is contained in a single HTML file for simplicity and portability.
+- **Content** — edit bilingual text via `data-en` / `data-fa` attributes in `index.html`
+- **Theme** — tweak CSS variables in `css/variables.css`
+- **Links & projects** — edit directly in `index.html`
+- **OG image / favicon** — replace files in `assets/`
 
 ---
 
 ## 🌍 Language Switching
 
-The portfolio supports instant language toggling:
+- **EN** — English (LTR)
+- **FA** — Persian (RTL with Vazirmatn font)
 
-- **EN**: English (LTR layout)
-- **FA**: Persian (RTL layout with Vazirmatn font)
+The selected language is **persisted in `localStorage`** and restored on next visit. First-time visitors with a Persian browser get Persian automatically.
 
-Switching updates:
-- All text content via `data-en` / `data-fa` attributes
-- Text direction (`ltr`/`rtl`)
-- Font stack (`Inter` ↔ `Vazirmatn`)
+Switching updates: all text content, text direction (`ltr`/`rtl`), font stack, and component alignment.
+
+---
+
+## ♿ Accessibility
+
+- ✅ Semantic HTML5 (`header`, `main`, `section`, `article`, `nav`, `footer`)
+- ✅ Skip-to-content link
+- ✅ Keyboard-navigable with visible focus rings
+- ✅ `prefers-reduced-motion` respected (animations disabled on request)
+- ✅ ARIA labels on interactive controls; decorative icons hidden
+- ✅ Color contrast tuned for WCAG AA
+- ✅ No-JS fallback (all content visible without JavaScript)
+
+---
+
+## 🛡️ Security & Performance
+
+- **CSP**, `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`, HSTS via `_headers`
+- Immutable cache for CSS/JS/assets (1 year)
+- `preconnect` to both Google Fonts hosts
+- `IntersectionObserver` with `unobserve` to free memory
+- `requestAnimationFrame`-throttled scroll handlers
+
+---
+
+## 📋 Changelog
+
+### v2.0.1 — Rebuild
+**Critical fixes**
+- Fixed missing OG image & `.gitignore` (BUG-01)
+- No-JS fallback: reveal content always visible without JS (BUG-02)
+- Language preference persisted in `localStorage` (BUG-03)
+- Toolkit grid rebuilt to fill 12 columns with zero gaps (BUG-04)
+- Removed "0 GitHub Stars" stat; replaced with "3+ Years Coding" (BUG-05)
+
+**Accessibility**
+- `prefers-reduced-motion` support (A11Y-01)
+- Skip-to-content link (A11Y-02)
+- Focus management on anchor navigation (A11Y-03)
+- Brighter `--text-muted` / `--text-dim` for WCAG AA (A11Y-04)
+- ARIA labels on language buttons, `aria-hidden` on decorative SVGs (A11Y-05)
+- Removed inline `onclick`; uses `addEventListener` (A11Y-06)
+
+**Performance**
+- `preconnect` to `fonts.gstatic.com` (PERF-01)
+- Immutable cache headers for static assets (PERF-02)
+- `IntersectionObserver` now `unobserve`s after reveal (PERF-03)
+
+**SEO**
+- JSON-LD `Person` structured data (SEO-01)
+- Canonical URL (SEO-02)
+- `robots.txt` + `sitemap.xml` (SEO-03)
+- All OG/Twitter meta consistent
+
+**Security**
+- Full `_headers` config (CSP, HSTS, X-Frame-Options, etc.) (SEC-01)
+- Custom 404 page via `_redirects` (SEC-02)
+
+**Code quality**
+- Email unified to `iliv007@proton.me` everywhere (CODE-02)
+- Print stylesheet added (CODE-03)
+- PWA `manifest.json` (CODE-04)
+- 2026 timeline entry relabeled as "Roadmap" (CODE-05)
+- Inline styles removed; moved to classes (CODE-01)
+
+**New UI**
+- Scroll progress indicator (top)
+- Back-to-top floating button
+- Refined color palette + violet accent
+- Subtle hero entrance animations
+- Sticky footer that never floats
+
+### v1.0.0 — Initial release
+- Single-file `index.html` portfolio, cosmic theme, bilingual EN/FA
 
 ---
 
@@ -135,157 +231,9 @@ Distributed under the **MIT License**. See `LICENSE` for more information.
 
 - **Telegram**: [@iliv007](https://t.me/iliv007)
 - **Channel**: [t.me/ILIVIR3](https://t.me/ILIVIR3)
-- **Email**: [iliv007@poroton.me](mailto:iliv007@poroton.me)
+- **Email**: [iliv007@proton.me](mailto:iliv007@proton.me)
 - **GitHub**: [@ILIV007](https://github.com/ILIV007)
 
 ---
 
 > *"Built with curiosity, caffeine, and countless iterations."* ☕🚀
-
----
-
----
-
-# 🌀 پورتفولیو ILIV007
-
-> **مهندس خودکارسازی هوش مصنوعی | دانشجوی مهندسی کامپیوتر**  
-> یک پورتفولیو دوزبانه با تم کیهانی برای نمایش سیستم‌های هوش مصنوعی، گردش‌های کار خودکار و نرم‌افزارهای آزمایشی.
-
-🔗 **نسخه زنده**: [https://iliv007-cv.pages.dev](https://iliv007-cv.pages.dev)
-
----
-
-## ✨ ویژگی‌ها
-
-- 🌌 **پس‌زمینه کیهانی متحرک**: ستاره‌ها، سحابی‌ها و شبکه با انیمیشن‌های ظریف
-- 🌐 **پشتیبانی دوزبانه**: تغییر فوری زبان انگلیسی ↔ فارسی با چیدمان RTL
-- 📱 **واکنش‌گرا**: بهینه‌شده برای موبایل، تبلت و دسکتاپ
-- 🎨 **رابط کاربری مدرن**: کارت‌های شیشه‌ای، گرادیانت‌ها، افکت‌های هاور و انیمیشن اسکرول
-- ⚡ **بهینه برای عملکرد**: HTML/CSS/JS خالص، بدون فریم‌ورک‌های سنگین، بارگذاری سریع
-- ♿ **دسترس‌پذیر**: HTML معنایی، حالت‌های فوکوس و پشتیبانی از ناوبری با کیبورد
-
----
-
-## 🚀 پروژه‌های برجسته
-
-| پروژه | توضیحات | فناوری‌ها |
-|--------|---------|-----------|
-| **IV \| AI** | دستیار هوش مصنوعی چندمدلی روی Cloudflare Workers با سیستم Prompt Master | JavaScript, Cloudflare Workers, Telegram API, AI/LLM |
-| **Warehouse DB** | پایگاه داده SQL Server با ارزش‌گذاری موجودی LIFO و ردیابی خودکار | SQL Server, T-SQL, SSMS |
-| **Crypto Tracker** | هشدار خودکار قیمت ارزهای دیجیتال از CoinMarketCap API به تلگرام | N8N, Docker, Telegram Bot |
-| **Cafe Management** | اپلیکیشن کنسول با منوی پویا و پردازش سفارش | C++, Console UI |
-| **این پورتفولیو** | توسعه مکالمه‌ای تکراری، تم کیهانی | HTML, CSS, JavaScript |
-
----
-
-## 🛠️ پشته فناوری
-
-### زبان‌های اصلی
-```
-پایتون • جاوااسکریپت • ++C • SQL • HTML/CSS
-```
-
-### هوش مصنوعی و خودکارسازی
-```
-OpenRouter • Cloudflare Workers • N8N • Telegram API • Prompt Engineering • Hugging Face
-```
-
-### داده و زیرساخت
-```
-SQL Server • SSMS • T-SQL • REST APIs • Docker • Cloudflare Pages
-```
-
-### ابزارها و گردش کار
-```
-Git • GitHub • VS Code • Google Colab • WordPress
-```
-
----
-
-## 📦 نحوه استفاده
-
-### ۱. کلون کردن ریپازیتوری
-```bash
-git clone https://github.com/ILIV007/iliv007-cv.git
-cd iliv007-cv
-```
-
-### ۲. اجرای محلی
-فایل `index.html` را در مرورگر باز کنید — بدون نیاز به بیلد!
-
-### ۳. دیپلوی روی Cloudflare Pages (پیشنهادی)
-```bash
-# نصب Wrangler CLI
-npm install -g wrangler
-
-# ورود به Cloudflare
-wrangler login
-
-# دیپلوی
-wrangler pages deploy .
-```
-
-### ۴. شخصی‌سازی
-- ویرایش محتوا در ویژگی‌های `data-*` برای متن دوزبانه
-- به‌روزرسانی لینک‌ها، پروژه‌ها و اطلاعات تماس در HTML
-- تغییر متغیرهای CSS در `:root` برای تم‌دهی
-
----
-
-## 🗂️ ساختار پروژه
-
-```
-iliv007-cv/
-├── index.html          # فایل اصلی HTML با تمام بخش‌ها
-├── images/
-│   └── og-cover.webp   # تصویر پیش‌نمایش Open Graph
-├── README.md           # همین فایل
-└── .gitignore          # قوانین نادیده گرفتن گیت
-```
-
-> 💡 کل سایت در یک فایل HTML واحد قرار دارد تا ساده و قابل حمل باشد.
-
----
-
-## 🌍 تغییر زبان
-
-این پورتفولیو از تغییر فوری زبان پشتیبانی می‌کند:
-
-- **EN**: انگلیسی (چیدمان LTR)
-- **FA**: فارسی (چیدمان RTL با فونت وزیرمتن)
-
-با تغییر زبان موارد زیر به‌روز می‌شوند:
-- تمام متن‌ها از طریق ویژگی‌های `data-en` / `data-fa`
-- جهت متن (`ltr`/`rtl`)
-- مجموعه فونت (`Inter` ↔ `Vazirmatn`)
-
----
-
-## 🤝 مشارکت
-
-از پیشنهادات، گزارش باگ و مشارکت شما استقبال می‌شود!
-
-1. ریپازیتوری را فورک کنید
-2. برنچ ویژگی خود را بسازید: `git checkout -b feature/AmazingFeature`
-3. تغییرات را کامیت کنید: `git commit -m 'Add some AmazingFeature'`
-4. به برنچ پوش کنید: `git push origin feature/AmazingFeature`
-5. یک Pull Request باز کنید
-
----
-
-## 📄 لایسنس
-
-تحت **لایسنس MIT** توزیع شده است. برای اطلاعات بیشتر فایل `LICENSE` را ببینید.
-
----
-
-## 📬 تماس
-
-- **تلگرام**: [@iliv007](https://t.me/iliv007)
-- **کانال**: [t.me/ILIVIR3](https://t.me/ILIVIR3)
-- **ایمیل**: [iliv007@poroton.me](mailto:iliv007@poroton.me)
-- **گیت‌هاب**: [@ILIV007](https://github.com/ILIV007)
-
----
-
-> *"ساخته شده با کنجکاوی، کافئین و تکرارهای بی‌شمار."* ☕🚀

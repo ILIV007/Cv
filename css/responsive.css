@@ -1,0 +1,164 @@
+/* ============================================================
+   Responsive — Breakpoints, RTL, Print, Reduced motion, no-JS
+   ============================================================ */
+
+/* ===== BREAKPOINTS ===== */
+@media (max-width: 768px) {
+    .hero { padding: 120px 0 60px; }
+    .quick-stats { gap: 32px; }
+    .stat-number { font-size: 1.6rem; }
+    .section { padding: 60px 0; }
+    .lang-switch { top: 16px; right: 16px; }
+    .project-card { padding: 24px; }
+    .toolkit-grid { grid-template-columns: 1fr; }
+    .tk-ai, .tk-span-5, .tk-span-6, .tk-span-12 {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    .back-to-top { bottom: 16px; right: 16px; width: 42px; height: 42px; }
+}
+
+@media (max-width: 480px) {
+    .container { padding: 0 18px; }
+    .hero-cta .btn { flex: 1 1 auto; }
+    .quick-stats { gap: 24px; }
+}
+
+/* ===== TIMELINE MOBILE ===== */
+@media (max-width: 768px) {
+    .timeline::before { left: 20px; }
+    .timeline-item,
+    .timeline-item:nth-child(even) {
+        width: 100%;
+        left: 0;
+        padding-left: 50px;
+        padding-right: 0;
+        justify-content: flex-start;
+    }
+    .timeline-item .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: 13px;
+        right: auto;
+    }
+}
+
+/* ===== RTL FIXES ===== */
+[dir="rtl"] .about-quote {
+    border-left: none;
+    border-right: 2px solid var(--primary);
+    padding-left: 0;
+    padding-right: 20px;
+    text-align: right;
+}
+[dir="rtl"] .lang-switch { right: auto; left: 24px; }
+[dir="rtl"] .lang-info { text-align: right; }
+[dir="rtl"] .work-header { flex-direction: row-reverse; }
+[dir="rtl"] .hero h1 { letter-spacing: 0; font-weight: 800; }
+[dir="rtl"] .timeline-item { padding-right: 40px; padding-left: 0; }
+[dir="rtl"] .timeline-item:nth-child(even) { padding-left: 40px; padding-right: 0; }
+[dir="rtl"] .back-to-top { right: auto; left: 24px; }
+
+@media (max-width: 768px) {
+    [dir="rtl"] .lang-switch { left: 16px; right: auto; }
+    [dir="rtl"] .timeline-item,
+    [dir="rtl"] .timeline-item:nth-child(even) {
+        padding-left: 50px;
+        padding-right: 0;
+    }
+}
+
+/* ===== NO-JS FALLBACK (BUG-02 fix) ===== */
+/* Without JavaScript, reveal content is always visible.
+   The .js class is added by main.js on init. */
+.reveal { opacity: 1; transform: none; }
+.js .reveal { opacity: 0; transform: translateY(30px); }
+.js .reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== REDUCED MOTION (A11Y-01 fix) ===== */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .reveal { opacity: 1 !important; transform: none !important; }
+    .star, .nebula, .orbit-ring { animation: none !important; }
+}
+
+/* ===== PRINT STYLESHEET (CODE-03 fix) ===== */
+@media print {
+    .cosmic-bg,
+    .grid-overlay,
+    .lang-switch,
+    .scroll-progress,
+    .back-to-top,
+    .hero-avatar,
+    .hero-cta { display: none !important; }
+
+    body {
+        background: #fff !important;
+        color: #000 !important;
+        font-family: Georgia, serif !important;
+    }
+
+    .hero {
+        min-height: auto !important;
+        padding: 20px 0 !important;
+        text-align: left !important;
+    }
+    .hero h1 {
+        color: #000 !important;
+        -webkit-text-fill-color: #000 !important;
+        background: none !important;
+        font-size: 2rem !important;
+    }
+    .hero-tagline, .hero-desc { color: #333 !important; }
+
+    .section { padding: 16px 0 !important; page-break-inside: avoid; }
+    .section h2 { color: #000 !important; }
+
+    .card,
+    .edu-card,
+    .work-card,
+    .project-card,
+    .project-compact,
+    .tk-card,
+    .github-card,
+    .lang-card,
+    .contact-item,
+    .timeline-content {
+        background: #fff !important;
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+        color: #000 !important;
+    }
+
+    .timeline::before { background: #999 !important; }
+    .timeline-dot { background: #555 !important; box-shadow: none !important; }
+
+    .stat-number, .stat-label,
+    .project-title, .edu-title, .work-title,
+    .github-title, .lang-name,
+    .contact-value { color: #000 !important; }
+
+    .project-desc, .edu-detail, .work-desc,
+    .about-text, .section-desc { color: #333 !important; }
+
+    .tag, .tag-mono, .tag-pill, .badge, .work-tag { color: #000 !important; border-color: #999 !important; }
+
+    .footer { border-top: 1px solid #ccc !important; }
+    .footer::before, .footer-glow { display: none !important; }
+    .footer-text, .footer-link, .footer-version { color: #555 !important; }
+
+    a { color: #000 !important; text-decoration: underline; }
+    a[href]:after {
+        content: " (" attr(href) ")";
+        font-size: 10px;
+        color: #555;
+    }
+    a[href^="#"]:after,
+    a[href^="mailto:"]:after { content: ""; }
+
+    .reveal { opacity: 1 !important; transform: none !important; }
+}

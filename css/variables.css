@@ -1,0 +1,80 @@
+/* ============================================================
+   ILIV007 Portfolio — Design Tokens (v2.0.1)
+   All colors, spacing, shadows, and motion live here.
+   ============================================================ */
+
+:root {
+    /* ---- Brand Palette (cosmic blue + violet accent) ---- */
+    --primary: #6BA4D4;
+    --primary-light: #8FC0E8;
+    --primary-dark: #4A7AA8;
+    --accent: #9EC8E8;
+    --accent-glow: rgba(110, 164, 212, 0.16);
+
+    /* Secondary accent (violet) for "also worked with" + variety */
+    --violet: #a78bfa;
+    --violet-light: #c4b5fd;
+
+    /* Status colors */
+    --success: #4ade80;
+    --info: #38bdf8;
+
+    /* ---- Surfaces ---- */
+    --bg: #0B1120;
+    --bg-elevated: #0f1729;
+    --bg-card: #111827;
+    --bg-card-hover: #161f32;
+    --bg-glass: rgba(17, 24, 39, 0.72);
+
+    /* ---- Text (tuned for WCAG AA on --bg) ---- */
+    --text: #e8edf5;
+    --text-bright: #f8fafc;
+    --text-muted: #aab4c5;
+    --text-dim: #8b97ab;
+
+    /* ---- Borders ---- */
+    --border: rgba(148, 163, 184, 0.10);
+    --border-hover: rgba(110, 164, 212, 0.35);
+    --border-strong: rgba(148, 163, 184, 0.22);
+
+    /* ---- Effects ---- */
+    --glow: rgba(110, 164, 212, 0.12);
+    --star-glow: rgba(158, 200, 232, 0.22);
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.25);
+    --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0 60px var(--glow);
+
+    /* Orbit neon colors */
+    --orbit-red: #ff2a6d;
+    --orbit-blue: #05d9e8;
+    --orbit-silver: #d4d4d8;
+
+    /* ---- Typography ---- */
+    --font-en: 'Inter', 'Vazirmatn', system-ui, sans-serif;
+    --font-fa: 'Vazirmatn', 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+    /* ---- Spacing scale ---- */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+    --space-2xl: 6rem;
+
+    /* ---- Layout ---- */
+    --container-max: 1080px;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 24px;
+    --radius-full: 999px;
+
+    /* ---- Motion ---- */
+    --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --transition-fast: 0.2s var(--ease-out);
+    --transition: 0.3s var(--ease-out);
+    --transition-slow: 0.5s var(--ease-out);
+}

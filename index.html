@@ -10,593 +10,156 @@
     <meta name="keywords" content="AI Automation Engineer, Python Developer, Telegram Bot Developer, Cloudflare Workers, SQL Server, Portfolio, ILIV007">
     <meta name="author" content="ILIV007">
     <meta name="theme-color" content="#0B1120">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://iliv007-cv.pages.dev/">
 
     <!-- Open Graph -->
     <meta property="og:title" content="ILIV007 | AI Automation Engineer">
     <meta property="og:description" content="Portfolio of ILIV007 — AI systems, automation tools, databases, and experimental software.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://iliv007-cv.pages.dev/">
-    <meta property="og:image" content="https://iliv007-cv.pages.dev/images/og-cover.webp">
+    <meta property="og:image" content="https://iliv007-cv.pages.dev/assets/og-cover.svg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="fa_IR">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ILIV007 | AI Automation Engineer">
     <meta name="twitter:description" content="AI systems, automation tools, and experimental software.">
-    <meta name="twitter:image" content="https://iliv007-cv.pages.dev/images/og-cover.webp">
+    <meta name="twitter:image" content="https://iliv007-cv.pages.dev/assets/og-cover.svg">
 
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌀</text></svg>">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/favicon.svg">
 
-    <!-- Fonts -->
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="assets/manifest.json">
+
+    <!-- Fonts (preconnect to both font hosts — PERF-01 fix) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --primary: #5B8DB8;
-            --primary-light: #7BA3C8;
-            --primary-dark: #3D6A8F;
-            --accent: #8BB8E0;
-            --accent-glow: rgba(139, 184, 224, 0.15);
-            --bg: #0B1120;
-            --bg-elevated: #0f1729;
-            --bg-card: #111827;
-            --bg-card-hover: #161f32;
-            --bg-glass: rgba(17, 24, 39, 0.7);
-            --text: #e2e8f0;
-            --text-bright: #f1f5f9;
-            --text-muted: #94a3b8;
-            --text-dim: #64748b;
-            --border: rgba(148, 163, 184, 0.08);
-            --border-hover: rgba(91, 141, 184, 0.2);
-            --glow: rgba(91, 141, 184, 0.1);
-            --star-glow: rgba(139, 184, 224, 0.2);
-            --orbit-red: #ff2a6d;
-            --orbit-blue: #05d9e8;
-            --orbit-black: #c0c0c0;
-            --more-purple: #a78bfa;
-        }
+    <!-- Styles (split into focused files) -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Inter', 'Vazirmatn', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        body.fa-mode { font-family: 'Vazirmatn', 'Inter', sans-serif; }
-        body.en-mode { font-family: 'Inter', 'Vazirmatn', sans-serif; }
-
-        /* ===== COSMIC BACKGROUND ===== */
-        .cosmic-bg {
-            position: fixed; top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none; z-index: 0; overflow: hidden;
-        }
-        .star {
-            position: absolute; width: 2px; height: 2px;
-            background: var(--accent); border-radius: 50%; opacity: 0;
-            animation: starAppear 0.5s ease forwards, twinkle 4s infinite ease-in-out;
-        }
-        @keyframes starAppear { to { opacity: 0.4; } }
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; transform: scale(1); }
-            50% { opacity: 0.9; transform: scale(1.6); }
-        }
-        .nebula {
-            position: absolute; border-radius: 50%; filter: blur(80px);
-            opacity: 0.04; animation: nebulaFloat 20s infinite ease-in-out;
-        }
-        .nebula-1 { width: 600px; height: 600px; background: var(--primary); top: -200px; right: -100px; }
-        .nebula-2 { width: 500px; height: 500px; background: var(--accent); bottom: -150px; left: -100px; animation-delay: -5s; }
-        .nebula-3 { width: 400px; height: 400px; background: var(--primary-light); top: 40%; left: 60%; animation-delay: -10s; }
-        @keyframes nebulaFloat {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -20px) scale(1.05); }
-            66% { transform: translate(-20px, 15px) scale(0.95); }
-        }
-        .grid-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image:
-                linear-gradient(rgba(91, 141, 184, 0.015) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(91, 141, 184, 0.015) 1px, transparent 1px);
-            background-size: 60px 60px; pointer-events: none; z-index: 0;
-            mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
-            -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
-        }
-
-        /* ===== LANGUAGE SWITCHER ===== */
-        .lang-switch {
-            position: fixed; top: 24px; right: 24px; z-index: 1000;
-            display: flex; gap: 4px; background: var(--bg-glass);
-            padding: 5px; border-radius: 12px; border: 1px solid var(--border);
-            backdrop-filter: blur(20px); transition: all 0.3s;
-        }
-        .lang-switch:hover { border-color: var(--border-hover); }
-        .lang-btn {
-            padding: 8px 16px; border: none; background: transparent;
-            color: var(--text-dim); cursor: pointer; border-radius: 8px;
-            font-family: inherit; font-size: 13px; font-weight: 600;
-            transition: all 0.3s; letter-spacing: 0.5px;
-        }
-        .lang-btn.active {
-            background: var(--primary); color: white;
-            box-shadow: 0 4px 15px rgba(91, 141, 184, 0.3);
-        }
-        .lang-btn:hover:not(.active) { color: var(--text); background: rgba(255,255,255,0.05); }
-
-        /* ===== CONTAINER ===== */
-        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
-
-        /* ===== HERO ===== */
-        .hero {
-            min-height: 100dvh; display: flex; align-items: center; justify-content: center;
-            text-align: center; padding: 140px 0 100px; position: relative;
-        }
-        .hero-content { max-width: 780px; }
-        .hero-avatar {
-            width: 100px; height: 100px; margin: 0 auto 28px;
-            position: relative; display: flex; align-items: center; justify-content: center;
-        }
-        .avatar-core {
-            width: 56px; height: 56px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 900; font-size: 20px; color: white;
-            box-shadow: 0 0 30px rgba(91, 141, 184, 0.4);
-            position: relative; z-index: 3;
-            font-family: 'JetBrains Mono', monospace;
-        }
-        .orbit-ring {
-            position: absolute; border: 1.5px solid rgba(139, 184, 224, 0.25);
-            border-radius: 50%; animation: orbitSpin linear infinite;
-        }
-        .orbit-ring::before {
-            content: ''; position: absolute; width: 6px; height: 6px;
-            border-radius: 50%;
-        }
-        
-        /* Solar System Orbits — Realistic speeds + Neon colors */
-        .hero-avatar .orbit-ring:nth-child(1) { 
-            width: 100px; height: 100px; 
-            animation-duration: 20s; 
-            border-color: rgba(255, 42, 109, 0.35); 
-            box-shadow: 0 0 20px rgba(255, 42, 109, 0.15), inset 0 0 10px rgba(255, 42, 109, 0.05);
-        }
-        .hero-avatar .orbit-ring:nth-child(1)::before { 
-            top: -3px; left: 50%; transform: translateX(-50%); 
-            background: var(--orbit-red); 
-            box-shadow: 0 0 10px var(--orbit-red), 0 0 20px var(--orbit-red);
-        }
-        .hero-avatar .orbit-ring:nth-child(2) { 
-            width: 80px; height: 80px; 
-            animation-duration: 14s; 
-            border-color: rgba(5, 217, 232, 0.35); 
-            box-shadow: 0 0 20px rgba(5, 217, 232, 0.15), inset 0 0 10px rgba(5, 217, 232, 0.05);
-        }
-        .hero-avatar .orbit-ring:nth-child(2)::before { 
-            bottom: -3px; left: 50%; transform: translateX(-50%); 
-            background: var(--orbit-blue); 
-            box-shadow: 0 0 10px var(--orbit-blue), 0 0 20px var(--orbit-blue);
-        }
-        .hero-avatar .orbit-ring:nth-child(3) { 
-            width: 64px; height: 64px; 
-            animation-duration: 8s; 
-            border-color: rgba(192, 192, 192, 0.4); 
-            box-shadow: 0 0 20px rgba(192, 192, 192, 0.15), inset 0 0 10px rgba(192, 192, 192, 0.05);
-        }
-        .hero-avatar .orbit-ring:nth-child(3)::before { 
-            top: 50%; right: -3px; transform: translateY(-50%); 
-            background: var(--orbit-black); 
-            box-shadow: 0 0 10px #ffffff, 0 0 20px rgba(255,255,255,0.6);
-        }
-        @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-        .hero-status {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 8px 18px; background: rgba(91, 141, 184, 0.08);
-            border: 1px solid rgba(91, 141, 184, 0.15); border-radius: 100px;
-            font-size: 13px; color: var(--accent); margin-bottom: 16px;
-            font-weight: 500; letter-spacing: 0.5px;
-        }
-        .hero-status .pulse { width: 8px; height: 8px; background: #4ade80; border-radius: 50%; animation: pulse 2s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
-
-        .hero-channel {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 10px 20px; background: rgba(34, 158, 217, 0.08);
-            border: 1px solid rgba(34, 158, 217, 0.2); border-radius: 100px;
-            font-size: 14px; color: #38bdf8; margin-bottom: 32px;
-            font-weight: 600; text-decoration: none; transition: all 0.3s;
-        }
-        .hero-channel:hover { background: rgba(34, 158, 217, 0.15); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(34, 158, 217, 0.15); }
-        .hero-channel .pulse { width: 8px; height: 8px; background: #38bdf8; border-radius: 50%; animation: pulse 2s infinite; }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 5.5vw, 4.2rem); font-weight: 900; line-height: 1.08;
-            margin-bottom: 20px; letter-spacing: -1.5px;
-            background: linear-gradient(135deg, #fff 0%, var(--primary-light) 50%, var(--accent) 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
-        .hero-tagline { font-size: clamp(1.1rem, 2vw, 1.35rem); color: var(--text-muted); margin-bottom: 16px; font-weight: 400; line-height: 1.6; }
-        .hero-desc { font-size: 1rem; color: var(--text-dim); margin-bottom: 40px; max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.7; }
-        .hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-        .btn {
-            padding: 14px 28px; border-radius: 12px; font-family: inherit; font-size: 14px;
-            font-weight: 600; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none; display: inline-flex; align-items: center; gap: 8px; border: none; letter-spacing: 0.3px;
-        }
-        .btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; box-shadow: 0 4px 20px rgba(91, 141, 184, 0.3); font-size: 15px; padding: 16px 32px; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(91, 141, 184, 0.45); }
-        .btn-ghost { background: transparent; color: var(--text-muted); border: 1.5px solid var(--border); }
-        .btn-ghost:hover { background: rgba(255,255,255,0.03); border-color: var(--border-hover); color: var(--text); transform: translateY(-2px); }
-        .btn-channel { background: rgba(34, 158, 217, 0.1); color: #38bdf8; border: 1.5px solid rgba(34, 158, 217, 0.25); }
-        .btn-channel:hover { background: rgba(34, 158, 217, 0.2); border-color: rgba(34, 158, 217, 0.4); transform: translateY(-2px); }
-
-        /* ===== NEON GITHUB BUTTON ===== */
-        .btn-github-neon {
-            background: rgba(91, 141, 184, 0.06);
-            color: var(--accent);
-            border: 1.5px solid rgba(91, 141, 184, 0.5);
-            box-shadow: 0 0 15px rgba(91, 141, 184, 0.2), inset 0 0 10px rgba(91, 141, 184, 0.05);
-            position: relative;
-            overflow: hidden;
-            animation: neonFlicker 4s infinite alternate;
-        }
-        .btn-github-neon::before {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            background: linear-gradient(45deg, var(--primary), var(--accent), var(--primary));
-            border-radius: 14px;
-            opacity: 0.2;
-            z-index: -1;
-            filter: blur(6px);
-        }
-        .btn-github-neon:hover {
-            box-shadow: 0 0 30px rgba(91, 141, 184, 0.4), inset 0 0 20px rgba(91, 141, 184, 0.1);
-            border-color: var(--accent);
-            transform: translateY(-2px);
-            color: var(--text-bright);
-        }
-        @keyframes neonFlicker {
-            0%, 100% { box-shadow: 0 0 15px rgba(91, 141, 184, 0.2), inset 0 0 10px rgba(91, 141, 184, 0.05); }
-            50% { box-shadow: 0 0 25px rgba(91, 141, 184, 0.35), inset 0 0 15px rgba(91, 141, 184, 0.08); }
-        }
-
-        /* ===== QUICK STATS ===== */
-        .quick-stats { display: flex; justify-content: center; gap: 48px; margin-top: 60px; flex-wrap: wrap; }
-        .stat-item { text-align: center; }
-        .stat-number { font-size: 2rem; font-weight: 800; color: var(--text-bright); line-height: 1; margin-bottom: 6px; font-family: 'JetBrains Mono', monospace; }
-        .stat-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
-
-        /* ===== SECTIONS ===== */
-        .section { padding: 90px 0; }
-        .section-header { text-align: center; margin-bottom: 56px; }
-        .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: var(--primary); margin-bottom: 16px; }
-        .section h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px; color: var(--text-bright); }
-        .section-desc { color: var(--text-muted); font-size: 1.05rem; max-width: 520px; margin: 0 auto; line-height: 1.7; }
-
-        /* ===== ABOUT ===== */
-        .about-content { max-width: 680px; margin: 0 auto; text-align: center; }
-        .about-text { font-size: 1.1rem; color: var(--text-muted); line-height: 1.9; margin-bottom: 24px; }
-        .about-quote { font-style: italic; color: var(--text-dim); font-size: 1rem; border-left: 2px solid var(--primary); padding-left: 20px; text-align: left; display: inline-block; }
-
-        /* ===== TIMELINE ===== */
-        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
-        .timeline::before {
-            content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
-            background: linear-gradient(to bottom, transparent, var(--primary), var(--accent), transparent);
-            transform: translateX(-50%); opacity: 0.3;
-        }
-        .timeline-item { display: flex; justify-content: flex-end; padding-right: 40px; position: relative; margin-bottom: 40px; width: 50%; }
-        .timeline-item:nth-child(even) { justify-content: flex-start; padding-right: 0; padding-left: 40px; left: 50%; }
-        .timeline-dot {
-            width: 14px; height: 14px; background: var(--primary); border-radius: 50%;
-            position: absolute; right: -7px; top: 4px; box-shadow: 0 0 15px var(--primary);
-            border: 3px solid var(--bg);
-        }
-        .timeline-item:nth-child(even) .timeline-dot { right: auto; left: -7px; }
-        .timeline-content { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px 24px; max-width: 320px; }
-        .timeline-date { font-size: 12px; color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; }
-        .timeline-title { font-size: 1rem; font-weight: 700; color: var(--text-bright); margin-bottom: 4px; }
-        .timeline-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
-        @media (max-width: 768px) {
-            .timeline::before { left: 20px; }
-            .timeline-item, .timeline-item:nth-child(even) { width: 100%; left: 0; padding-left: 50px; padding-right: 0; justify-content: flex-start; }
-            .timeline-item .timeline-dot, .timeline-item:nth-child(even) .timeline-dot { left: 13px; right: auto; }
-        }
-
-        /* ===== EDUCATION ===== */
-        .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
-        .edu-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 28px; transition: all 0.4s; }
-        @media (hover: hover) {
-            .edu-card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-        }
-        .edu-date { font-size: 12px; color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
-        .edu-title { font-size: 1.15rem; font-weight: 700; color: var(--text-bright); margin-bottom: 8px; line-height: 1.4; }
-        .edu-school { font-size: 14px; color: var(--text-muted); margin-bottom: 12px; }
-        .edu-detail { font-size: 14px; color: var(--text-dim); line-height: 1.7; }
-
-        /* ===== WORK HISTORY ===== */
-        .work-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 32px; max-width: 720px; margin: 0 auto; transition: all 0.4s; }
-        @media (hover: hover) {
-            .work-card:hover { border-color: var(--border-hover); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-        }
-        .work-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
-        .work-title { font-size: 1.2rem; font-weight: 700; color: var(--text-bright); }
-        .work-meta { font-size: 13px; color: var(--text-dim); font-weight: 500; }
-        .work-desc { color: var(--text-muted); font-size: 15px; line-height: 1.8; margin-bottom: 16px; }
-        .work-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-        .work-tag { padding: 5px 12px; background: rgba(91, 141, 184, 0.08); border: 1px solid rgba(91, 141, 184, 0.15); border-radius: 8px; font-size: 12px; color: var(--accent); font-weight: 600; }
-
-        /* ===== PROJECTS ===== */
-        .project-featured { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        @media (min-width: 768px) { .project-featured { grid-template-columns: repeat(2, 1fr); } }
-        .project-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 32px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; }
-        .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent); opacity: 0; transition: opacity 0.4s; }
-        @media (hover: hover) {
-            .project-card:hover { border-color: var(--border-hover); transform: translateY(-5px); box-shadow: 0 25px 50px rgba(0,0,0,0.35), 0 0 60px var(--glow); }
-            .project-card:hover::before { opacity: 1; }
-        }
-        .project-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; background: rgba(91, 141, 184, 0.1); border: 1px solid rgba(91, 141, 184, 0.2); border-radius: 8px; font-size: 11px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
-        .project-icon { width: 48px; height: 48px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; transition: all 0.3s; }
-        @media (hover: hover) {
-            .project-card:hover .project-icon { border-color: var(--border-hover); box-shadow: 0 0 20px var(--star-glow); }
-        }
-        .project-title { font-size: 1.25rem; font-weight: 700; color: var(--text-bright); margin-bottom: 10px; line-height: 1.3; }
-        .project-desc { color: var(--text-muted); font-size: 14px; line-height: 1.8; margin-bottom: 16px; }
-        .project-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
-        .stack-tag { padding: 4px 10px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px; font-size: 11px; color: var(--text-muted); font-weight: 600; font-family: 'JetBrains Mono', monospace; }
-        .project-links { display: flex; gap: 10px; flex-wrap: wrap; }
-        .project-link { padding: 8px 16px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 10px; font-size: 13px; color: var(--text); text-decoration: none; font-weight: 600; transition: all 0.3s; display: inline-flex; align-items: center; gap: 6px; }
-        .project-link:hover { background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-1px); }
-        .projects-compact { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 20px; }
-        .project-compact { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; transition: all 0.3s; }
-        @media (hover: hover) {
-            .project-compact:hover { border-color: var(--border-hover); transform: translateY(-3px); }
-        }
-        .project-compact .project-title { font-size: 1.05rem; margin-bottom: 8px; }
-        .project-compact .project-desc { font-size: 13px; margin-bottom: 12px; }
-        .project-compact .project-stack { margin-bottom: 0; }
-
-        /* ===== TOOLKIT ===== */
-        .toolkit-header { text-align: center; margin-bottom: 56px; }
-        .toolkit-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; max-width: 1080px; margin: 0 auto; }
-        
-        .tk-card {
-            background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 28px;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;
-        }
-        .tk-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--primary), transparent); opacity: 0; transition: opacity 0.4s; }
-        @media (hover: hover) {
-            .tk-card:hover::before { opacity: 0.5; }
-            .tk-card:hover { box-shadow: 0 0 40px rgba(91, 141, 184, 0.2); border-color: rgba(91, 141, 184, 0.5); z-index: 2; }
-        }
-        .tk-ai { grid-column: span 7; grid-row: span 2; }
-        .tk-group { grid-column: span 5; }
-        .tk-group-2 { grid-column: span 4; }
-        .tk-more { 
-            grid-column: span 6; 
-            justify-self: center; 
-            border-color: rgba(167, 139, 250, 0.25);
-            background: linear-gradient(135deg, rgba(167, 139, 250, 0.06), rgba(91, 141, 184, 0.04));
-        }
-        .tk-more .tk-icon { color: var(--more-purple); }
-        .tk-more .tk-title { 
-            background: linear-gradient(135deg, #c084fc, #a78bfa); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-            background-clip: text; 
-        }
-        .tk-more .tk-tag {
-            background: rgba(167, 139, 250, 0.08);
-            border-color: rgba(192, 132, 252, 0.25);
-            color: #c084fc;
-        }
-        @media (hover: hover) {
-            .tk-more:hover { 
-                border-color: rgba(167, 139, 250, 0.5); 
-                box-shadow: 0 0 50px rgba(167, 139, 250, 0.15); 
-            }
-            .tk-more:hover .tk-tag {
-                border-color: rgba(192, 132, 252, 0.45);
-                color: #d8b4fe;
-                background: rgba(167, 139, 250, 0.14);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .toolkit-grid { grid-template-columns: 1fr; }
-            .tk-ai, .tk-group, .tk-group-2, .tk-more { grid-column: span 1; grid-row: span 1; justify-self: stretch; }
-        }
-
-        .tk-icon { width: 28px; height: 28px; color: var(--accent); margin-bottom: 14px; flex-shrink: 0; }
-        .tk-icon svg { width: 100%; height: 100%; stroke-width: 1.5; }
-        .tk-title { font-size: 1.15rem; font-weight: 700; color: var(--text-bright); margin-bottom: 10px; letter-spacing: -0.3px; }
-        .tk-narrative { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; }
-        .tk-stack-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-dim); margin-bottom: 12px; }
-        
-        .tk-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tk-tag {
-            padding: 6px 14px; background: rgba(91, 141, 184, 0.08);
-            border: 1px solid rgba(139, 184, 224, 0.25); border-radius: 999px;
-            font-size: 11px; color: var(--accent); font-weight: 700;
-            font-family: 'JetBrains Mono', monospace; transition: all 0.3s;
-            box-shadow: inset 0 0 12px rgba(139, 184, 224, 0.05), 0 0 12px rgba(91, 141, 184, 0.08);
-        }
-        @media (hover: hover) {
-            .tk-card:hover .tk-tag { border-color: rgba(91, 141, 184, 0.4); color: var(--primary); background: rgba(91, 141, 184, 0.12); box-shadow: inset 0 0 16px rgba(139, 184, 224, 0.1), 0 0 20px rgba(91, 141, 184, 0.15); }
-        }
-
-        /* Floating orbit animations */
-        @keyframes float-1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-        @keyframes float-2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-        @keyframes float-3 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-        @keyframes float-4 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
-        .orbit-1 { animation: float-1 6s ease-in-out infinite; }
-        .orbit-2 { animation: float-2 7s ease-in-out infinite 1s; }
-        .orbit-3 { animation: float-3 5s ease-in-out infinite 2s; }
-        .orbit-4 { animation: float-4 8s ease-in-out infinite 0.5s; }
-
-        /* ===== GITHUB ===== */
-        .github-section { text-align: center; }
-        .github-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 40px 32px; max-width: 600px; margin: 0 auto; transition: all 0.4s; }
-        @media (hover: hover) {
-            .github-card:hover { border-color: var(--border-hover); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-        }
-        .github-icon { font-size: 48px; margin-bottom: 16px; }
-        .github-title { font-size: 1.3rem; font-weight: 700; color: var(--text-bright); margin-bottom: 8px; }
-        .github-desc { color: var(--text-muted); font-size: 15px; margin-bottom: 24px; line-height: 1.7; }
-        .github-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: var(--bg-elevated); border: 1.5px solid var(--border); border-radius: 12px; color: var(--text); text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.3s; }
-        .github-btn:hover { background: var(--primary); border-color: var(--primary); color: white; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(91, 141, 184, 0.3); }
-
-        /* ===== LANGUAGES ===== */
-        .languages-row { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
-        .lang-card { display: flex; align-items: center; gap: 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 18px 28px; transition: all 0.3s; min-width: 220px; }
-        @media (hover: hover) {
-            .lang-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
-        }
-        .lang-emoji { font-size: 32px; }
-        .lang-info { text-align: left; }
-        .lang-name { font-weight: 700; font-size: 15px; color: var(--text-bright); }
-        .lang-level { font-size: 13px; color: var(--text-dim); margin-top: 2px; }
-        .lang-card-small { min-width: 180px; padding: 14px 20px; }
-        .lang-card-small .lang-emoji { font-size: 24px; }
-        .lang-card-small .lang-name { font-size: 13px; }
-        .lang-card-small .lang-level { font-size: 11px; }
-
-        /* ===== CONTACT ===== */
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; max-width: 800px; margin: 0 auto; }
-        .contact-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; text-align: center; transition: all 0.35s; text-decoration: none; color: var(--text); }
-        @media (hover: hover) {
-            .contact-item:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: 0 12px 30px var(--glow); }
-        }
-        .contact-emoji { font-size: 28px; margin-bottom: 10px; transition: transform 0.3s; }
-        .contact-item:hover .contact-emoji { transform: scale(1.15); }
-        .contact-label { font-size: 12px; color: var(--text-dim); margin-bottom: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-        .contact-value { font-size: 14px; font-weight: 700; word-break: break-word; }
-
-        /* ===== FOOTER ===== */
-        .footer { padding: 50px 0 30px; text-align: center; border-top: 1px solid var(--border); margin-top: 60px; position: relative; }
-        .footer::before {
-            content: ''; position: absolute; top: -120px; left: 0; right: 0; height: 120px;
-            background: linear-gradient(to top, var(--bg), transparent); pointer-events: none;
-        }
-        .footer-glow {
-            position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 300px; height: 60px;
-            background: radial-gradient(ellipse at center, rgba(91, 141, 184, 0.15), transparent 70%); pointer-events: none;
-        }
-        .footer-text { color: var(--text-dim); font-size: 14px; margin-bottom: 16px; }
-        .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
-        .footer-link { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 600; transition: color 0.3s; }
-        .footer-link:hover { color: var(--accent); }
-
-        /* ===== SCROLL ANIMATIONS ===== */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .hero { padding: 120px 0 60px; } .quick-stats { gap: 32px; } .stat-number { font-size: 1.6rem; }
-            .section { padding: 60px 0; } .lang-switch { top: 16px; right: 16px; }
-            .project-card { padding: 24px; }
-        }
-
-        /* ===== RTL FIXES ===== */
-        [dir="rtl"] .about-quote { 
-            border-left: none; 
-            border-right: 2px solid var(--primary); 
-            padding-left: 0; 
-            padding-right: 20px; 
-            text-align: right; 
-        }
-        [dir="rtl"] .lang-switch { right: auto; left: 24px; }
-        [dir="rtl"] .lang-info { text-align: right; }
-        [dir="rtl"] .work-header { flex-direction: row-reverse; }
-        [dir="rtl"] .hero h1 { letter-spacing: 0; font-weight: 800; }
-        [dir="rtl"] .timeline-item { padding-right: 40px; padding-left: 0; }
-        [dir="rtl"] .timeline-item:nth-child(even) { padding-left: 40px; padding-right: 0; }
-        @media (max-width: 768px) {
-            [dir="rtl"] .lang-switch { left: 16px; right: auto; }
-            [dir="rtl"] .timeline-item, [dir="rtl"] .timeline-item:nth-child(even) { padding-left: 50px; padding-right: 0; }
-        }
-        *:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
-    </style>
+    <!-- Structured Data (SEO-01 fix) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "ILIV007",
+      "alternateName": "Iliya",
+      "jobTitle": "AI Automation Engineer",
+      "description": "AI Automation Engineer & Computer Engineering Student building intelligent systems, automation workflows, and experimental software.",
+      "url": "https://iliv007-cv.pages.dev",
+      "email": "mailto:iliv007@proton.me",
+      "sameAs": [
+        "https://github.com/ILIV007",
+        "https://t.me/iliv007",
+        "https://t.me/ILIVIR3"
+      ],
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "Automation",
+        "Cloudflare Workers",
+        "Telegram Bot Development",
+        "SQL Server",
+        "Python",
+        "JavaScript",
+        "C++"
+      ]
+    }
+    </script>
 </head>
 <body class="en-mode">
+    <!-- Skip link (A11Y-02 fix) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- Scroll progress -->
+    <div class="scroll-progress" aria-hidden="true"></div>
+
     <!-- Cosmic Background -->
-    <div class="cosmic-bg" id="cosmicBg">
+    <div class="cosmic-bg" id="cosmicBg" aria-hidden="true">
         <div class="nebula nebula-1"></div>
         <div class="nebula nebula-2"></div>
         <div class="nebula nebula-3"></div>
     </div>
-    <div class="grid-overlay"></div>
+    <div class="grid-overlay" aria-hidden="true"></div>
 
     <!-- Language Switcher -->
-    <div class="lang-switch">
-        <button class="lang-btn active" data-lang="en" onclick="switchLang('en')">EN</button>
-        <button class="lang-btn" data-lang="fa" onclick="switchLang('fa')">FA</button>
-    </div>
+    <nav class="lang-switch" aria-label="Language selection">
+        <button type="button" class="lang-btn active" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" class="lang-btn" data-lang="fa" aria-pressed="false">FA</button>
+    </nav>
 
-    <main>
+    <main id="main">
     <!-- ===== HERO ===== -->
-    <section class="hero">
+    <header class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-avatar">
+                <div class="hero-avatar" aria-hidden="true">
                     <div class="orbit-ring"></div>
                     <div class="orbit-ring"></div>
                     <div class="orbit-ring"></div>
                     <div class="avatar-core">IV</div>
                 </div>
                 <div class="hero-status">
-                    <span class="pulse"></span>
+                    <span class="pulse-dot" aria-hidden="true"></span>
                     <span data-en="Open for collaboration" data-fa="آماده همکاری">Open for collaboration</span>
                 </div>
                 <a href="https://t.me/ILIVIR3" target="_blank" rel="noopener noreferrer" class="hero-channel">
-                    <span class="pulse" style="background: #38bdf8;"></span>
+                    <span class="pulse-dot" aria-hidden="true"></span>
                     <span>🌀 ILIVIR3</span>
                 </a>
                 <h1>ILIV007</h1>
-                <p class="hero-tagline" data-en="AI Automation Engineer & Computer Engineering Student" data-fa="مهندس خودکارسازی هوش مصنوعی و دانشجوی مهندسی کامپیوتر">AI Automation Engineer & Computer Engineering Student</p>
+                <p class="hero-tagline" data-en="AI Automation Engineer &amp; Computer Engineering Student" data-fa="مهندس خودکارسازی هوش مصنوعی و دانشجوی مهندسی کامپیوتر">AI Automation Engineer &amp; Computer Engineering Student</p>
                 <p class="hero-desc" data-en="From multi-model AI assistants to automation workflows and cloud systems. I turn curiosity into working software." data-fa="از دستیارهای هوش مصنوعی چندمدلی تا گردش‌های کار خودکارسازی و سیستم‌های ابری. کنجکاوی رو به نرم‌افزار کارآمد تبدیل می‌کنم.">From multi-model AI assistants to automation workflows and cloud systems. I turn curiosity into working software.</p>
                 <div class="hero-cta">
                     <a href="#projects" class="btn btn-primary">
-                        <span>🚀</span>
+                        <span aria-hidden="true">🚀</span>
                         <span data-en="View Projects" data-fa="مشاهده پروژه‌ها">View Projects</span>
                     </a>
                     <a href="https://github.com/ILIV007" target="_blank" rel="noopener noreferrer" class="btn btn-github-neon">
-                        <span>🐙</span>
+                        <span aria-hidden="true">🐙</span>
                         <span>GitHub</span>
                     </a>
                     <a href="https://t.me/ILIVIR3" target="_blank" rel="noopener noreferrer" class="btn btn-channel">
-                        <span>📡</span>
-                        <span>Channel</span>
+                        <span aria-hidden="true">📡</span>
+                        <span data-en="Channel" data-fa="کانال">Channel</span>
                     </a>
                 </div>
                 <div class="quick-stats">
-                    <div class="stat-item"><div class="stat-number">+9</div><div class="stat-label" data-en="Projects" data-fa="پروژه">Projects</div></div>
-                    <div class="stat-item"><div class="stat-number">AI</div><div class="stat-label" data-en="Focus" data-fa="تمرکز">Focus</div></div>
-                    <div class="stat-item"><div class="stat-number">0</div><div class="stat-label" data-en="GitHub Stars" data-fa="ستاره گیت‌هاب">GitHub Stars</div></div>
+                    <div class="stat-item">
+                        <div class="stat-number">+9</div>
+                        <div class="stat-label" data-en="Projects" data-fa="پروژه">Projects</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">AI</div>
+                        <div class="stat-label" data-en="Focus" data-fa="تمرکز">Focus</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3+</div>
+                        <div class="stat-label" data-en="Years Coding" data-fa="سال کدنویسی">Years Coding</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
     <!-- ===== ABOUT ===== -->
-    <section class="section" id="about">
+    <section class="section" id="about" aria-labelledby="about-title">
         <div class="container">
             <div class="section-header reveal">
-                <div class="section-label"><span>🪐</span><span data-en="About" data-fa="درباره من">About</span></div>
-                <h2 data-en="Curiosity-Driven Builder" data-fa="سازنده کنجکاو">Curiosity-Driven Builder</h2>
+                <div class="section-label"><span aria-hidden="true">🪐</span><span data-en="About" data-fa="درباره من">About</span></div>
+                <h2 id="about-title" data-en="Curiosity-Driven Builder" data-fa="سازنده کنجکاو">Curiosity-Driven Builder</h2>
             </div>
             <div class="about-content reveal">
                 <p class="about-text" data-en="I'm deeply interested in the systems behind modern technology — especially AI, automation, cloud infrastructure, and intelligent workflows. Most of my projects start with a simple question: What happens if I build this? Then they evolve into real systems." data-fa="من عمیقاً به سیستم‌های پشت فناوری مدرن علاقه‌مندم — به‌ویژه هوش مصنوعی، خودکارسازی، زیرساخت ابری و گردش‌های کار هوشمند. اکثر پروژه‌هایم با یک سوال ساده شروع می‌شن: اگه اینو بسازم چی می‌شه؟ بعدش به سیستم‌های واقعی تبدیل می‌شن.">I'm deeply interested in the systems behind modern technology — especially AI, automation, cloud infrastructure, and intelligent workflows. Most of my projects start with a simple question: What happens if I build this? Then they evolve into real systems.</p>
@@ -606,15 +169,15 @@
     </section>
 
     <!-- ===== TIMELINE / JOURNEY ===== -->
-    <section class="section" id="timeline">
+    <section class="section" id="timeline" aria-labelledby="timeline-title">
         <div class="container">
             <div class="section-header reveal">
-                <div class="section-label"><span>🛰️</span><span data-en="Journey" data-fa="مسیر">Journey</span></div>
-                <h2 data-en="Evolution" data-fa="تحول">Evolution</h2>
+                <div class="section-label"><span aria-hidden="true">🛰️</span><span data-en="Journey" data-fa="مسیر">Journey</span></div>
+                <h2 id="timeline-title" data-en="Evolution" data-fa="تحول">Evolution</h2>
             </div>
             <div class="timeline reveal">
                 <div class="timeline-item">
-                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot" aria-hidden="true"></div>
                     <div class="timeline-content">
                         <div class="timeline-date">2022</div>
                         <div class="timeline-title" data-en="Started Computer Engineering" data-fa="شروع مهندسی کامپیوتر">Started Computer Engineering</div>
@@ -622,33 +185,33 @@
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot" aria-hidden="true"></div>
                     <div class="timeline-content">
                         <div class="timeline-date">2023</div>
                         <div class="timeline-title" data-en="Hardware Repair Certification" data-fa="گواهینامه تعمیر سخت‌افزار">Hardware Repair Certification</div>
-                        <div class="timeline-desc" data-en="Technical & Vocational Training Organization. Diagnostics & repair." data-fa="سازمان آموزش فنی و حرفه‌ای. عیب‌یابی و تعمیر.">Technical & Vocational Training Organization. Diagnostics & repair.</div>
+                        <div class="timeline-desc" data-en="Technical &amp; Vocational Training Organization. Diagnostics &amp; repair." data-fa="سازمان آموزش فنی و حرفه‌ای. عیب‌یابی و تعمیر.">Technical &amp; Vocational Training Organization. Diagnostics &amp; repair.</div>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot" aria-hidden="true"></div>
                     <div class="timeline-content">
                         <div class="timeline-date">2024</div>
-                        <div class="timeline-title" data-en="Database Systems & Repair Work" data-fa="سیستم‌های پایگاه داده و کار تعمیرات">Database Systems & Repair Work</div>
+                        <div class="timeline-title" data-en="Database Systems &amp; Repair Work" data-fa="سیستم‌های پایگاه داده و کار تعمیرات">Database Systems &amp; Repair Work</div>
                         <div class="timeline-desc" data-en="Built warehouse DB with LIFO. 1 year hands-on hardware repair." data-fa="ساخت پایگاه داده انبار با LIFO. یک سال تجربه عملی تعمیر سخت‌افزار.">Built warehouse DB with LIFO. 1 year hands-on hardware repair.</div>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot" aria-hidden="true"></div>
                     <div class="timeline-content">
                         <div class="timeline-date">2025</div>
-                        <div class="timeline-title" data-en="AI Automation & Cloud" data-fa="خودکارسازی هوش مصنوعی و ابر">AI Automation & Cloud</div>
+                        <div class="timeline-title" data-en="AI Automation &amp; Cloud" data-fa="خودکارسازی هوش مصنوعی و ابر">AI Automation &amp; Cloud</div>
                         <div class="timeline-desc" data-en="IV AI bot, Crypto tracker, N8N workflows, Cloudflare Workers." data-fa="ربات IV AI، ردیاب ارز دیجیتال، گردش‌های کار N8N، Cloudflare Workers.">IV AI bot, Crypto tracker, N8N workflows, Cloudflare Workers.</div>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
+                <div class="timeline-item timeline-future">
+                    <div class="timeline-dot" aria-hidden="true"></div>
                     <div class="timeline-content">
-                        <div class="timeline-date">2026</div>
+                        <div class="timeline-date" data-en="2026 · Roadmap" data-fa="۲۰۲۶ · نقشه راه">2026 · Roadmap</div>
                         <div class="timeline-title" data-en="Multi-Agent Systems" data-fa="سیستم‌های چندعاملی">Multi-Agent Systems</div>
                         <div class="timeline-desc" data-en="Expanding into multi-model routing and intelligent agent orchestration." data-fa="گسترش به مسیریابی چندمدلی و ارکستراسیون عامل‌های هوشمند.">Expanding into multi-model routing and intelligent agent orchestration.</div>
                     </div>
@@ -658,37 +221,37 @@
     </section>
 
     <!-- ===== EDUCATION ===== -->
-    <section class="section" id="education">
+    <section class="section" id="education" aria-labelledby="edu-title">
         <div class="container">
             <div class="section-header reveal">
-                <div class="section-label"><span>📚</span><span data-en="Education" data-fa="تحصیلات">Education</span></div>
-                <h2 data-en="Academic Background" data-fa="پیشینه تحصیلی">Academic Background</h2>
+                <div class="section-label"><span aria-hidden="true">📚</span><span data-en="Education" data-fa="تحصیلات">Education</span></div>
+                <h2 id="edu-title" data-en="Academic Background" data-fa="پیشینه تحصیلی">Academic Background</h2>
             </div>
             <div class="edu-grid reveal">
-                <div class="edu-card">
+                <article class="edu-card">
                     <div class="edu-date">2022 — Present</div>
                     <div class="edu-title" data-en="B.Sc. Computer Engineering" data-fa="کارشناسی مهندسی کامپیوتر">B.Sc. Computer Engineering</div>
                     <div class="edu-school" data-en="Islamic Azad University, Mashhad" data-fa="دانشگاه آزاد اسلامی، مشهد">Islamic Azad University, Mashhad</div>
                     <div class="edu-detail" data-en="GPA: 17.40/20 | Top-performing student | Algorithms, databases, software engineering" data-fa="معدل: ۱۷.۴۰/۲۰ | دانشجوی برتر | الگوریتم‌ها، پایگاه داده، مهندسی نرم‌افزار">GPA: 17.40/20 | Top-performing student | Algorithms, databases, software engineering</div>
-                </div>
-                <div class="edu-card">
+                </article>
+                <article class="edu-card">
                     <div class="edu-date">2023 — 2024</div>
                     <div class="edu-title" data-en="Technical Certificate — Hardware Repair" data-fa="گواهینامه فنی — تعمیر سخت‌افزار">Technical Certificate — Hardware Repair</div>
-                    <div class="edu-school" data-en="Technical & Vocational Training Org. (Iran)" data-fa="سازمان آموزش فنی و حرفه‌ای (ایران)">Technical & Vocational Training Org. (Iran)</div>
+                    <div class="edu-school" data-en="Technical &amp; Vocational Training Org. (Iran)" data-fa="سازمان آموزش فنی و حرفه‌ای (ایران)">Technical &amp; Vocational Training Org. (Iran)</div>
                     <div class="edu-detail" data-en="Diagnostics, component repair, OS installation, data recovery" data-fa="عیب‌یابی، تعمیر قطعات، نصب سیستم‌عامل، بازیابی داده">Diagnostics, component repair, OS installation, data recovery</div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
     <!-- ===== WORK HISTORY ===== -->
-    <section class="section" id="work-history">
+    <section class="section" id="work-history" aria-labelledby="work-title">
         <div class="container">
             <div class="section-header reveal">
-                <div class="section-label"><span>💼</span><span data-en="Work History" data-fa="سوابق شغلی">Work History</span></div>
-                <h2 data-en="Where I've Worked" data-fa="جاهایی که کار کردم">Where I've Worked</h2>
+                <div class="section-label"><span aria-hidden="true">💼</span><span data-en="Work History" data-fa="سوابق شغلی">Work History</span></div>
+                <h2 id="work-title" data-en="Where I've Worked" data-fa="جاهایی که کار کردم">Where I've Worked</h2>
             </div>
-            <div class="work-card reveal">
+            <article class="work-card reveal">
                 <div class="work-header">
                     <div class="work-title" data-en="Hardware Repair Technician" data-fa="تکنسین تعمیرات سخت‌افزار">Hardware Repair Technician</div>
                     <div class="work-meta" data-en="2024 — 2025 | Mashhad" data-fa="۱۴۰۳ — ۱۴۰۴ | مشهد">2024 — 2025 | Mashhad</div>
@@ -699,293 +262,265 @@
                     <span class="work-tag" data-en="Component Repair" data-fa="تعمیر قطعات">Component Repair</span>
                     <span class="work-tag" data-en="OS Troubleshooting" data-fa="عیب‌یابی سیستم‌عامل">OS Troubleshooting</span>
                 </div>
-            </div>
+            </article>
         </div>
     </section>
 
     <!-- ===== PROJECTS ===== -->
-    <section class="section" id="projects">
+    <section class="section" id="projects" aria-labelledby="projects-title">
         <div class="container">
             <div class="section-header reveal">
-                <div class="section-label"><span>⭐</span><span data-en="Projects" data-fa="پروژه‌ها">Projects</span></div>
-                <h2 data-en="Featured Work" data-fa="کارهای برجسته">Featured Work</h2>
+                <div class="section-label"><span aria-hidden="true">⭐</span><span data-en="Projects" data-fa="پروژه‌ها">Projects</span></div>
+                <h2 id="projects-title" data-en="Featured Work" data-fa="کارهای برجسته">Featured Work</h2>
                 <p class="section-desc" data-en="Real systems I've built. Each started as an experiment and became a working product." data-fa="سیستم‌های واقعی که ساختم. هر کدوم با یک آزمایش شروع شدن و به محصول کارآمد تبدیل شدن.">Real systems I've built. Each started as an experiment and became a working product.</p>
             </div>
             <div class="project-featured reveal">
                 <!-- IV AI -->
-                <div class="project-card featured">
-                    <div class="project-badge" data-en="Flagship" data-fa="پرچم‌دار">Flagship</div>
-                    <div class="project-icon">🤖</div>
-                    <div class="project-title">IV | AI</div>
-                    <div class="project-desc" data-en="Multi-model AI assistant deployed on Cloudflare Workers. Features Prompt Master system. Sub-100ms global response time." data-fa="دستیار هوش مصنوعی چندمدلی دیپلوی‌شده روی Cloudflare Workers. دارای سیستم Prompt Master. زمان پاسخ جهانی زیر ۱۰۰ میلی‌ثانیه.">Multi-model AI assistant deployed on Cloudflare Workers. Features Prompt Master system. Sub-100ms global response time.</div>
-                    <div class="project-stack"><span class="stack-tag">JavaScript</span><span class="stack-tag">Cloudflare Workers</span><span class="stack-tag">Telegram API</span><span class="stack-tag">AI/LLM</span></div>
-                    <div class="project-links">
-                        <a href="https://t.me/IVAI_Llm_bot" target="_blank" rel="noopener noreferrer" class="project-link">🚀 <span data-en="Try it" data-fa="امتحان کن">Try it</span></a>
-                        <a href="https://github.com/ILIV007" target="_blank" rel="noopener noreferrer" class="project-link">🐙 <span data-en="Source" data-fa="سورس">Source</span></a>
+                <article class="project-card">
+                    <div class="badge" data-en="Flagship" data-fa="پرچم‌دار">Flagship</div>
+                    <div class="project-icon" aria-hidden="true">🤖</div>
+                    <h3 class="project-title">IV | AI</h3>
+                    <p class="project-desc" data-en="Multi-model AI assistant deployed on Cloudflare Workers. Features Prompt Master system. Sub-100ms global response time." data-fa="دستیار هوش مصنوعی چندمدلی دیپلوی‌شده روی Cloudflare Workers. دارای سیستم Prompt Master. زمان پاسخ جهانی زیر ۱۰۰ میلی‌ثانیه.">Multi-model AI assistant deployed on Cloudflare Workers. Features Prompt Master system. Sub-100ms global response time.</p>
+                    <div class="project-stack">
+                        <span class="tag-mono">JavaScript</span>
+                        <span class="tag-mono">Cloudflare Workers</span>
+                        <span class="tag-mono">Telegram API</span>
+                        <span class="tag-mono">AI/LLM</span>
                     </div>
-                </div>
+                    <div class="project-links">
+                        <a href="https://t.me/IVAI_Llm_bot" target="_blank" rel="noopener noreferrer" class="project-link"><span aria-hidden="true">🚀</span> <span data-en="Try it" data-fa="امتحان کن">Try it</span></a>
+                        <a href="https://github.com/ILIV007" target="_blank" rel="noopener noreferrer" class="project-link"><span aria-hidden="true">🐙</span> <span data-en="Source" data-fa="سورس">Source</span></a>
+                    </div>
+                </article>
                 <!-- Warehouse DB -->
-                <div class="project-card featured">
-                    <div class="project-badge" data-en="System Design" data-fa="طراحی سیستم">System Design</div>
-                    <div class="project-icon">🗄️</div>
-                    <div class="project-title" data-en="Warehouse Management DB" data-fa="پایگاه داده مدیریت انبار">Warehouse Management DB</div>
-                    <div class="project-desc" data-en="Complete SQL Server database with LIFO inventory valuation, automated stock tracking via Stored Procedures and Triggers." data-fa="پایگاه داده کامل SQL Server با ارزش‌گذاری موجودی LIFO، ردیابی خودکار موجودی از طریق Stored Procedures و Triggers.">Complete SQL Server database with LIFO inventory valuation, automated stock tracking via Stored Procedures and Triggers.</div>
-                    <div class="project-stack"><span class="stack-tag">SQL Server</span><span class="stack-tag">T-SQL</span><span class="stack-tag">SSMS</span><span class="stack-tag">Database Design</span></div>
-                    <div class="project-links">
-                        <a href="https://github.com/ILIV007" target="_blank" rel="noopener noreferrer" class="project-link">🐙 <span data-en="Architecture" data-fa="معماری">Architecture</span></a>
+                <article class="project-card">
+                    <div class="badge" data-en="System Design" data-fa="طراحی سیستم">System Design</div>
+                    <div class="project-icon" aria-hidden="true">🗄️</div>
+                    <h3 class="project-title" data-en="Warehouse Management DB" data-fa="پایگاه داده مدیریت انبار">Warehouse Management DB</h3>
+                    <p class="project-desc" data-en="Complete SQL Server database with LIFO inventory valuation, automated stock tracking via Stored Procedures and Triggers." data-fa="پایگاه داده کامل SQL Server با ارزش‌گذاری موجودی LIFO، ردیابی خودکار موجودی از طریق Stored Procedures و Triggers.">Complete SQL Server database with LIFO inventory valuation, automated stock tracking via Stored Procedures and Triggers.</p>
+                    <div class="project-stack">
+                        <span class="tag-mono">SQL Server</span>
+                        <span class="tag-mono">T-SQL</span>
+                        <span class="tag-mono">SSMS</span>
+                        <span class="tag-mono">Database Design</span>
                     </div>
-                </div>
+                    <div class="project-links">
+                        <a href="https://github.com/ILIV007" target="_blank" rel="noopener noreferrer" class="project-link"><span aria-hidden="true">🐙</span> <span data-en="Architecture" data-fa="معماری">Architecture</span></a>
+                    </div>
+                </article>
                 <!-- Crypto Tracker -->
-                <div class="project-card featured">
-                    <div class="project-badge" data-en="Automation" data-fa="خودکارسازی">Automation</div>
-                    <div class="project-icon">📈</div>
-                    <div class="project-title" data-en="Crypto Price Tracker" data-fa="ردیاب قیمت ارز دیجیتال">Crypto Price Tracker</div>
-                    <div class="project-desc" data-en="Automated workflow fetching real-time crypto prices from CoinMarketCap API and pushing formatted alerts to Telegram." data-fa="گردش کار خودکار برای دریافت قیمت لحظه‌ای ارزهای دیجیتال از API CoinMarketCap و ارسال هشدارهای فرمت‌شده به تلگرام.">Automated workflow fetching real-time crypto prices from CoinMarketCap API and pushing formatted alerts to Telegram.</div>
-                    <div class="project-stack"><span class="stack-tag">N8N</span><span class="stack-tag">Docker</span><span class="stack-tag">CoinMarketCap API</span><span class="stack-tag">Telegram Bot</span></div>
-                    <div class="project-links">
-                        <a href="https://github.com/ILIV007" target="_blank" rel="noopener noreferrer" class="project-link">🐙 <span data-en="Source" data-fa="سورس">Source</span></a>
+                <article class="project-card">
+                    <div class="badge" data-en="Automation" data-fa="خودکارسازی">Automation</div>
+                    <div class="project-icon" aria-hidden="true">📈</div>
+                    <h3 class="project-title" data-en="Crypto Price Tracker" data-fa="ردیاب قیمت ارز دیجیتال">Crypto Price Tracker</h3>
+                    <p class="project-desc" data-en="Automated workflow fetching real-time crypto prices from CoinMarketCap API and pushing formatted alerts to Telegram." data-fa="گردش کار خودکار برای دریافت قیمت لحظه‌ای ارزهای دیجیتال از API CoinMarketCap و ارسال هشدارهای فرمت‌شده به تلگرام.">Automated workflow fetching real-time crypto prices from CoinMarketCap API and pushing formatted alerts to Telegram.</p>
+                    <div class="project-stack">
+                        <span class="tag-mono">N8N</span>
+                        <span class="tag-mono">Docker</span>
+                        <span class="tag-mono">CoinMarketCap API</span>
+                        <span class="tag-mono">Telegram Bot</span>
                     </div>
-                </div>
+                    <div class="project-links">
+                        <a href="https://github.com/ILIV007" target="_blank" rel="noopener noreferrer" class="project-link"><span aria-hidden="true">🐙</span> <span data-en="Source" data-fa="سورس">Source</span></a>
+                    </div>
+                </article>
             </div>
             <div class="projects-compact reveal">
-                <div class="project-compact">
-                    <div class="project-title">☕ <span data-en="Cafe Management" data-fa="مدیریت کافه">Cafe Management</span></div>
-                    <div class="project-desc" data-en="C++ console app with dynamic menu, inventory tracking, and order processing." data-fa="اپلیکیشن کنسول C++ با منوی پویا، ردیابی موجودی و پردازش سفارش.">C++ console app with dynamic menu, inventory tracking, and order processing.</div>
-                    <div class="project-stack"><span class="stack-tag">C++</span><span class="stack-tag">Console UI</span></div>
-                    <div class="project-links" style="margin-top:12px;">
-                        <a href="https://github.com/ILIV007" target="_blank" rel="noopener noreferrer" class="project-link" style="padding:6px 12px; font-size:12px;">🐙 <span data-en="Source" data-fa="سورس">Source</span></a>
+                <article class="project-compact">
+                    <h3 class="project-title"><span aria-hidden="true">☕</span> <span data-en="Cafe Management" data-fa="مدیریت کافه">Cafe Management</span></h3>
+                    <p class="project-desc" data-en="C++ console app with dynamic menu, inventory tracking, and order processing." data-fa="اپلیکیشن کنسول C++ با منوی پویا، ردیابی موجودی و پردازش سفارش.">C++ console app with dynamic menu, inventory tracking, and order processing.</p>
+                    <div class="project-stack"><span class="tag-mono">C++</span><span class="tag-mono">Console UI</span></div>
+                    <div class="project-links">
+                        <a href="https://github.com/ILIV007" target="_blank" rel="noopener noreferrer" class="project-link"><span aria-hidden="true">🐙</span> <span data-en="Source" data-fa="سورس">Source</span></a>
                     </div>
-                </div>
-                <div class="project-compact">
-                    <div class="project-title">🌐 <span data-en="This Portfolio" data-fa="این پورتفولیو">This Portfolio</span></div>
-                    <div class="project-desc" data-en="Bilingual portfolio with cosmic theme, built through iterative conversational development." data-fa="پورتفولیو دوزبانه با تم کیهانی، ساخته‌شده از طریق توسعه مکالمه‌ای تکراری.">Bilingual portfolio with cosmic theme, built through iterative conversational development.</div>
-                    <div class="project-stack"><span class="stack-tag">HTML</span><span class="stack-tag">CSS</span><span class="stack-tag">JavaScript</span></div>
-                    <div class="project-links" style="margin-top:12px;">
-                        <a href="https://github.com/ILIV007" target="_blank" rel="noopener noreferrer" class="project-link" style="padding:6px 12px; font-size:12px;">🐙 <span data-en="Source" data-fa="سورس">Source</span></a>
+                </article>
+                <article class="project-compact">
+                    <h3 class="project-title"><span aria-hidden="true">🌐</span> <span data-en="This Portfolio" data-fa="این پورتفولیو">This Portfolio</span></h3>
+                    <p class="project-desc" data-en="Bilingual portfolio with cosmic theme, built through iterative conversational development." data-fa="پورتفولیو دوزبانه با تم کیهانی، ساخته‌شده از طریق توسعه مکالمه‌ای تکراری.">Bilingual portfolio with cosmic theme, built through iterative conversational development.</p>
+                    <div class="project-stack"><span class="tag-mono">HTML</span><span class="tag-mono">CSS</span><span class="tag-mono">JavaScript</span></div>
+                    <div class="project-links">
+                        <a href="https://github.com/ILIV007" target="_blank" rel="noopener noreferrer" class="project-link"><span aria-hidden="true">🐙</span> <span data-en="Source" data-fa="سورس">Source</span></a>
                     </div>
-                </div>
-                <div class="project-compact">
-                    <div class="project-title">📝 <span data-en="WordPress Sites" data-fa="سایت‌های وردپرس">WordPress Sites</span></div>
-                    <div class="project-desc" data-en="Production-ready WordPress sites with custom themes, SEO, and full deployment pipeline." data-fa="سایت‌های آماده تولید وردپرس با تم‌های سفارشی، سئو و خط لوله دیپلوی کامل.">Production-ready WordPress sites with custom themes, SEO, and full deployment pipeline.</div>
-                    <div class="project-stack"><span class="stack-tag">WordPress</span><span class="stack-tag">Elementor</span><span class="stack-tag">PHP</span></div>
-                    <div class="project-links" style="margin-top:12px;">
-                        <a href="https://github.com/ILIV007" target="_blank" rel="noopener noreferrer" class="project-link" style="padding:6px 12px; font-size:12px;">🐙 <span data-en="Source" data-fa="سورس">Source</span></a>
+                </article>
+                <article class="project-compact">
+                    <h3 class="project-title"><span aria-hidden="true">📝</span> <span data-en="WordPress Sites" data-fa="سایت‌های وردپرس">WordPress Sites</span></h3>
+                    <p class="project-desc" data-en="Production-ready WordPress sites with custom themes, SEO, and full deployment pipeline." data-fa="سایت‌های آماده تولید وردپرس با تم‌های سفارشی، سئو و خط لوله دیپلوی کامل.">Production-ready WordPress sites with custom themes, SEO, and full deployment pipeline.</p>
+                    <div class="project-stack"><span class="tag-mono">WordPress</span><span class="tag-mono">Elementor</span><span class="tag-mono">PHP</span></div>
+                    <div class="project-links">
+                        <a href="https://github.com/ILIV007" target="_blank" rel="noopener noreferrer" class="project-link"><span aria-hidden="true">🐙</span> <span data-en="Source" data-fa="سورس">Source</span></a>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
     <!-- ===== SYSTEMS & TECHNOLOGIES ===== -->
-    <section class="section" id="toolkit">
+    <section class="section" id="toolkit" aria-labelledby="toolkit-title">
         <div class="container">
             <div class="toolkit-header reveal">
-                <div class="section-label"><span>⚙️</span><span data-en="Infrastructure I Build With" data-fa="زیرساخت‌هایی که با آنها می‌سازم">Infrastructure I Build With</span></div>
-                <h2 data-en="Systems & Technologies" data-fa="سیستم‌ها و فناوری‌ها">Systems & Technologies</h2>
+                <div class="section-label"><span aria-hidden="true">⚙️</span><span data-en="Infrastructure I Build With" data-fa="زیرساخت‌هایی که با آنها می‌سازم">Infrastructure I Build With</span></div>
+                <h2 id="toolkit-title" data-en="Systems &amp; Technologies" data-fa="سیستم‌ها و فناوری‌ها">Systems &amp; Technologies</h2>
                 <p class="section-desc" data-en="The technologies and systems I build with" data-fa="فناوری‌ها و سیستم‌هایی که با آنها می‌سازم">The technologies and systems I build with</p>
             </div>
             <div class="toolkit-grid reveal">
-                <!-- AI Systems — LARGE CARD -->
-                <div class="tk-card tk-ai">
-                    <div class="tk-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" /></svg></div>
-                    <div class="tk-title" data-en="AI Systems & Automation" data-fa="سیستم‌های هوش مصنوعی و خودکارسازی">AI Systems & Automation</div>
-                    <div class="tk-narrative" data-en="Multi-model agents, prompt orchestration, and Telegram AI systems optimized for low latency." data-fa="عامل‌های چندمدلی، ارکستراسیون پرامپت و سیستم‌های هوش مصنوعی تلگرام بهینه‌شده برای تأخیر کم.">Multi-model agents, prompt orchestration, and Telegram AI systems optimized for low latency.</div>
+                <!-- AI Systems — LARGE CARD (span 7 × 2 rows) -->
+                <article class="tk-card tk-ai">
+                    <div class="tk-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" /></svg></div>
+                    <h3 class="tk-title" data-en="AI Systems &amp; Automation" data-fa="سیستم‌های هوش مصنوعی و خودکارسازی">AI Systems &amp; Automation</h3>
+                    <p class="tk-narrative" data-en="Multi-model agents, prompt orchestration, and Telegram AI systems optimized for low latency." data-fa="عامل‌های چندمدلی، ارکستراسیون پرامپت و سیستم‌های هوش مصنوعی تلگرام بهینه‌شده برای تأخیر کم.">Multi-model agents, prompt orchestration, and Telegram AI systems optimized for low latency.</p>
                     <div class="tk-stack-label">CORE</div>
                     <div class="tk-tags" style="margin-bottom: 16px;">
-                        <span class="tk-tag orbit-1">Multi-Agent</span>
-                        <span class="tk-tag orbit-2">Prompt Routing</span>
-                        <span class="tk-tag orbit-3">Telegram AI</span>
+                        <span class="tag-pill orbit-1">Multi-Agent</span>
+                        <span class="tag-pill orbit-2">Prompt Routing</span>
+                        <span class="tag-pill orbit-3">Telegram AI</span>
                     </div>
                     <div class="tk-stack-label">STACK</div>
                     <div class="tk-tags">
-                        <span class="tk-tag orbit-1">OpenRouter</span>
-                        <span class="tk-tag orbit-2">Cloudflare Workers</span>
-                        <span class="tk-tag orbit-3">N8N</span>
-                        <span class="tk-tag orbit-4">Prompt Engineering</span>
-                        <span class="tk-tag orbit-1">Telegram API</span>
-                        <span class="tk-tag orbit-2">Hugging Face</span>
+                        <span class="tag-pill orbit-1">OpenRouter</span>
+                        <span class="tag-pill orbit-2">Cloudflare Workers</span>
+                        <span class="tag-pill orbit-3">N8N</span>
+                        <span class="tag-pill orbit-4">Prompt Engineering</span>
+                        <span class="tag-pill orbit-1">Telegram API</span>
+                        <span class="tag-pill orbit-2">Hugging Face</span>
                     </div>
-                </div>
-                
-                <!-- Programming Group -->
-                <div class="tk-card tk-group">
-                    <div class="tk-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg></div>
-                    <div class="tk-title" data-en="Engineering Core" data-fa="هسته مهندسی">Engineering Core</div>
-                    <div class="tk-tags">
-                        <span class="tk-tag">Python</span>
-                        <span class="tk-tag">C++</span>
-                        <span class="tk-tag">JavaScript</span>
-                        <span class="tk-tag">HTML/CSS</span>
-                        <span class="tk-tag">SQL</span>
-                    </div>
-                </div>
-                
-                <!-- Cloud Group -->
-                <div class="tk-card tk-group-2">
-                    <div class="tk-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" /></svg></div>
-                    <div class="tk-title" data-en="Cloud & Edge" data-fa="ابر و لبه">Cloud & Edge</div>
-                    <div class="tk-tags">
-                        <span class="tk-tag">REST APIs</span>
-                        <span class="tk-tag">Docker</span>
-                        <span class="tk-tag">Cloudflare Pages</span>
-                        <span class="tk-tag">Telegram API</span>
-                    </div>
-                </div>
-                
-                <!-- Hardware Group -->
-                <div class="tk-card tk-group-2">
-                    <div class="tk-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 0v0m0 0H9m12 0h1.5" /></svg></div>
-                    <div class="tk-title" data-en="Hardware & Systems" data-fa="سخت‌افزار و سیستم‌ها">Hardware & Systems</div>
-                    <div class="tk-tags">
-                        <span class="tk-tag">PC Assembly</span>
-                        <span class="tk-tag">Diagnostics</span>
-                        <span class="tk-tag">OS Install</span>
-                        <span class="tk-tag">Component Repair</span>
-                    </div>
-                </div>
-                
-                <!-- Workflow Group -->
-                <div class="tk-card tk-group-2">
-                    <div class="tk-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" /></svg></div>
-                    <div class="tk-title" data-en="Workflow & Tools" data-fa="گردش کار و ابزارها">Workflow & Tools</div>
-                    <div class="tk-tags">
-                        <span class="tk-tag">Git</span>
-                        <span class="tk-tag">GitHub</span>
-                        <span class="tk-tag">VS Code</span>
-                        <span class="tk-tag">Google Colab</span>
-                        <span class="tk-tag">WordPress</span>
-                    </div>
-                </div>
+                </article>
 
-                <!-- Also Worked With — MORE (Attractive) -->
-                <div class="tk-card tk-more">
-                    <div class="tk-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg></div>
-                    <div class="tk-title" data-en="Also Worked With" data-fa="آشنایی دارم با">Also Worked With</div>
-                    <div class="tk-narrative" data-en="Technologies I've explored and worked with at a familiar level." data-fa="فناوری‌هایی که در سطح آشنایی باهاشون کار کردم.">Technologies I've explored and worked with at a familiar level.</div>
+                <!-- Engineering Core (span 5) -->
+                <article class="tk-card tk-span-5">
+                    <div class="tk-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg></div>
+                    <h3 class="tk-title" data-en="Engineering Core" data-fa="هسته مهندسی">Engineering Core</h3>
                     <div class="tk-tags">
-                        <span class="tk-tag">Database Design</span>
-                        <span class="tk-tag">SQL Server</span>
-                        <span class="tk-tag">SSMS</span>
-                        <span class="tk-tag">Arduino</span>
-                        <span class="tk-tag">AI IDE</span>
-                        <span class="tk-tag">Cisco Packet Tracer</span>
+                        <span class="tag-pill">Python</span>
+                        <span class="tag-pill">C++</span>
+                        <span class="tag-pill">JavaScript</span>
+                        <span class="tag-pill">HTML/CSS</span>
+                        <span class="tag-pill">SQL</span>
                     </div>
-                </div>
+                </article>
+
+                <!-- Cloud & Edge (span 5) -->
+                <article class="tk-card tk-span-5">
+                    <div class="tk-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" /></svg></div>
+                    <h3 class="tk-title" data-en="Cloud &amp; Edge" data-fa="ابر و لبه">Cloud &amp; Edge</h3>
+                    <div class="tk-tags">
+                        <span class="tag-pill">REST APIs</span>
+                        <span class="tag-pill">Docker</span>
+                        <span class="tag-pill">Cloudflare Pages</span>
+                        <span class="tag-pill">Telegram API</span>
+                    </div>
+                </article>
+
+                <!-- Hardware & Systems (span 6) -->
+                <article class="tk-card tk-span-6">
+                    <div class="tk-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 0v0m0 0H9m12 0h1.5" /></svg></div>
+                    <h3 class="tk-title" data-en="Hardware &amp; Systems" data-fa="سخت‌افزار و سیستم‌ها">Hardware &amp; Systems</h3>
+                    <div class="tk-tags">
+                        <span class="tag-pill">PC Assembly</span>
+                        <span class="tag-pill">Diagnostics</span>
+                        <span class="tag-pill">OS Install</span>
+                        <span class="tag-pill">Component Repair</span>
+                    </div>
+                </article>
+
+                <!-- Workflow & Tools (span 6) -->
+                <article class="tk-card tk-span-6">
+                    <div class="tk-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" /></svg></div>
+                    <h3 class="tk-title" data-en="Workflow &amp; Tools" data-fa="گردش کار و ابزارها">Workflow &amp; Tools</h3>
+                    <div class="tk-tags">
+                        <span class="tag-pill">Git</span>
+                        <span class="tag-pill">GitHub</span>
+                        <span class="tag-pill">VS Code</span>
+                        <span class="tag-pill">Google Colab</span>
+                        <span class="tag-pill">WordPress</span>
+                    </div>
+                </article>
+
+                <!-- Also Worked With (span 12 — full width) -->
+                <article class="tk-card tk-more tk-span-12">
+                    <div class="tk-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg></div>
+                    <h3 class="tk-title" data-en="Also Worked With" data-fa="آشنایی دارم با">Also Worked With</h3>
+                    <p class="tk-narrative" data-en="Technologies I've explored and worked with at a familiar level." data-fa="فناوری‌هایی که در سطح آشنایی باهاشون کار کردم.">Technologies I've explored and worked with at a familiar level.</p>
+                    <div class="tk-tags">
+                        <span class="tag-pill">Database Design</span>
+                        <span class="tag-pill">SQL Server</span>
+                        <span class="tag-pill">SSMS</span>
+                        <span class="tag-pill">Arduino</span>
+                        <span class="tag-pill">AI IDE</span>
+                        <span class="tag-pill">Cisco Packet Tracer</span>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
 
     <!-- ===== SOURCE CODE / GITHUB ===== -->
-    <section class="section" id="github">
+    <section class="section" id="github" aria-labelledby="github-title">
         <div class="container">
             <div class="section-header reveal">
-                <div class="section-label"><span>🌌</span><span data-en="Source Code" data-fa="کد منبع">Source Code</span></div>
-                <h2 data-en="Open Source" data-fa="متن‌باز">Open Source</h2>
+                <div class="section-label"><span aria-hidden="true">🌌</span><span data-en="Source Code" data-fa="کد منبع">Source Code</span></div>
+                <h2 id="github-title" data-en="Open Source" data-fa="متن‌باز">Open Source</h2>
             </div>
             <div class="github-section reveal">
                 <div class="github-card">
-                    <div class="github-icon">🐙</div>
-                    <div class="github-title">GitHub</div>
-                    <div class="github-desc" data-en="All my projects, experiments, and learning journey are open. Dive into the code, architecture, and documentation." data-fa="همه پروژه‌ها، آزمایش‌ها و مسیر یادگیریم بازه. برو تو کد، معماری و مستندات.">All my projects, experiments, and learning journey are open. Dive into the code, architecture, and documentation.</div>
-                    <a href="https://github.com/ILIV007" target="_blank" rel="noopener noreferrer" class="github-btn"><span>🚀</span><span data-en="View GitHub Profile" data-fa="مشاهده پروفایل گیت‌هاب">View GitHub Profile</span></a>
+                    <div class="github-icon" aria-hidden="true">🐙</div>
+                    <h3 class="github-title">GitHub</h3>
+                    <p class="github-desc" data-en="All my projects, experiments, and learning journey are open. Dive into the code, architecture, and documentation." data-fa="همه پروژه‌ها، آزمایش‌ها و مسیر یادگیریم بازه. برو تو کد، معماری و مستندات.">All my projects, experiments, and learning journey are open. Dive into the code, architecture, and documentation.</p>
+                    <a href="https://github.com/ILIV007" target="_blank" rel="noopener noreferrer" class="github-btn"><span aria-hidden="true">🚀</span><span data-en="View GitHub Profile" data-fa="مشاهده پروفایل گیت‌هاب">View GitHub Profile</span></a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ===== LANGUAGES ===== -->
-    <section class="section" id="languages">
+    <section class="section" id="languages" aria-labelledby="languages-title">
         <div class="container">
             <div class="section-header reveal">
-                <div class="section-label"><span>🌍</span><span data-en="Languages" data-fa="زبان‌ها">Languages</span></div>
-                <h2 data-en="Communication" data-fa="ارتباطات">Communication</h2>
+                <div class="section-label"><span aria-hidden="true">🌍</span><span data-en="Languages" data-fa="زبان‌ها">Languages</span></div>
+                <h2 id="languages-title" data-en="Communication" data-fa="ارتباطات">Communication</h2>
             </div>
             <div class="languages-row reveal">
-                <div class="lang-card"><span class="lang-emoji">🇺🇸</span><div class="lang-info"><div class="lang-name" data-en="English" data-fa="انگلیسی">English</div><div class="lang-level" data-en="Professional Working Proficiency" data-fa="تسلط حرفه‌ای کاری">Professional Working Proficiency</div></div></div>
-                <div class="lang-card"><span class="lang-emoji">🇮🇷</span><div class="lang-info"><div class="lang-name" data-en="Persian" data-fa="فارسی">Persian</div><div class="lang-level" data-en="Native" data-fa="زبان مادری">Native</div></div></div>
-                <div class="lang-card lang-card-small"><span class="lang-emoji">🇸🇦</span><div class="lang-info"><div class="lang-name" data-en="Arabic" data-fa="عربی">Arabic</div><div class="lang-level" data-en="Familiar" data-fa="آشنا هستم">Familiar</div></div></div>
+                <div class="lang-card"><span class="lang-emoji" aria-hidden="true">🇺🇸</span><div class="lang-info"><div class="lang-name" data-en="English" data-fa="انگلیسی">English</div><div class="lang-level" data-en="Professional Working Proficiency" data-fa="تسلط حرفه‌ای کاری">Professional Working Proficiency</div></div></div>
+                <div class="lang-card"><span class="lang-emoji" aria-hidden="true">🇮🇷</span><div class="lang-info"><div class="lang-name" data-en="Persian" data-fa="فارسی">Persian</div><div class="lang-level" data-en="Native" data-fa="زبان مادری">Native</div></div></div>
+                <div class="lang-card lang-card-small"><span class="lang-emoji" aria-hidden="true">🇸🇦</span><div class="lang-info"><div class="lang-name" data-en="Arabic" data-fa="عربی">Arabic</div><div class="lang-level" data-en="Familiar" data-fa="آشنا هستم">Familiar</div></div></div>
             </div>
         </div>
     </section>
 
     <!-- ===== CONTACT ===== -->
-    <section class="section" id="contact">
+    <section class="section" id="contact" aria-labelledby="contact-title">
         <div class="container">
             <div class="section-header reveal">
-                <div class="section-label"><span>🌀</span><span data-en="Contact" data-fa="تماس">Contact</span></div>
-                <h2 data-en="Let's Build Something" data-fa="باهم چیزی بسازیم">Let's Build Something</h2>
+                <div class="section-label"><span aria-hidden="true">🌀</span><span data-en="Contact" data-fa="تماس">Contact</span></div>
+                <h2 id="contact-title" data-en="Let's Build Something" data-fa="باهم چیزی بسازیم">Let's Build Something</h2>
             </div>
             <div class="contact-grid reveal">
-                <a href="mailto:iliv007@proton.me" class="contact-item"><div class="contact-emoji">✉️</div><div class="contact-label" data-en="Email" data-fa="ایمیل">Email</div><div class="contact-value">ILIV007@proton.me</div></a>
-                <a href="https://t.me/iliv007" target="_blank" rel="noopener noreferrer" class="contact-item"><div class="contact-emoji">💬</div><div class="contact-label" data-en="Telegram" data-fa="تلگرام">Telegram</div><div class="contact-value">@iliv007</div></a>
-                <a href="https://github.com/ILIV007" target="_blank" rel="noopener noreferrer" class="contact-item"><div class="contact-emoji">🐙</div><div class="contact-label">GitHub</div><div class="contact-value">@ILIV007</div></a>
-                <a href="https://t.me/ILIVIR3" target="_blank" rel="noopener noreferrer" class="contact-item"><div class="contact-emoji">📡</div><div class="contact-label" data-en="Channel" data-fa="کانال">Channel</div><div class="contact-value">🌀@ILIVIR3</div></a>
+                <a href="mailto:iliv007@proton.me" class="contact-item"><div class="contact-emoji" aria-hidden="true">✉️</div><div class="contact-label" data-en="Email" data-fa="ایمیل">Email</div><div class="contact-value">iliv007@proton.me</div></a>
+                <a href="https://t.me/iliv007" target="_blank" rel="noopener noreferrer" class="contact-item"><div class="contact-emoji" aria-hidden="true">💬</div><div class="contact-label" data-en="Telegram" data-fa="تلگرام">Telegram</div><div class="contact-value">@iliv007</div></a>
+                <a href="https://github.com/ILIV007" target="_blank" rel="noopener noreferrer" class="contact-item"><div class="contact-emoji" aria-hidden="true">🐙</div><div class="contact-label">GitHub</div><div class="contact-value">@ILIV007</div></a>
+                <a href="https://t.me/ILIVIR3" target="_blank" rel="noopener noreferrer" class="contact-item"><div class="contact-emoji" aria-hidden="true">📡</div><div class="contact-label" data-en="Channel" data-fa="کانال">Channel</div><div class="contact-value">🌀 @ILIVIR3</div></a>
             </div>
         </div>
     </section>
     </main>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- Back to top -->
+    <button type="button" class="back-to-top" aria-label="Back to top">↑</button>
+
+    <!-- ===== FOOTER (sticky to bottom) ===== -->
     <footer class="footer">
-        <div class="footer-glow"></div>
+        <div class="footer-glow" aria-hidden="true"></div>
         <div class="container">
             <p class="footer-text" data-en="Built with curiosity, caffeine, and countless iterations." data-fa="ساخته شده با کنجکاوی، کافئین و تکرارهای بی‌شمار.">Built with curiosity, caffeine, and countless iterations.</p>
             <div class="footer-links">
                 <a href="https://github.com/ILIV007" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
                 <a href="https://t.me/iliv007" target="_blank" rel="noopener noreferrer" class="footer-link">Telegram</a>
-                <a href="mailto:ILIV007@proton.me" class="footer-link">Email</a>
+                <a href="mailto:iliv007@proton.me" class="footer-link">Email</a>
             </div>
+            <p class="footer-version">v2.0.1 · ILIV007 Portfolio</p>
         </div>
     </footer>
 
-    <script>
-        function createStars() {
-            if (document.querySelector('.star')) return;
-            const bg = document.getElementById('cosmicBg');
-            const starCount = window.innerWidth < 768 ? 35 : 60;
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 5 + 's';
-                star.style.animationDuration = (Math.random() * 4 + 2) + 's';
-                const size = Math.random() * 2 + 1;
-                star.style.width = size + 'px';
-                star.style.height = size + 'px';
-                bg.appendChild(star);
-            }
-        }
-        createStars();
-
-        function switchLang(lang) {
-            document.documentElement.lang = lang;
-            document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.lang === lang);
-            });
-            document.querySelectorAll('[data-en][data-fa]').forEach(el => {
-                el.textContent = el.getAttribute('data-' + lang);
-            });
-            document.body.classList.toggle('fa-mode', lang === 'fa');
-            document.body.classList.toggle('en-mode', lang === 'en');
-        }
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
-    </script>
+    <!-- Scripts (ES modules — no inline handlers) -->
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+bun.lockb
+package-lock.json
+
+# Build output
+dist/
+build/
+.cache/
+.next/
+.vercel/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Env & secrets
+.env
+.env.local
+.env.*.local
+*.log
+
+# Wrangler / Cloudflare local
+.wrangler/
+.dev.vars
