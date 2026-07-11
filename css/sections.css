@@ -492,11 +492,11 @@
 .project-compact .project-stack { margin-bottom: 12px; }
 .project-compact .project-link { padding: 6px 12px; font-size: 12px; }
 
-/* ===== TOOLKIT — clean 3-column bento grid ===== */
+/* ===== TOOLKIT — simple, bulletproof auto-fit grid ===== */
 .toolkit-header { text-align: center; margin-bottom: 56px; }
 .toolkit-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 18px;
     max-width: 1080px;
     margin: 0 auto;
@@ -509,17 +509,12 @@
     transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
     position: relative;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
 }
 .tk-card:hover {
     border-color: var(--border-hover);
     transform: translateY(-3px);
     box-shadow: var(--shadow-md);
 }
-/* Spans: AI=2cols(large), others=1col, AlsoWorked=3cols(full) */
-.tk-span-2 { grid-column: span 2; }
-.tk-span-3 { grid-column: span 3; }
 
 .tk-more {
     border-color: rgba(167, 139, 250, 0.22);

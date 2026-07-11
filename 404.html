@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 — Lost in the Galaxy | ILIV007</title>
+    <title>404 — Page Not Found | ILIV007</title>
     <meta name="robots" content="noindex">
-    <meta name="theme-color" content="#05060d">
+    <meta name="theme-color" content="#0B1120">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌀</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #05060d;
+            --bg: #0B1120;
+            --bg-card: #111827;
             --primary: #6BA4D4;
             --primary-light: #8FC0E8;
             --accent: #9EC8E8;
@@ -20,107 +21,145 @@
             --text: #e8edf5;
             --text-muted: #aab4c5;
             --text-dim: #8b97ab;
+            --border: rgba(148, 163, 184, 0.10);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { height: 100%; width: 100%; overflow: hidden; }
         body {
             font-family: 'Inter', sans-serif;
             background: var(--bg);
             color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 24px;
+            overflow: hidden;
             position: relative;
         }
-        #galaxy {
-            position: fixed; inset: 0;
-            width: 100%; height: 100%;
-            z-index: 0; display: block;
-        }
-        .vignette {
-            position: fixed; inset: 0; z-index: 1;
+
+        /* Static star background — pure CSS, zero JS, instant load */
+        .stars {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
             pointer-events: none;
-            background: radial-gradient(ellipse at center,
-                transparent 0%, transparent 45%,
-                rgba(5,6,13,0.55) 80%, rgba(5,6,13,0.92) 100%);
+            background-image:
+                radial-gradient(1px 1px at 20px 30px, rgba(158, 200, 232, 0.6), transparent),
+                radial-gradient(1px 1px at 40px 70px, rgba(158, 200, 232, 0.4), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(158, 200, 232, 0.5), transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(158, 200, 232, 0.3), transparent),
+                radial-gradient(1px 1px at 160px 30px, rgba(158, 200, 232, 0.6), transparent),
+                radial-gradient(1px 1px at 200px 90px, rgba(158, 200, 232, 0.4), transparent),
+                radial-gradient(2px 2px at 280px 50px, rgba(167, 139, 250, 0.5), transparent),
+                radial-gradient(1px 1px at 340px 120px, rgba(158, 200, 232, 0.4), transparent),
+                radial-gradient(1px 1px at 50px 150px, rgba(158, 200, 232, 0.5), transparent),
+                radial-gradient(1px 1px at 120px 200px, rgba(158, 200, 232, 0.3), transparent),
+                radial-gradient(2px 2px at 250px 180px, rgba(158, 200, 232, 0.5), transparent),
+                radial-gradient(1px 1px at 380px 220px, rgba(167, 139, 250, 0.4), transparent),
+                radial-gradient(1px 1px at 80px 280px, rgba(158, 200, 232, 0.6), transparent),
+                radial-gradient(1px 1px at 310px 300px, rgba(158, 200, 232, 0.4), transparent),
+                radial-gradient(1px 1px at 180px 360px, rgba(158, 200, 232, 0.5), transparent);
+            background-repeat: repeat;
+            background-size: 400px 400px;
+            opacity: 0.8;
         }
+
+        /* Soft nebula glows */
+        .nebula {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .nebula-1 {
+            width: 500px; height: 500px;
+            background: var(--primary);
+            opacity: 0.06;
+            top: -150px; right: -100px;
+        }
+        .nebula-2 {
+            width: 400px; height: 400px;
+            background: var(--violet);
+            opacity: 0.05;
+            bottom: -100px; left: -80px;
+        }
+
         .content {
-            position: fixed; inset: 0; z-index: 2;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            text-align: center; padding: 24px;
-            pointer-events: none;
+            position: relative;
+            z-index: 1;
+            max-width: 560px;
         }
-        .content > * { pointer-events: auto; }
+
         .code {
             font-family: 'JetBrains Mono', monospace;
-            font-size: clamp(7rem, 20vw, 12rem);
-            font-weight: 900; line-height: 0.9;
-            background: linear-gradient(135deg, #ffffff 0%, var(--primary-light) 45%, var(--violet) 100%);
+            font-size: clamp(6rem, 18vw, 10rem);
+            font-weight: 900;
+            line-height: 1;
+            background: linear-gradient(135deg, #ffffff 0%, var(--primary-light) 50%, var(--violet) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 8px;
-            letter-spacing: -4px;
-            animation: float 6s ease-in-out infinite;
+            margin-bottom: 16px;
+            letter-spacing: -3px;
         }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
+
         .title {
-            font-size: clamp(1.4rem, 4vw, 2.2rem);
-            font-weight: 800; color: var(--text);
-            margin-bottom: 14px; letter-spacing: -0.5px;
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 14px;
+            letter-spacing: -0.5px;
         }
+
         .subtitle {
             color: var(--text-muted);
-            font-size: clamp(1rem, 2.2vw, 1.15rem);
-            line-height: 1.7; margin-bottom: 36px; max-width: 480px;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            line-height: 1.7;
+            margin-bottom: 36px;
+            max-width: 460px;
+            margin-left: auto;
+            margin-right: auto;
         }
+
         .btn {
-            display: inline-flex; align-items: center; gap: 10px;
-            padding: 16px 32px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
             background: linear-gradient(135deg, var(--primary), #4A7AA8);
-            color: #fff; text-decoration: none;
-            border-radius: 14px; font-weight: 700; font-size: 15px;
-            letter-spacing: 0.3px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 15px;
             transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 8px 30px rgba(110, 164, 212, 0.3);
+            box-shadow: 0 4px 20px rgba(110, 164, 212, 0.3);
         }
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 14px 40px rgba(110, 164, 212, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(110, 164, 212, 0.45);
         }
-        .btn:active { transform: translateY(-1px) scale(0.98); }
-        .hint {
-            position: fixed; bottom: 24px; left: 50%;
-            transform: translateX(-50%); z-index: 2;
-            color: var(--text-dim);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px; letter-spacing: 1.5px;
-            text-transform: uppercase; opacity: 0.5;
-            pointer-events: none;
-        }
+        .btn:active { transform: translateY(0) scale(0.98); }
+
         *:focus-visible {
             outline: 2px solid var(--primary-light);
-            outline-offset: 4px; border-radius: 6px;
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .code { animation: none; }
+            outline-offset: 4px;
+            border-radius: 6px;
         }
     </style>
 </head>
 <body>
-    <canvas id="galaxy" aria-hidden="true"></canvas>
-    <div class="vignette" aria-hidden="true"></div>
+    <div class="stars" aria-hidden="true"></div>
+    <div class="nebula nebula-1" aria-hidden="true"></div>
+    <div class="nebula nebula-2" aria-hidden="true"></div>
 
     <div class="content">
         <div class="code">404</div>
-        <h1 class="title">Lost in the galaxy</h1>
-        <p class="subtitle">The page you're looking for drifted beyond the event horizon. Let's bring you back to known space.</p>
+        <h1 class="title">Lost in space</h1>
+        <p class="subtitle">The page you're looking for drifted off into the cosmos. Let's get you back home.</p>
         <a href="/" class="btn"><span aria-hidden="true">🌀</span> Back to Earth</a>
     </div>
-
-    <div class="hint">move your cursor · drift through the stars</div>
-
-    <script src="js/galaxy.js"></script>
 </body>
 </html>

@@ -126,8 +126,8 @@ function initGitHubStars() {
             el.textContent = total;
         })
         .catch(() => {
-            // API rate-limited or failed — keep the star symbol as fallback
-            el.textContent = '★';
+            // API rate-limited or failed — keep showing 0
+            el.textContent = '0';
         });
 }
 

@@ -1,9 +1,20 @@
-# 🌀 ILIV007 Portfolio — v2.0.3
+# 🌀 ILIV007 Portfolio — v2.0.4
 
 > **AI Automation Engineer | Computer Engineering Student**
 > A cosmic-themed, bilingual portfolio showcasing AI systems, automation workflows, and experimental software.
 
 🔗 **Live Demo**: [https://iliv007-cv.pages.dev](https://iliv007-cv.pages.dev)
+
+---
+
+## ✨ What's New in v2.0.4
+
+A **stability** release. The toolkit and 404 page are simplified to be bulletproof and instant.
+
+- 📦 **Toolkit simplified** — clean auto-fit grid, all 6 cards equal size (3×2 on desktop, 1 column on mobile). Can't break.
+- ⭐ **GitHub stars fixed** — shows the real number (0), not a star symbol
+- 🚀 **404 page rebuilt** — removed the heavy 3D canvas; now a fast static CSS-only page with starry background. Loads instantly.
+- 🧹 **Removed `galaxy.js`** — no longer needed
 
 ---
 
@@ -72,7 +83,7 @@ See [CHANGELOG](#-changelog) below for the full list.
 
 ---
 
-## 🗂️ Project Structure (v2.0.3)
+## 🗂️ Project Structure (v2.0.4)
 
 ```
 Cv-website/
@@ -88,7 +99,6 @@ Cv-website/
 ├── js/
 │   ├── i18n.js             # Bilingual switching + localStorage persistence
 │   ├── ui.js               # Stars, scroll reveal, progress bar, back-to-top, GitHub stars
-│   ├── galaxy.js           # 3D spiral galaxy canvas for the 404 page
 │   └── main.js             # Entry point — wires everything on DOM ready
 ├── assets/
 │   ├── favicon.svg         # SVG favicon with "IV" monogram
@@ -184,6 +194,22 @@ Switching updates: all text content, text direction (`ltr`/`rtl`), font stack, a
 ---
 
 ## 📋 Changelog
+
+### v2.0.4 — Stability & Simplicity
+**Toolkit — bulletproof grid**
+- Replaced the fragile span-based bento grid with a simple `repeat(auto-fit, minmax(280px, 1fr))` grid
+- All 6 cards are now equal size, arranged 3×2 on desktop, 1 column on mobile
+- Removed all `tk-span-*` classes — no more layout edge cases
+
+**GitHub stars**
+- Default value is now `0` (a number), not the `★` symbol
+- Fallback on API failure also shows `0`
+
+**404 page — fast & simple**
+- Removed the 3D canvas galaxy (was heavy and slow to load)
+- Replaced with a pure CSS starry background (instant load, zero JS)
+- Same cosmic theme, same messaging, fraction of the weight
+- Deleted `js/galaxy.js`
 
 ### v2.0.3 — Layout & Robustness
 **Timeline — complete redesign**
