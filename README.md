@@ -1,9 +1,21 @@
-# 🌀 ILIV007 Portfolio — v2.0.2
+# 🌀 ILIV007 Portfolio — v2.0.3
 
 > **AI Automation Engineer | Computer Engineering Student**
 > A cosmic-themed, bilingual portfolio showcasing AI systems, automation workflows, and experimental software.
 
 🔗 **Live Demo**: [https://iliv007-cv.pages.dev](https://iliv007-cv.pages.dev)
+
+---
+
+## ✨ What's New in v2.0.3
+
+A **layout & robustness** release. The timeline and toolkit are completely rebuilt so they can never break in RTL, the 404 galaxy is now CSP-safe, and GitHub stars load live.
+
+- 📋 **Timeline redesigned** — clean table-style rows (date column + content column). Unbreakable in both LTR and RTL. No vertical line or dots that can drift.
+- 📦 **Toolkit simplified** — clean 3-column bento grid: AI (wide) + 3 equal cards + full-width footer card. Zero gaps, zero overflow.
+- ⭐ **Live GitHub stars** — the hero stat now fetches the real star count from the GitHub API (falls back to ★ if rate-limited)
+- 🌌 **404 galaxy fixed** — moved the 3D galaxy script to an external `js/galaxy.js` file so it works under the strict CSP on Cloudflare Pages
+- 🎨 **Cleaner aesthetic** — tighter cards, mono labels, more minimal hover states (openclaw.ai-inspired)
 
 ---
 
@@ -60,7 +72,7 @@ See [CHANGELOG](#-changelog) below for the full list.
 
 ---
 
-## 🗂️ Project Structure (v2.0.2)
+## 🗂️ Project Structure (v2.0.3)
 
 ```
 Cv-website/
@@ -75,7 +87,8 @@ Cv-website/
 │   └── responsive.css      # Breakpoints, RTL, print, reduced-motion
 ├── js/
 │   ├── i18n.js             # Bilingual switching + localStorage persistence
-│   ├── ui.js               # Stars, scroll reveal, progress bar, back-to-top
+│   ├── ui.js               # Stars, scroll reveal, progress bar, back-to-top, GitHub stars
+│   ├── galaxy.js           # 3D spiral galaxy canvas for the 404 page
 │   └── main.js             # Entry point — wires everything on DOM ready
 ├── assets/
 │   ├── favicon.svg         # SVG favicon with "IV" monogram
@@ -171,6 +184,33 @@ Switching updates: all text content, text direction (`ltr`/`rtl`), font stack, a
 ---
 
 ## 📋 Changelog
+
+### v2.0.3 — Layout & Robustness
+**Timeline — complete redesign**
+- Replaced the vertical-line + dot timeline (which broke in RTL) with a clean table-style row layout: date column + content column, separated by subtle borders
+- Uses CSS Grid with `grid-template-columns: 100px 1fr` — automatically mirrors in RTL via logical properties
+- On mobile (<560px), the date stacks above the content
+
+**Toolkit — simplified grid**
+- Replaced the fragile 12-column grid with a clean 3-column bento grid
+- AI Systems spans 2 columns (wide), three cards fill row 2 (1 col each), Also Worked With spans 3 (full width)
+- Added tablet breakpoint (2-column at 769–980px)
+
+**GitHub stars**
+- Replaced the "+3 Years Coding" stat with live GitHub star count
+- Fetches `https://api.github.com/users/ILIV007/repos?per_page=100` and sums `stargazers_count`
+- Falls back to ★ symbol if rate-limited (60 req/hour for unauthenticated)
+- CSP updated to allow `connect-src https://api.github.com`
+
+**404 page — CSP fix**
+- Moved the 3D galaxy script from inline to external `js/galaxy.js`
+- This fixes the galaxy not rendering when deployed to Cloudflare Pages (the global CSP blocks inline scripts)
+- Removed the per-page CSP override for `/404.html` — no longer needed
+
+**UI polish (openclaw.ai-inspired)**
+- Tighter card padding, cleaner hover states
+- Mono font for stack labels and timeline dates
+- More minimal shadows
 
 ### v2.0.2 — Polish & 3D Galaxy
 **Critical fixes**

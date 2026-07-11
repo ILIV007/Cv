@@ -1,21 +1,21 @@
 /* ============================================================
-   ILIV007 Portfolio — Design Tokens (v2.0.1)
-   All colors, spacing, shadows, and motion live here.
+   ILIV007 Portfolio — Design Tokens (v2.0.3)
+   Clean, minimal, openclaw-inspired aesthetic.
    ============================================================ */
 
 :root {
-    /* ---- Brand Palette (cosmic blue + violet accent) ---- */
+    /* ---- Brand Palette ---- */
     --primary: #6BA4D4;
     --primary-light: #8FC0E8;
     --primary-dark: #4A7AA8;
     --accent: #9EC8E8;
     --accent-glow: rgba(110, 164, 212, 0.16);
 
-    /* Secondary accent (violet) for "also worked with" + variety */
+    /* Secondary accent */
     --violet: #a78bfa;
     --violet-light: #c4b5fd;
 
-    /* Status colors */
+    /* Status */
     --success: #4ade80;
     --info: #38bdf8;
 
@@ -26,24 +26,21 @@
     --bg-card-hover: #161f32;
     --bg-glass: rgba(17, 24, 39, 0.72);
 
-    /* ---- Text (tuned for WCAG AA on --bg) ---- */
+    /* ---- Text (WCAG AA tuned) ---- */
     --text: #e8edf5;
     --text-bright: #f8fafc;
     --text-muted: #aab4c5;
     --text-dim: #8b97ab;
 
-    /* ---- Borders ---- */
+    /* ---- Borders (subtle, openclaw-style) ---- */
     --border: rgba(148, 163, 184, 0.10);
     --border-hover: rgba(110, 164, 212, 0.35);
-    --border-strong: rgba(148, 163, 184, 0.22);
+    --border-strong: rgba(148, 163, 184, 0.18);
 
     /* ---- Effects ---- */
     --glow: rgba(110, 164, 212, 0.12);
-    --star-glow: rgba(158, 200, 232, 0.22);
     --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.25);
     --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.35);
-    --shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.4);
-    --shadow-glow: 0 0 60px var(--glow);
 
     /* Orbit neon colors */
     --orbit-red: #ff2a6d;
@@ -55,7 +52,7 @@
     --font-fa: 'Vazirmatn', 'Inter', system-ui, sans-serif;
     --font-mono: 'JetBrains Mono', 'Courier New', monospace;
 
-    /* ---- Spacing scale ---- */
+    /* ---- Spacing ---- */
     --space-xs: 0.5rem;
     --space-sm: 1rem;
     --space-md: 1.5rem;

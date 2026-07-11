@@ -113,6 +113,24 @@ function initSmoothScroll() {
     });
 }
 
+/* ----- GitHub stars — live total across all repos ----- */
+function initGitHubStars() {
+    const el = document.getElementById('gh-stars');
+    if (!el) return;
+
+    fetch('https://api.github.com/users/ILIV007/repos?per_page=100')
+        .then((r) => r.json())
+        .then((repos) => {
+            if (!Array.isArray(repos)) throw new Error('bad response');
+            const total = repos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
+            el.textContent = total;
+        })
+        .catch(() => {
+            // API rate-limited or failed — keep the star symbol as fallback
+            el.textContent = '★';
+        });
+}
+
 /* ----- Entry point ----- */
 export function initUI() {
     createStars();
@@ -120,4 +138,5 @@ export function initUI() {
     initScrollProgress();
     initBackToTop();
     initSmoothScroll();
+    initGitHubStars();
 }
