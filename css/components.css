@@ -59,6 +59,19 @@
     transform: translateY(-2px);
 }
 
+/* Hub button — violet gradient, the main site link */
+.btn-hub {
+    background: linear-gradient(135deg, var(--violet), #7c3aed);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(167, 139, 250, 0.3);
+    font-size: 15px;
+    padding: 16px 32px;
+}
+.btn-hub:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(167, 139, 250, 0.5);
+}
+
 /* Neon GitHub button */
 .btn-github-neon {
     background: rgba(110, 164, 212, 0.06);
