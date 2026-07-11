@@ -1,9 +1,20 @@
-# 🌀 ILIV007 Portfolio — v2.0.8
+# 🌀 ILIV007 Portfolio — v2.0.9
 
 > **AI Automation Engineer | Computer Engineering Student**
 > A cosmic-themed, bilingual portfolio showcasing AI systems, automation workflows, and experimental software.
 
 🔗 **Live Demo**: [https://iliv007-cv.pages.dev](https://iliv007-cv.pages.dev)
+
+---
+
+## ✨ What's New in v2.0.9
+
+A **definitive favicon fix** release.
+
+- 🐛 **Favicon 404 permanently fixed** — the manifest icon is now an inline data URI (🌀 emoji SVG embedded directly in `manifest.json`). No file reference means no possible 404, even if the old cached manifest lingers.
+- 🏷️ **VERSION.txt added** — a plain-text file at the site root so you can verify which version is live by visiting `https://iliv007-cv.pages.dev/VERSION.txt`.
+
+> ⚠️ **If you still see the old layout or the favicon 404**: the live site on Cloudflare is still serving the old files. You must upload these new files to your GitHub repository so Cloudflare Pages redeploys. After uploading, verify by visiting `/VERSION.txt` — it should show `v2.0.9`.
 
 ---
 
@@ -124,7 +135,7 @@ See [CHANGELOG](#-changelog) below for the full list.
 
 ---
 
-## 🗂️ Project Structure (v2.0.8)
+## 🗂️ Project Structure (v2.0.9)
 
 ```
 Cv-website/
@@ -235,6 +246,11 @@ Switching updates: all text content, text direction (`ltr`/`rtl`), font stack, a
 ---
 
 ## 📋 Changelog
+
+### v2.0.9 — Definitive Favicon Fix
+- Replaced the manifest icon `src` with an **inline data URI** (the 🌀 emoji as a base SVG embedded directly in `manifest.json`). This eliminates any file-path resolution issues — there is no file reference at all, so the 404 is impossible.
+- Added `VERSION.txt` at the site root. Visit `https://iliv007-cv.pages.dev/VERSION.txt` to confirm the deployed version. It should read `v2.0.9`.
+- Note: if you still see old content or the favicon error, your Cloudflare Pages site has not redeployed. Push these files to GitHub to trigger a new deployment.
 
 ### v2.0.8 — Roadmap Timeline & Toolkit Restore
 **Timeline — true roadmap design**
